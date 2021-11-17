@@ -46,32 +46,34 @@ Send /cancel to cancel the process.
             return
         received_code = otp.text.strip()
         received_code = "".join(received_code.split(" "))
-        try:
-            await pclient.sign_in(
-                number.text,
-                code.phone_code_hash,
-                phone_code=received_code,
-            )
-        except (PhoneCodeExpired, PhoneCodeInvalid):
-            return await m.reply_text("Invalid OTP.\nSend /pyrogram to ReStart.")
-        except SessionPasswordNeeded:
-            password = await m.chat.ask(
-                "Enter your Password.\nSend /cancel to Cancel.",
-            )
-            if await is_cancel(password):
-                return
-            await pclient.check_password(password=password.text)
-            session = await pclient.export_session_string()
-            await pclient.join_chat("@DivideProjects")
-            reply = await m.reply_text(str(Code(session)))
-            await reply.reply_text(
-                f"Your Pyrogram String Session, Same can be found in your Saved Messages.",
-            )
-            sent = await pclient.send_message("me", str(Code(session)))
-            await sent.reply_text(
-                f"Your Pyrogram String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await c.get_me()).username}",
-            )
-            await pclient.disconnect()
+        while True:
+            try:
+                await pclient.sign_in(
+                    number.text,
+                    code.phone_code_hash,
+                    phone_code=received_code,
+                )
+            except (PhoneCodeExpired, PhoneCodeInvalid):
+                return await m.reply_text("Invalid OTP.\nSend /pyrogram to ReStart.")
+            except SessionPasswordNeeded:
+                password = await m.chat.ask(
+                    "Enter your Password.\nSend /cancel to Cancel.",
+                )
+                if await is_cancel(password):
+                    return
+                await pclient.check_password(password=password.text)
+                break
+        session = await pclient.export_session_string()
+        await pclient.join_chat("@DivideProjects")
+        reply = await m.reply_text(str(Code(session)))
+        await reply.reply_text(
+            f"Your Pyrogram String Session, Same can be found in your Saved Messages.",
+        )
+        sent = await pclient.send_message("me", str(Code(session)))
+        await sent.reply_text(
+            f"Your Pyrogram String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await c.get_me()).username}",
+        )
+        await pclient.disconnect()
     except Exception as e:
         return await c.send_message(m.chat.id, str(e))
 
