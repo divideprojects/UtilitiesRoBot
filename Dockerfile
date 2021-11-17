@@ -84,8 +84,11 @@ ENV PATH="/root/.local/bin:$PATH"
 
 RUN poetry config virtualenvs.create false
 
-COPY . .
+COPY pyproject.toml pyproject.toml
+COPY poetry.lock poetry.lock
 
 RUN poetry install --no-dev --no-interaction --no-ansi && rm -rf /root/.cache
+
+COPY . .
 
 CMD ["make", "run"]
