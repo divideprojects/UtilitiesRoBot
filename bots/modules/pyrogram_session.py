@@ -56,7 +56,7 @@ Send /cancel to cancel the process.
             reply = await message.reply_text(str(Code(session)))
             await reply.reply_text(f"Your Pyrogram String Session, Same can be found in your Saved Messages.")
             sent = await pclient.send_message("me", session)
-            await sent.reply(f"Your Pyrogram String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await client.get_me()).username}")
+            await sent.reply_text(f"Your Pyrogram String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await client.get_me()).username}")
             await pclient.disconnect()
     except Exception as e:
         return await client.send_message(message.chat.id, str(e))
