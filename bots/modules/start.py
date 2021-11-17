@@ -41,7 +41,7 @@ async def help_msg(_, m: Message):
                 "/bin {bin} - To check a Bin is Valid or not.",
                 "/genInfo {gender} - To generate a fake user Details.",
                 "/proxy - To get some available Proxies.",
-                "/paste - To paste file/replied message contents to a pastebin."
+                "/paste - To paste file/replied message contents to a pastebin.",
                 "/pyrogram - To generate Pyrogram String Session.",
                 "/telethon - To generate Telethon String Session.",
             ),
