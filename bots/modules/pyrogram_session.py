@@ -46,23 +46,21 @@ Send /cancel to cancel the process.
             return
         received_code = otp.text.strip()
         received_code = "".join(received_code.split(" "))
-        while True:
-            try:
-                await pclient.sign_in(
-                    number.text,
-                    code.phone_code_hash,
-                    phone_code=received_code,
-                )
-            except (PhoneCodeExpired, PhoneCodeInvalid):
-                return await m.reply_text("Invalid OTP.\nSend /pyrogram to ReStart.")
-            except SessionPasswordNeeded:
-                password = await m.chat.ask(
-                    "Enter your Password.\nSend /cancel to Cancel.",
-                )
-                if await is_cancel(password):
-                    return
-                await pclient.check_password(password=password.text)
-                break
+        try:
+            await pclient.sign_in(
+                number.text,
+                code.phone_code_hash,
+                phone_code=received_code,
+            )
+        except (PhoneCodeExpired, PhoneCodeInvalid):
+            return await m.reply_text("Invalid OTP.\nSend /pyrogram to ReStart.")
+        except SessionPasswordNeeded:
+            password = await m.chat.ask(
+                "Enter your Password.\nSend /cancel to Cancel.",
+            )
+        if await is_cancel(password):
+            return
+        await pclient.check_password(password=password.text)
         session = await pclient.export_session_string()
         await pclient.join_chat("@DivideProjects")
         reply = await m.reply_text(str(Code(session)))
