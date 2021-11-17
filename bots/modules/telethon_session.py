@@ -77,7 +77,7 @@ Send /cancel to cancel the process.
             await reply.reply_text(
                 f"Your Telethon String Session, Same can be found in your Saved Messages.",
             )
-            sent = await tclient.send_message("me", Code(session_string))
+            sent = await tclient.send_message("me", str(Code(session_string)), parse_mode="html")
             await sent.reply(
                 f"Your Telethon String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await c.get_me()).username}",
             )
