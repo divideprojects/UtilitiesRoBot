@@ -1,5 +1,5 @@
 from io import BytesIO
-from kantex.html import *
+
 from proxygrab import get_proxy
 from tgEasy import array_chunk, ikb
 
@@ -9,11 +9,11 @@ proxytypes = {"HTTP", "HTTPS", "Socks4", "Socks5"}
 
 
 @app.command("proxy", pm_only=True)
-async def getProxy(client, message):
-    msg = await message.reply_text("...", quote=True)
+async def getProxy(_, m):
+    msg = await m.reply_text("...", quote=True)
     await msg.edit_text(
         "Choose the Proxy Type you Want.",
-        reply_markup=ikb((await gen_proxy_kb()))
+        reply_markup=ikb(await gen_proxy_kb()),
     )
 
 

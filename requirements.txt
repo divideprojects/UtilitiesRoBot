@@ -1,6 +1,6 @@
-tgEasy
+aiohttp
+cryptg
 kantex
 proxygrab
-aiohttp
 telethon
-cryptg
+tgEasy

@@ -1,4 +1,4 @@
-from kantex.html import *
+from kantex.html import Code, Italic, Section
 
 from .aiohttp import AioHttp
 
@@ -9,14 +9,23 @@ async def getBinInfo(gbin: str or int):
     if not rInfo:
         return "❌ Invalid Bin"
     try:
-        info = str(Section(
-            "✅ Valid Bin",
-            str(Italic("Bin: ") + Code(gbin)),
-            str(Italic("Type: ") + Code(rInfo["type"])),
-            str(Italic("Brand: ") + Code(rInfo["brand"])),
-            str(Italic("Country: ") +
-                Code(rInfo["country"]["name"] + "(" + rInfo["country"]["alpha2"] + ")")),
-            str(Italic("Bank: ") + Code(rInfo["bank"]["name"])),
-        ))
+        info = str(
+            Section(
+                "✅ Valid Bin",
+                str(Italic("Bin: ") + Code(gbin)),
+                str(Italic("Type: ") + Code(rInfo["type"])),
+                str(Italic("Brand: ") + Code(rInfo["brand"])),
+                str(
+                    Italic("Country: ")
+                    + Code(
+                        rInfo["country"]["name"]
+                        + "("
+                        + rInfo["country"]["alpha2"]
+                        + ")",
+                    ),
+                ),
+                str(Italic("Bank: ") + Code(rInfo["bank"]["name"])),
+            ),
+        )
     except (KeyError, TypeError):
         return "❌ Invalid Bin"
