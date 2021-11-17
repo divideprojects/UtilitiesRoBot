@@ -9,7 +9,7 @@ from ..utils.joinCheck import joinCheck
 
 
 @app.command("pyrogram", pm_only=True)
-@joinCheck
+@joinCheck()
 async def pyrogram_session(c, m: Message):
     apiId = await m.chat.ask("Enter your API_ID.\nSend /cancel to Cancel.")
     if await is_cancel(apiId):

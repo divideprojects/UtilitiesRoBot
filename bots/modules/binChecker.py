@@ -6,7 +6,7 @@ from ..utils.joinCheck import joinCheck
 
 
 @app.command("bin", pm_only=True)
-@joinCheck
+@joinCheck()
 async def binChecker(_, m: Message):
     msg = await m.reply_text("...")
     if len(m.text.split()) == 1:

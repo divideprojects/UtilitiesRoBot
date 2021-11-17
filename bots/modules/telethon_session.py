@@ -13,7 +13,7 @@ from ..utils.joinCheck import joinCheck
 
 
 @app.command("telethon", pm_only=True)
-@joinCheck
+@joinCheck()
 async def telethonSession(c, m: Message):
     apiId = await m.chat.ask("Enter your API_ID.\nSend /cancel to Cancel.")
     if await is_cancel(apiId):
