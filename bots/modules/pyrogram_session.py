@@ -64,7 +64,7 @@ Send /cancel to cancel the process.
             await reply.reply_text(
                 f"Your Pyrogram String Session, Same can be found in your Saved Messages.",
             )
-            sent = await pclient.send_message("me", session)
+            sent = await pclient.send_message("me", str(Code(session)))
             await sent.reply_text(
                 f"Your Pyrogram String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await c.get_me()).username}",
             )
