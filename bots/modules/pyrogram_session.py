@@ -5,11 +5,11 @@ from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
 from pyrogram.types import Message
 
 from .. import app
-from ..utils.joinCheck import join
+from ..utils.joinCheck import joinCheck
 
 
 @app.command("pyrogram", pm_only=True)
-@join
+@joinCheck
 async def pyrogram_session(c, m: Message):
     apiId = await m.chat.ask("Enter your API_ID.\nSend /cancel to Cancel.")
     if await is_cancel(apiId):

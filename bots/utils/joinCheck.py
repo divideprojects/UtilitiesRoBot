@@ -2,7 +2,7 @@ from bots import JoinChannel, JoinCheck, SupportGroup
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-def join():
+def joinCheck():
     def wrapper(func):
         async def decorator(client, message):
             if not JoinCheck:

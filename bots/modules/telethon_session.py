@@ -9,11 +9,11 @@ from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
 from .. import app
-from ..utils.joinCheck import join
+from ..utils.joinCheck import joinCheck
 
 
 @app.command("telethon", pm_only=True)
-@join
+@joinCheck
 async def telethonSession(c, m: Message):
     apiId = await m.chat.ask("Enter your API_ID.\nSend /cancel to Cancel.")
     if await is_cancel(apiId):

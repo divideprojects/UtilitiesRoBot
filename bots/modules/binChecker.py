@@ -2,11 +2,11 @@ from pyrogram.types import Message
 
 from .. import app
 from ..utils.getBinInfo import getBinInfo
-from ..utils.joinCheck import join
+from ..utils.joinCheck import joinCheck
 
 
 @app.command("bin", pm_only=True)
-@join
+@joinCheck
 async def binChecker(_, m: Message):
     msg = await m.reply_text("...")
     if len(m.text.split()) == 1:

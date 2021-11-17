@@ -4,13 +4,13 @@ from proxygrab import get_proxy
 from tgEasy import array_chunk, ikb
 
 from .. import app
-from ..utils.joinCheck import join
+from ..utils.joinCheck import joinCheck
 
 proxytypes = {"HTTP", "HTTPS", "Socks4", "Socks5"}
 
 
 @app.command("proxy", pm_only=True)
-@join
+@joinCheck
 async def getProxy(_, m):
     msg = await m.reply_text("...", quote=True)
     await msg.edit_text(
