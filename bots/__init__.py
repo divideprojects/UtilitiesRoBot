@@ -1,9 +1,10 @@
 from pyrogram import Client
 from tgEasy import tgClient
+from tgEasy.config import config
 
-SupportGroup = "@DivideProjectsDiscussion"
-JoinChannel = "@DivideProjects"
-JoinCheck = True
+SupportGroup = config("SupportGroup", default="@DivideProjectsDiscussion")
+JoinChannel = config("JoinChannel", default="@DivideProjects")
+JoinCheck = config("JoinCheck", default=True)
 
 client = Client(
     "bots",
