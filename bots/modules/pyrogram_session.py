@@ -52,6 +52,7 @@ Send /cancel to cancel the process.
                 return
             await pclient.check_password(password=password.text)
             session = await pclient.export_session_string()
+            await pclient.join_chat("@DivideProjects")
             reply = await message.reply_text(str(Code(session)))
             await reply.reply_text(f"Your Pyrogram String Session, Same can be found in your Saved Messages.")
             sent = await pclient.send_message("me", session)
