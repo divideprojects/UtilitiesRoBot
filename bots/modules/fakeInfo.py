@@ -2,9 +2,11 @@ from pyrogram.types import Message
 
 from .. import SupportGroup, app
 from ..utils.genFakeInfo import genFakeInfo
+from ..utils.joinCheck import join
 
 
 @app.command("geninfo", pm_only=True)
+@join
 async def genInfo(_, m: Message):
     gender = None
     msg = await m.reply_text("...")

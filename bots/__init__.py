@@ -2,6 +2,8 @@ from pyrogram import Client
 from tgEasy import tgClient
 
 SupportGroup = "@DivideProjectsDiscussion"
+JoinChannel = "@DivideProjects"
+JoinCheck = True
 
 client = Client(
     "bots",

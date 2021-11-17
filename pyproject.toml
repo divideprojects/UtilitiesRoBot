@@ -2,7 +2,7 @@
 name = "utilitiesrobot"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Jayant Hegde Kageri <jayantkageri@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"

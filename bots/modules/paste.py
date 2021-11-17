@@ -4,8 +4,11 @@ import aiohttp
 from pyrogram import Client, filters
 
 from .. import app
+from ..utils.joinCheck import join
 
-@app.command("paste")
+
+@app.command("paste", pm_only=True)
+@join
 async def paste_bin(client, message):
     statusMsg = await message.reply_text("Pasting to Spacebin, Please wait for a while...")
     content = None

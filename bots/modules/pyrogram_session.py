@@ -1,12 +1,15 @@
 from kantex.html import Code
 from pyrogram.client import Client
-from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
+from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
+                             SessionPasswordNeeded)
 from pyrogram.types import Message
 
 from .. import app
+from ..utils.joinCheck import join
 
 
-@app.command("pyrogram")
+@app.command("pyrogram", pm_only=True)
+@join
 async def pyrogram_session(c, m: Message):
     apiId = await m.chat.ask("Enter your API_ID.\nSend /cancel to Cancel.")
     if await is_cancel(apiId):
