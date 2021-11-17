@@ -13,7 +13,7 @@ async def pyrogram_session(c, m: Message):
         return
     if not apiId.text.isdigit():
         return await m.reply_text(
-            "Invalid API_ID \nSend /telethon to Restart the Process",
+            "Invalid API_ID \nSend /pyrogram to Restart the Process",
         )
     apiHash = await m.chat.ask("Enter your API_HASH.\nSend /cancel to Cancel.")
     if await is_cancel(apiHash):
