@@ -1,6 +1,6 @@
 from io import BytesIO
 
-# from proxygrab import get_proxy
+from proxygrab import get_proxy
 from tgEasy import array_chunk, ikb
 
 from .. import app
