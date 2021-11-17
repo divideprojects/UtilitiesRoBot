@@ -7,7 +7,7 @@ from .. import app
 from ..utils.joinCheck import joinCheck
 
 
-@app.command("paste", pm_only=True)
+@app.command("paste")
 @joinCheck()
 async def paste_bin(client, message):
     statusMsg = await message.reply_text("Pasting to Spacebin, Please wait for a while...")
