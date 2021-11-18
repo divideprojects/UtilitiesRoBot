@@ -3,7 +3,7 @@ from io import BytesIO
 from proxygrab import get_proxy
 from tgEasy import array_chunk, ikb
 
-from .. import app
+from .. import app, JoinChannel
 from ..utils.joinCheck import joinCheck
 
 proxytypes = {"HTTP", "HTTPS", "Socks4", "Socks5"}
@@ -25,7 +25,7 @@ async def getProxy(client, cb):
     await cb.message.edit_text(f"Fetching {ptype} Proxies...")
     proxies_source = await get_proxy(ptype)
     proxies_fetched = "\n".join(proxies_source)
-    caption = f"<b><i>Proxies scrapped by:</i></b> @{(await client.get_me()).username}\n\nIf you'd like to keep this service alive 😊, please /donate"
+    caption = f"<b><i>Proxies scrapped by:</i></b> @{(await client.get_me()).username}\n\n{JoinChannel}"
     with BytesIO(str.encode(proxies_fetched)) as output:
         output.name = f"{ptype}_{(await client.get_me()).username}.txt"
         await cb.message.reply_document(document=output, caption=caption)
