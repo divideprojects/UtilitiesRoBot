@@ -1,7 +1,7 @@
-import os
+from os import remove
 
-import aiohttp
-from pyrogram import Client, filters
+from aiohttp import ClientSession
+from pyrogram.types import Message
 
 from .. import app
 from ..utils.joinCheck import joinCheck
@@ -9,66 +9,84 @@ from ..utils.joinCheck import joinCheck
 
 @app.command("paste")
 @joinCheck()
-async def paste_bin(client, message):
-    statusMsg = await message.reply_text("Pasting to Spacebin, Please wait for a while...")
+async def paste_bin(_, m: Message):
+    statusMsg = await m.reply_text(
+        "Pasting to Spacebin, Please wait for a while...",
+    )
     content = None
     extension = "txt"
-    if len(message.command) > 1:
+    if len(m.command) > 1:
         # TODO: Make a way to get the extension
-        if message.command[1].startswith("py"):
+        if m.command[1].startswith("py"):
             extension = "python"
-        if message.command[1].startswith("js"):
+        if m.command[1].startswith("js"):
             extension = "javascript"
-        if message.command[1].startswith("ts") or message.command[1].startswith("typescript"):
+        if m.command[1].startswith("ts") or m.command[1].startswith(
+            "typescript",
+        ):
             extension = "typescript"
-        if message.command[1].startswith("go"):
+        if m.command[1].startswith("go"):
             extension = "go"
-        if message.command[1].startswith("java"):
+        if m.command[1].startswith("java"):
             extension = "java"
-        if message.command[1].startswith("crystal") or message.command[1].startswith("cr"):
+        if m.command[1].startswith("crystal") or m.command[1].startswith(
+            "cr",
+        ):
             extension = "crystal"
-        if message.command[1].startswith("c") or message.command[1].startswith("objc"):
+        if m.command[1].startswith("c") or m.command[1].startswith("objc"):
             extension = "c"
-        if message.command[1].startswith("json") or message.command[1].startswith("yaml") or message.command[1].startswith("toml"):
+        if (
+            m.command[1].startswith("json")
+            or m.command[1].startswith("yaml")
+            or m.command[1].startswith("toml")
+        ):
             extension = "json"
-        if message.command[1].startswith("markdown") or message.command[1].startswith("md"):
+        if m.command[1].startswith("markdown") or m.command[1].startswith(
+            "md",
+        ):
             extension = "markdown"
-        if message.command[1].startswith("html") or message.command[1].startswith("css") or message.command[1].startswith("xml"):
+        if (
+            m.command[1].startswith("html")
+            or m.command[1].startswith("css")
+            or m.command[1].startswith("xml")
+        ):
             extension = "markup"
-        if message.command[1].startswith("css"):
+        if m.command[1].startswith("css"):
             extension = "css"
-        if message.command[1].startswith("bash") or message.command[1].startswith("sh"):
+        if m.command[1].startswith("bash") or m.command[1].startswith("sh"):
             extension = "bash"
-        if message.command[1].startswith("rust") or message.command[1].startswith("rs"):
+        if m.command[1].startswith("rust") or m.command[1].startswith("rs"):
             extension = "rust"
-        if message.command[1].startswith("ruby") or message.command[1].startswith("rb"):
+        if m.command[1].startswith("ruby") or m.command[1].startswith("rb"):
             extension = "ruby"
-        if message.command[1].startswith("php"):
+        if m.command[1].startswith("php"):
             extension = "php"
 
-    if message.reply_to_message:
-        if message.reply_to_message.document:
-            if message.reply_to_message.document.file_size > 400000:
-                return await statusMsg.edit_text("Max file size that can be pasted is 400KB.")
-            uniqueId = f"paste_{str(message.chat.id).replace('-', '')}_{message.message_id}"
-            file_ = await message.reply_to_message.download(uniqueId)
-            with open(file_, 'rb') as f:
+    if m.reply_to_message:
+        if m.reply_to_message.document:
+            if m.reply_to_message.document.file_size > 400000:
+                return await statusMsg.edit_text(
+                    "Max file size that can be pasted is 400KB.",
+                )
+            uniqueId = f"paste_{str(m.chat.id).replace('-', '')}_{m.message_id}"
+            file_ = await m.reply_to_message.download(uniqueId)
+            with open(file_, "rb") as f:
                 content = f.read().decode("UTF-8")
-            os.remove(file_)
+            remove(file_)
         else:
             try:
-                content = message.reply_to_message.text.markdown
+                content = m.reply_to_message.text.markdown
             except:
                 pass
 
     if not content:
         return await statusMsg.edit_text("Reply to a Text or Document to Paste.")
     try:
-        async with aiohttp.ClientSession() as session:
+        async with ClientSession() as session:
             async with session.post(
                 "https://spaceb.in/api/v1/documents/",
                 json={"content": content, "extension": extension},
-                timeout=3
+                timeout=3,
             ) as response:
                 key = (await response.json())["payload"].get("id")
                 url = f"Spacebin Denied the Paste. \n{await response.json()}"

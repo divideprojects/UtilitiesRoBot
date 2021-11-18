@@ -44,6 +44,7 @@ async def help_msg(_, m: Message):
                 "/paste - To paste file/replied message contents to a pastebin.",
                 "/pyrogram - To generate Pyrogram String Session.",
                 "/telethon - To generate Telethon String Session.",
+                "/tinify - Compress a replied image.",
             ),
         ),
         reply_markup=InlineKeyboardMarkup(
