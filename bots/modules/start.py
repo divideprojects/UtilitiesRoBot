@@ -45,6 +45,7 @@ async def help_msg(_, m: Message):
                 "/pyrogram - To generate Pyrogram String Session.",
                 "/telethon - To generate Telethon String Session.",
                 "/tinify - Compress a replied image.",
+                "/json - Get json data of replied message.",
             ),
         ),
         reply_markup=InlineKeyboardMarkup(
