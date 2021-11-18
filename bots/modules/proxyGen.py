@@ -30,7 +30,7 @@ async def getProxy(client, cb):
         output.name = f"{ptype}_{(await client.get_me()).username}.txt"
         await cb.message.reply_document(document=output, caption=caption)
     await cb.message.delete()
-    await cb.answer("Done ✅", show_alert=True)
+    await cb.answer("Done ✅")
 
 
 async def gen_proxy_kb():
