@@ -46,6 +46,7 @@ async def help_msg(_, m: Message):
                 "/telethon - To generate Telethon String Session.",
                 "/tinify - Compress a replied image.",
                 "/json - Get json data of replied message.",
+                "/github {username} - Get information about github user.",
             ),
         ),
         reply_markup=InlineKeyboardMarkup(
