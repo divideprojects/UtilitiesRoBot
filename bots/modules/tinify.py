@@ -9,7 +9,7 @@ from ..utils.joinCheck import joinCheck
 
 @app.command("tinify", pm_only=True)
 @joinCheck()
-async def binChecker(c, m: Message):
+async def tinify(c, m: Message):
     try:
         if m.reply_to_message.photo or (
             m.reply_to_message.document
