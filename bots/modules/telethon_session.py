@@ -8,8 +8,8 @@ from telethon.errors.rpcerrorlist import (
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
-from .. import app
-from ..utils.joinCheck import joinCheck
+from bots import app
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("telethon", pm_only=True)

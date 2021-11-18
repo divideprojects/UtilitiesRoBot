@@ -2,9 +2,9 @@ from os import remove
 
 from pyrogram.types import Message
 
-from .. import DownPath, app
-from ..utils.compressImage import compress_image
-from ..utils.joinCheck import joinCheck
+from bots import DownPath, app
+from bots.utils.compressImage import compress_image
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("tinify", pm_only=True)

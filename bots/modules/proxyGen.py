@@ -4,8 +4,8 @@ from proxygrab import get_proxy
 from pyrogram.types import CallbackQuery, Message
 from tgEasy import array_chunk, ikb
 
-from .. import JoinChannel, app
-from ..utils.joinCheck import joinCheck
+from bots import JoinChannel, app
+from bots.utils.joinCheck import joinCheck
 
 proxytypes = {"HTTP", "HTTPS", "Socks4", "Socks5"}
 

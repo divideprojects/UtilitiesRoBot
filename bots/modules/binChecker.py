@@ -1,8 +1,8 @@
 from pyrogram.types import Message
 
-from .. import app
-from ..utils.getBinInfo import getBinInfo
-from ..utils.joinCheck import joinCheck
+from bots import app
+from bots.utils.getBinInfo import getBinInfo
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("bin", pm_only=True)

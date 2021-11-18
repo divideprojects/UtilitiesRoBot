@@ -3,8 +3,8 @@ from pyrogram.types import Message
 
 from bots.utils.aiohttp import AioHttp
 
-from .. import app
-from ..utils.joinCheck import joinCheck
+from bots import app
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("github", pm_only=True)

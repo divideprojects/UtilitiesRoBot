@@ -3,8 +3,8 @@ from os import remove
 from aiohttp import ClientSession
 from pyrogram.types import Message
 
-from .. import app
-from ..utils.joinCheck import joinCheck
+from bots import app
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("paste")

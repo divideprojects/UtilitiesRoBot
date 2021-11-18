@@ -2,8 +2,8 @@ from kantex.html import Code
 from pyrogram.types import Message
 from pyrogram.types.messages_and_media import message
 
-from .. import app
-from ..utils.joinCheck import joinCheck
+from bots import app
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("json", pm_only=True)

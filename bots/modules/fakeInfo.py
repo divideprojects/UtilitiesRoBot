@@ -1,8 +1,8 @@
 from pyrogram.types import Message
 
-from .. import SupportGroup, app
-from ..utils.genFakeInfo import genFakeInfo
-from ..utils.joinCheck import joinCheck
+from bots import SupportGroup, app
+from bots.utils.genFakeInfo import genFakeInfo
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("geninfo", pm_only=True)

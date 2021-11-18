@@ -3,8 +3,8 @@ from pyrogram.client import Client
 from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
 from pyrogram.types import Message
 
-from .. import app
-from ..utils.joinCheck import joinCheck
+from bots import app
+from bots.utils.joinCheck import joinCheck
 
 
 @app.command("pyrogram", pm_only=True)
