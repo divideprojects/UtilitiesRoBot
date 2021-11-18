@@ -1,4 +1,4 @@
-from shutil import rmtree
+from os import remove
 
 from pyrogram.types import Message
 
@@ -26,7 +26,8 @@ async def binChecker(c, m: Message):
                 caption="Compressed image.",
             )
             await rmsg.delete()
-            rmtree(new_filename)
+            remove(new_filename)
+            remove(exact_file)
         else:
             await m.reply_text("Reply to a photo or a document.")
     except AttributeError:
