@@ -11,7 +11,7 @@ async def genInfo(_, m: Message):
     gender = None
     msg = await m.reply_text("...")
     chkUrl = "https://randomuser.me/api/1.3/"
-    if len(m.command) < 0:
+    if len(m.command) != 0:
         if m.command[1] in ("male", "female"):
             gender = m.command[1]
             chkUrl += f"?gender={gender}"
