@@ -77,6 +77,7 @@ RUN apt-get update \
     zip \
     zlib1g \
     zlib1g-dev \
+    poppler-utils \
     && apt-get autoremove --purge \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 

@@ -47,6 +47,7 @@ async def help_msg(_, m: Message):
                 "/tinify - Compress a replied image.",
                 "/json - Get json data of replied message.",
                 "/github {username} - Get information about github user.",
+                "/pdf2img - Convert replied pdf to images.",
             ),
         ),
         reply_markup=InlineKeyboardMarkup(
