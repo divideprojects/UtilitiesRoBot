@@ -10,7 +10,7 @@ JoinCheck = config("JoinCheck", default=True)
 BotToken = config("BotToken", default="2126891045:AAETy6VIZSStCLbIuKd2TcLOs1qJVoR_Y9w")
 ApiId = config("ApiId", default=1615152)
 ApiHash = config("ApiHash", default="dc9a964e4f31331859dc7d4df007e8d5")
-DownPath = f"{getcwd()}/utilitiesrobot/downloads"
+DownPath = f"{getcwd()}/bots/download"
 
 client = Client(
     "bots",
