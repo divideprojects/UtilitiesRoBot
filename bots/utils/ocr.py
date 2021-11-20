@@ -3,7 +3,7 @@ from os import remove, rename
 from PIL import Image
 
 from bots import OCR_SPACE_API_KEY
-from bots.utils.aiohttp import Aiohttp
+from bots.utils.aiohttp import AioHttp
 
 
 async def conv_image(image: str):
@@ -40,7 +40,7 @@ async def ocr_space_file(
         "language": language,
     }
     with open(filename, "rb") as f:
-        rjson, resp = await Aiohttp.post_json(
+        rjson, resp = await AioHttp.post_json(
             "https://api.ocr.space/parse/image",
             data=payload,
             files={filename: f},
