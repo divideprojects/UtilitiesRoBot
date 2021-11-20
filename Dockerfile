@@ -49,7 +49,6 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1-dev \
     libyaml-dev \
-    linux-headers-amd64 \
     make \
     mediainfo \
     megatools \
