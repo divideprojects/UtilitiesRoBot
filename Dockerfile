@@ -22,4 +22,6 @@ WORKDIR /app
 COPY --from=deb-extractor /dpkg /
 COPY --from=build-venv /venv /venv
 COPY . .
-ENTRYPOINT ["/venv/bin/python3", "-m", "bots"]
+ENTRYPOINT ["/venv/bin/python3"]
+CMD ["-m", "bots"]
+
