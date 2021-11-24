@@ -1,6 +1,0 @@
-aiohttp
-cryptg
-kantex
-proxygrab
-telethon
-tgEasy
