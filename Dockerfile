@@ -3,6 +3,7 @@ FROM ghcr.io/divideprojects/docker-python-base:latest AS build
 # Install external packages in base image
 FROM build as deb-extractor
 RUN cd /tmp \
+    && apt-get update \
     && apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests \
     --no-conflicts --no-breaks --no-replaces --no-enhances \
     --no-pre-depends poppler-utils | grep "^\w") \
