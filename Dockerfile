@@ -1,13 +1,4 @@
-FROM debian:11-slim AS build
-RUN apt-get update \
-    && apt-get upgrade --yes \
-    && apt-get install --no-install-suggests --no-install-recommends --yes \
-    python3-venv \
-    gcc \
-    libpython3-dev \
-    g++ \
-    && python3 -m venv /venv \
-    && /venv/bin/pip install --upgrade pip setuptools wheel poetry==1.1.11
+FROM ghcr.io/divideprojects/docker-python-base:latest AS build
 
 # Install external packages in base image
 FROM build as deb-extractor
