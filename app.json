@@ -1,0 +1,23 @@
+{
+   "name": "MiniPythonBots",
+   "description": "Some minibots with badic utilities!",
+   "keywords": [
+      "telegram bot",
+      "mini bots",
+      "tool bots",
+      "manager",
+      "MiniPythonBots"
+   ],
+   "repository": "https://github.com/Divkix/MiniPythonBots",
+   "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+   ],
+   "formation": {
+      "worker": {
+         "quantity": 1,
+         "size": "free"
+      }
+   }
+}

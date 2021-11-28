@@ -1,27 +1,28 @@
-FROM ghcr.io/divideprojects/docker-python-base:latest AS build
+FROM python:3.9-slim-buster
 
-# Install external packages in base image
-FROM build as deb-extractor
-RUN cd /tmp \
-    && apt-get update \
-    && apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests \
-    --no-conflicts --no-breaks --no-replaces --no-enhances \
-    --no-pre-depends poppler-utils | grep "^\w") \
-    && mkdir /dpkg \
-    && for deb in *.deb; do dpkg --extract $deb /dpkg || exit 10; done
-
-# Build virtualenv as separate step: Only re-execute this step when pyproject.toml or poetry.lock changes
-FROM build AS build-venv
-COPY pyproject.toml poetry.lock /
-RUN /venv/bin/poetry export -f requirements.txt --output requirements.txt
-RUN /venv/bin/pip install --disable-pip-version-check -r /requirements.txt
-
-# Copy the virtualenv into a distroless image
-FROM gcr.io/distroless/python3-debian11
 WORKDIR /app
-COPY --from=deb-extractor /dpkg /
-COPY --from=build-venv /venv /venv
-COPY . .
-ENTRYPOINT ["/venv/bin/python3"]
-CMD ["-m", "bots"]
 
+
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE 1
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED 1
+
+# Install and setup poetry
+RUN pip install -U pip \
+    && apt-get update \
+    && apt-get install -y curl netcat git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+ENV PATH="/root/.local/bin:$PATH"
+
+RUN (curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh || wget -t 3 -qO- https://cli.doppler.com/install.sh) | sh
+
+RUN poetry config virtualenvs.create false
+
+COPY . .
+
+RUN poetry install --no-dev --no-interaction --no-ansi
+
+ENTRYPOINT doppler run --command "python3 -m minibots"

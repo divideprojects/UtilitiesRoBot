@@ -1,1 +1,1 @@
-worker: python3 -m bots
+worker: make run
