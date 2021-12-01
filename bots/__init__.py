@@ -6,9 +6,7 @@ from tgEasy.config import config
 
 SupportGroup = config("SupportGroup", default="@DivideProjectsDiscussion")
 JoinChannel = config("JoinChannel", default="@DivideProjects")
-JoinCheck = (
-    True if config("JoinCheck", default=True).lower() in ("true", "yes") else False
-)
+JoinCheck = config("JOIN_CHECK", default=None, cast=config.boolean)
 BotToken = config("BotToken", default="2126891045:AAETy6VIZSStCLbIuKd2TcLOs1qJVoR_Y9w")
 ApiId = config("ApiId", default=1615152)
 ApiHash = config("ApiHash", default="dc9a964e4f31331859dc7d4df007e8d5")
