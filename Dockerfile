@@ -15,7 +15,8 @@
 ## GNU Lesser General Public License for more details.
 ##
 ## You should have received a copy of the GNU Lesser General Public License
-## along with Utilities Robot.  If not, see <http://www.gnu.org/licenses/>.##
+## along with Utilities Robot.  If not, see <http://www.gnu.org/licenses/>.
+##
 FROM ghcr.io/divideprojects/docker-python-base:latest AS build
 
 # Install external packages in base image
