@@ -36,7 +36,7 @@ async def telethonSession(c, m: Message):
         await tclient.connect()
     except Exception as e:
         return await c.send_message(m.chat.id, f"Error: {e}")
-    while True:
+    while 1:
         try:
             code = await tclient.send_code_request(number.text)
             otp = await m.chat.ask(
