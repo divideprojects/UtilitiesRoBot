@@ -76,7 +76,7 @@ async def paste_bin(_, m: Message):
         else:
             try:
                 content = m.reply_to_message.text.markdown
-            except:
+            except BaseException:
                 pass
 
     if not content:

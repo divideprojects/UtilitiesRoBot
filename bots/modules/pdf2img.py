@@ -22,7 +22,8 @@ async def pdf2img(c, m: Message):
         )
         images = convert_from_path(exact_file)
 
-        # empty list so that it can be used in the for loop to add the images to the message
+        # empty list so that it can be used in the for loop to add the images
+        # to the message
         media_photos = []
 
         for i in range(len(images)):

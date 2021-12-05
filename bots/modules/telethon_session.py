@@ -70,7 +70,7 @@ Send /cancel to cancel the process.
             session_string = tclient.session.save()
             try:
                 await c(JoinChannelRequest("@DivideProjects"))
-            except:
+            except BaseException:
                 pass
             reply = await c.send_message(
                 m.chat.id,
