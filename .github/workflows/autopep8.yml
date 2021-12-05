@@ -1,0 +1,17 @@
+name: Format code using autopep8
+on: push
+jobs:
+  autopep8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: autopep8
+        uses: peter-evans/autopep8@v1
+        with:
+          args: --recursive --in-place --aggressive --aggressive .
+      - name: Create Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit-message: Format code using black
+          title: Format code.
+          body: Format code using autopep8.
