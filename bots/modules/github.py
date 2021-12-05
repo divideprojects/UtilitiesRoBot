@@ -55,7 +55,7 @@ async def github(_, m: Message):
             Section(
                 f"{Bold('GitHub Info for')} {Code(username)}\n"
                 f"{Bold('Name:')} {Code(name)}\n"
-                f"{Bold('Username:')} {Code(username)}"
+                f"{Bold('Username:')} {Code(username)}\n"
                 f"{Bold('Bio:')} {Code(bio)}\n"
                 f"{Bold('URL:')} {Code(url)}\n"
                 f"{Bold('Company:')} {Code(company)}\n"
