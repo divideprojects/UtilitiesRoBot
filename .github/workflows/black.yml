@@ -12,7 +12,7 @@ jobs:
           python -m pip install black
       - name: Run black
         run: black bots
-      - name: Create Pull Request
+      - name: Commit Fixes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit-message: Format code using black
