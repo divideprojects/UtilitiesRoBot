@@ -26,7 +26,7 @@ from bots import app
 
 
 @app.command("id", pm_only=False)
-async def get_id(c: app, m: Message):
+async def get_id(c: app, message: Message):
     if len(message.command) >= 2:
         try:
             if message.entities:

@@ -17,6 +17,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Utilities Robot.  If not, see <http://www.gnu.org/licenses/>.
 #
+from time import time
+
 from kantex.html import Section
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
