@@ -2,7 +2,7 @@ from kantex.html import Section
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
-from bots import SupportGroup, JoinChannel app
+from .. import SupportGroup, JoinChannel app
 
 
 @app.command("start", pm_only=True)
