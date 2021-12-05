@@ -13,10 +13,8 @@ jobs:
       - name: Run black
         run: black .
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit-message: Format code using black
           title: Format code.
           body: Format code using black.
-          commit_user_name: jayantkageri
-          commit_user_email: jayantkageri@gmail.com
