@@ -11,7 +11,7 @@ from bots.utils.joinCheck import joinCheck
 @joinCheck()
 async def tts(_, m: Message):
     if m.reply_to_message.text:
-        save_file_name = f"{DownPath}/tts_{m.from_user.id}.mp3"
+        save_file_name = f"{DownPath}/tts_{m.from_user.id}_{m.message_id}.mp3"
         rmsg = await m.reply_text("Converting Text to Speech...")
         text_to_convert = m.reply_to_message.text
         if "|" in text_to_convert:
