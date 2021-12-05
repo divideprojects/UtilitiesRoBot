@@ -1,3 +1,5 @@
+from os import remove
+
 from kantex.html import Code
 from pyrogram.types import Message
 
@@ -14,5 +16,5 @@ async def json(_, m: Message):
     fName = f"json_{m.from_user.id}_{m.message_id}.json"
     with open(fName, "w+") as file:
         file.write(str(msg))
-        file.close()
     await m.reply_document(fName)
+    remove(fName)
