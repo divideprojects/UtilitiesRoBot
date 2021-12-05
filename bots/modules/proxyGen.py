@@ -26,7 +26,7 @@ from tgEasy import array_chunk, ikb
 from bots import JoinChannel, app
 from bots.utils.joinCheck import joinCheck
 
-proxytypes = {"HTTP", "HTTPS", "Socks4", "Socks5"}
+proxytypes = ("HTTP", "HTTPS", "Socks4", "Socks5")
 
 
 @app.command("proxy", pm_only=True)
