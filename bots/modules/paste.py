@@ -80,7 +80,7 @@ async def paste_bin(_, m: Message):
         elif m.reply_to_message.video:
             content = m.reply_to_message.caption
         elif m.reply_to_message.voice:
-            content = m.reply_to_message.voice
+            content = m.reply_to_message.caption
         else:
             try:
                 content = m.reply_to_message.text.markdown
