@@ -12,6 +12,4 @@ jobs:
       - name: Create Commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit-message: Format code using black
-          title: Format code.
-          body: Format code using autopep8.
+          commit_message: Format code using autopep8
