@@ -85,3 +85,12 @@ async def help_msg(_, m: Message):
             ],
         ),
     )
+
+
+@app.command("ping", pm_only=False)
+async def ping(_, m: Message):
+    start = time()
+    replymsg = await m.reply_text("Pinging ...", quote=True)
+    delta_ping = time() - start
+    await replymsg.edit_text(f"<b>Pong!</b>\n{delta_ping * 1000:.3f} ms")
+    return
