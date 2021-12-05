@@ -2,17 +2,17 @@ from kantex.html import Section
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
-from bots import SupportGroup, app
+from bots import SupportGroup, JoinChannel app
 
 
 @app.command("start", pm_only=True)
 async def start(_, m: Message):
     await m.reply_text(
         f"""
-Hi there, I am a Utilities Bot by @DivideProjects
+Hi there, I am a Utilities Bot by {JoinChannel}
 For my commands type /help
 
-Channel: @DivideProjects
+Channel: {JoinChannel}
 Support: {SupportGroup}
         """,
         reply_markup=InlineKeyboardMarkup(
@@ -20,15 +20,15 @@ Support: {SupportGroup}
                 [
                     InlineKeyboardButton(
                         "Channel",
-                        url="https://telegram.me/DivideProjects",
+                        url=f"https://telegram.me/{JoinChannel.replace('@', '')}",
                     ),
                     InlineKeyboardButton(
                         "Group",
-                        url="https://telegram.me/DivideProjectsDiscussion",
-                    ),
-                ],
-            ],
-        ),
+                        url=f"https://telegram.me/{SupportGroup.replace('@', '')}",
+                    )
+                ]
+            ]
+        )
     )
 
 
@@ -56,13 +56,13 @@ async def help_msg(_, m: Message):
                 [
                     InlineKeyboardButton(
                         "Channel",
-                        url="https://telegram.me/DivideProjects",
+                        url=f"https://telegram.me/{JoinChannel.replace('@', '')}",
                     ),
                     InlineKeyboardButton(
                         "Group",
-                        url="https://telegram.me/DivideProjectsDiscussion",
-                    ),
-                ],
+                        url=f"https://telegram.me/{SupportGroup.replace('@', '')}",
+                    )
+                ]
             ],
         ),
     )
