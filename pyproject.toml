@@ -20,7 +20,7 @@ tgeasy = {git = "https://github.com/jayantkageri/tgEasy.git", rev = "7abf9d072b2
 [tool.poetry.dev-dependencies]
 black = "^21.11b0"
 pyclean = "^2.0.0"
-pylint = "^2.12.1"
+pylint = "^2.12.2"
 isort = "^5.10.1"
 pre-commit = "^2.16.0"
 
