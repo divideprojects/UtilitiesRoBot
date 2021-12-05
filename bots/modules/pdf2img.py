@@ -30,7 +30,7 @@ from bots.utils.joinCheck import joinCheck
 @joinCheck()
 async def pdf2img(c, m: Message):
     if (
-        m.reply_to_message.document
+        (m.reply_to_message and m.reply_to_message.document)
         and m.reply_to_message.document.mime_type == "application/pdf"
     ):
         user_id = m.from_user.id
