@@ -29,7 +29,7 @@ from bots.utils.joinCheck import joinCheck
 @app.command("tts", pm_only=True)
 @joinCheck()
 async def tts(_, m: Message):
-    if m.reply_to_message.text:
+    if m.reply_to_message and m.reply_to_message.text:
         save_file_name = f"{DownPath}/tts_{m.from_user.id}_{m.message_id}.mp3"
         rmsg = await m.reply_text("Converting Text to Speech...")
         text_to_convert = m.reply_to_message.text
@@ -48,5 +48,6 @@ async def tts(_, m: Message):
         # Remove the files and msg
         await rmsg.delete()
         remove(save_file_name)
-
+        return
+    await m.reply_text("Reply to a text message.")
     return
