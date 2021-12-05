@@ -487,7 +487,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pylint"
-version = "2.12.1"
+version = "2.12.2"
 description = "python code static checker"
 category = "dev"
 optional = false
@@ -726,7 +726,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "83ab96e602b05fb1025bae5ecec624e056d8a2dfd91374f4fc388b67d9f17e88"
+content-hash = "aaa9ac81f7db7530c8d8648a40e923bfc7803f95aab0bd55dd399567cb11bf36"
 
 [metadata.files]
 aiodns = [
@@ -1377,8 +1377,8 @@ pycparser = [
     {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
 ]
 pylint = [
-    {file = "pylint-2.12.1-py3-none-any.whl", hash = "sha256:b4b5a7b6d04e914a11c198c816042af1fb2d3cda29bb0c98a9c637010da2a5c5"},
-    {file = "pylint-2.12.1.tar.gz", hash = "sha256:4f4a52b132c05b49094b28e109febcec6bfb7bc6961c7485a5ad0a0f961df289"},
+    {file = "pylint-2.12.2-py3-none-any.whl", hash = "sha256:daabda3f7ed9d1c60f52d563b1b854632fd90035bcf01443e234d3dc794e3b74"},
+    {file = "pylint-2.12.2.tar.gz", hash = "sha256:9d945a73640e1fec07ee34b42f5669b770c759acd536ec7b16d7e4b87a9c9ff9"},
 ]
 pyrogram = [
     {file = "Pyrogram-1.2.9-py3-none-any.whl", hash = "sha256:85cacbcebb704f6d849ff52b07e1bb4972b4ff81216c3d45ed385e9a5ab057a7"},
