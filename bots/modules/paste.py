@@ -73,6 +73,14 @@ async def paste_bin(_, m: Message):
             with open(file_, "rb") as f:
                 content = f.read().decode("UTF-8")
             remove(file_)
+        elif m.reply_to_message.audio:
+            content = m.reply_to_message.caption
+        elif m.reply_to_message.photo:
+            content = m.reply_to_message.caption
+        elif m.reply_to_message.video:
+            content = m.reply_to_message.caption
+        elif m.reply_to_message.voice:
+            content = m.reply_to_message.voice
         else:
             try:
                 content = m.reply_to_message.text.markdown
