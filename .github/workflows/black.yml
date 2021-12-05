@@ -1,7 +1,5 @@
-name: Format
-
+name: Format code with Black
 on: push
-
 jobs:
   black:
     runs-on: ubuntu-latest
@@ -13,7 +11,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install black
       - name: Run black
-        run: black UtilitiesRoBot
+        run: black .
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
