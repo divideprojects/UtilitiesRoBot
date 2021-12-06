@@ -26,8 +26,15 @@ from bots import app
 
 
 @app.command("id", pm_only=False)
-async def get_id(c: app, message: Message):
+async def getid(c: app, message: Message):
     if len(message.command) >= 2:
+        k = message.text.split(None, 1)[1]
+        try:
+            username = int(k)
+            name = 1
+        except ValueError:
+            username = k
+            name = 0
         try:
             if message.entities:
                 for u in message.entities:
@@ -39,15 +46,20 @@ async def get_id(c: app, message: Message):
                     userr = int(u.user.id)
                 else:
                     userr = message.text.split(None, 1)[1]
-            username = message.text.split(None, 1)[1]
-            id = (await c.get_chat(userr)).id
+            u = await c.get_chat(userr)
         except FloodWait as s:
             await sleep(s.x)
-            id = (await c.get_chat(userr)).id
+            u = await c.get_chat(userr)
         except RPCError as e:
-            return await message.reply_text(f"Don't play with me Nigga !! Error: {e}")
-        text = f"<b>{username}'s ID:</b> <code>{id}</code>"
-        return await message.reply_text(text, parse_mode="html")
+            await message.reply_text(f"Error: {e}")
+            return
+        if name:
+            use = u.first_name
+        else:
+            use = username
+        text = f"<b>{use}'s ID:</b> <code>{u.id}</code>\n<b>Chat ID:</b> <code>{message.chat.id}</code>"
+        await message.reply_text(text, parse_mode="html")
+        return
     text_unping = "<b>Chat ID:</b>"
     if message.chat.username:
         text_unping = (
@@ -60,7 +72,7 @@ async def get_id(c: app, message: Message):
     text += f" <code>{message.message_id}</code>\n"
     text_unping += text
     if message.from_user:
-        text_unping += f'<b><a href="tg://user?id={message.from_user.id}">User ID:</a></b> <code>{message.from_user.id}</code>\n'
+        text_unping += f'<b><a href="tg://user?id={message.from_user.id}">Your ID:</a></b> <code>{message.from_user.id}</code>\n'
     text_ping = text_unping
     reply = message.reply_to_message
     if not getattr(reply, "empty", True):
@@ -71,19 +83,22 @@ async def get_id(c: app, message: Message):
         text += f" <code>{reply.message_id}</code>\n"
         text_unping += text
         text_ping = text_unping
-        try:
-            if message.reply_to_message.forward_from_chat:
-                text_unping += f"\n<b>Forwarded channel ID:</b> <code>{message.reply_to_message.forward_from_chat.id}</code>\n"
-                text_ping = text_unping
-        except AttributeError:
-            pass
+        if message.reply_to_message and message.reply_to_message.forward_from_chat:
+            text_unping += f"\n<b>Forwarded channel ID:</b> <code>{message.reply_to_message.forward_from_chat.id}</code>\n"
+            text_ping = text_unping
         if reply.from_user:
-            text = "<b>Replied User ID:</b>"
+            tex = "<b>Replied User ID:</b>"
             if reply.from_user.username:
                 text = f'<a href="https://t.me/{reply.from_user.username}">{text}</a>'
             text += f" <code>{reply.from_user.id}</code>\n"
             text_unping += text
             text_ping += f'<b><a href="tg://user?id={reply.from_user.id}">Replied User ID:</a></b> <code>{reply.from_user.id}</code>\n'
+        if message.sender_chat:
+            tex = "<b>Replied User ID:</b>"
+            text = f'<a href="https://t.me/GroupAnonymousBot">{tex}</a>'
+            text += f" <code>1087968824</code>\n"
+            text_unping += text
+            text_ping += '<b><a href="tg://user?id=1087968824">Replied User ID:</a></b> <code>1087968824</code>\n'
         if reply.forward_from:
             text_unping += "\n"
             text = "<b>Forwarded User ID:</b>"
@@ -94,18 +109,12 @@ async def get_id(c: app, message: Message):
             text += f" <code>{reply.forward_from.id}</code>\n"
             text_unping += text
             text_ping += f'\n<b><a href="tg://user?id={reply.forward_from.id}">Forwarded User ID:</a></b> <code>{reply.forward_from.id}</code>\n'
-        try:
-            if message.reply_to_message.sticker:
-                text_unping += f"\n<b>Sticker ID:</b> <code>{message.reply_to_message.sticker.file_id}</code>\n\n"
-                text_ping = text_unping
-        except AttributeError:
-            pass
-        try:
-            if message.reply_to_message.animation:
+        if message.reply_to_message and message.reply_to_message.sticker:
+            text_unping += f"\n<b>Sticker ID:</b> <code>{message.reply_to_message.sticker.file_id}</code>\n\n"
+            text_ping = text_unping
+        if message.reply_to_message and message.reply_to_message.animation:
                 text_unping += f"\n<b>GIF ID:</b> <code>{message.reply_to_message.animation.file_id}</code>\n"
                 text_ping = text_unping
-        except AttributeError:
-            pass
     reply = await message.reply_text(
         text_unping, disable_web_page_preview=True, parse_mode="html"
     )
