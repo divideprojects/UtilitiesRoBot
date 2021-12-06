@@ -73,6 +73,8 @@ async def getid(c: app, message: Message):
     text_unping += text
     if message.from_user:
         text_unping += f'<b><a href="tg://user?id={message.from_user.id}">Your ID:</a></b> <code>{message.from_user.id}</code>\n'
+    if message.sender_chat:
+        text_unping += '<b><a href="tg://user?id=1087968824">Your ID:</a></b> <code>1087968824</code>\n'
     text_ping = text_unping
     reply = message.reply_to_message
     if not getattr(reply, "empty", True):
