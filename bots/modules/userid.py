@@ -98,7 +98,7 @@ async def getid(c: app, message: Message):
         if message.sender_chat:
             tex = "<b>Replied User ID:</b>"
             text = f'<a href="https://t.me/GroupAnonymousBot">{tex}</a>'
-            text += f" <code>1087968824</code>\n"
+            text += " <code>1087968824</code>\n"
             text_unping += text
             text_ping += '<b><a href="tg://user?id=1087968824">Replied User ID:</a></b> <code>1087968824</code>\n'
         if reply.forward_from:
@@ -115,8 +115,8 @@ async def getid(c: app, message: Message):
             text_unping += f"\n<b>Sticker ID:</b> <code>{message.reply_to_message.sticker.file_id}</code>\n\n"
             text_ping = text_unping
         if message.reply_to_message and message.reply_to_message.animation:
-                text_unping += f"\n<b>GIF ID:</b> <code>{message.reply_to_message.animation.file_id}</code>\n"
-                text_ping = text_unping
+            text_unping += f"\n<b>GIF ID:</b> <code>{message.reply_to_message.animation.file_id}</code>\n"
+            text_ping = text_unping
     reply = await message.reply_text(
         text_unping, disable_web_page_preview=True, parse_mode="html"
     )
