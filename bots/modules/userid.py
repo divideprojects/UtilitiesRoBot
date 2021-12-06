@@ -77,7 +77,9 @@ async def getid(c: app, message: Message):
         if reply.link:
             text_ping += f'\n<a href="{reply.link}"><b>Replied Message ID:</b></a> <code>{reply.message_id}</code>\n'
         else:
-            text_ping += f"\n<b>Replied Message ID:</b> <code>{reply.message_id}</code>\n"
+            text_ping += (
+                f"\n<b>Replied Message ID:</b> <code>{reply.message_id}</code>\n"
+            )
         if message.reply_to_message and message.reply_to_message.forward_from_chat:
             text_ping += f"\n<b>Forwarded channel ID:</b> <code>{message.reply_to_message.forward_from_chat.id}</code>\n"
         if reply.from_user:
@@ -96,5 +98,9 @@ async def getid(c: app, message: Message):
             text_ping += f"\n<b>Sticker ID:</b> <code>{message.reply_to_message.sticker.file_id}</code>\n\n"
         if message.reply_to_message and message.reply_to_message.animation:
             text_ping += f"\n<b>GIF ID:</b> <code>{message.reply_to_message.animation.file_id}</code>\n"
-    await message.reply_text(text_ping, disable_web_page_preview=True, parse_mode="html")
+    await message.reply_text(
+        text_ping,
+        disable_web_page_preview=True,
+        parse_mode="html",
+    )
     return

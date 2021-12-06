@@ -23,7 +23,7 @@ from kantex.html import Section
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
-from bots import SupportGroup, JoinChannel, app
+from bots import JoinChannel, SupportGroup, app
 
 
 @app.command("start", pm_only=True)
@@ -46,10 +46,10 @@ Support: {SupportGroup}
                     InlineKeyboardButton(
                         "Group",
                         url=f"https://telegram.me/{SupportGroup.replace('@', '')}",
-                    )
-                ]
-            ]
-        )
+                    ),
+                ],
+            ],
+        ),
     )
 
 
@@ -84,8 +84,8 @@ async def help_msg(_, m: Message):
                     InlineKeyboardButton(
                         "Group",
                         url=f"https://telegram.me/{SupportGroup.replace('@', '')}",
-                    )
-                ]
+                    ),
+                ],
             ],
         ),
     )
