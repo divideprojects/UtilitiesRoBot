@@ -86,7 +86,7 @@ async def getid(c: app, message: Message):
             else:
                 text_ping += f'<b><a href="tg://user?id={reply.from_user.id}">Replied User ID:</a></b> <code>{reply.from_user.id}</code>\n'
         elif reply.sender_chat:
-            text_ping += f'<a href="https://t.me/GroupAnonymousBot"><b>Replied User ID:</b></a> <code>1087968824</code>\n'
+            text_ping += '<a href="https://t.me/GroupAnonymousBot"><b>Replied User ID:</b></a> <code>1087968824</code>\n'
         if reply.forward_from:
             if reply.forward_from.username:
                 text_ping += f'\n<a href="https://t.me/{reply.forward_from.username}"><b>Forwarded User ID:</b></a> <code>{reply.forward_from.id}</code>\n'
