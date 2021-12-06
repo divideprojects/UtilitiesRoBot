@@ -69,7 +69,9 @@ async def help_msg(_, m: Message):
                 "/json - Get json data of replied message.",
                 "/github {username} - Get information about github user.",
                 "/pdf2img - Convert replied pdf to images.",
-                "/tts - Convert replied text to audio",
+                "/tts - Convert replied text to audio.",
+                "/ping - Pings me up.",
+                "/id - Gets every ids present in the message.",
             ),
         ),
         reply_markup=InlineKeyboardMarkup(
