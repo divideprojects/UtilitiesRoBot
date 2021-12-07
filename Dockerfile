@@ -6,10 +6,9 @@ RUN cd /tmp \
     && apt-get update \
     && apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests \
     --no-conflicts --no-breaks --no-replaces --no-enhances \
-    --no-pre-depends poppler-utils doppler | grep "^\w") \
+    --no-pre-depends doppler poppler-utils | grep "^\w") \
     && mkdir /dpkg \
     && for deb in *.deb; do dpkg --extract $deb /dpkg || exit 10; done
-
 
 # Build virtualenv as separate step: Only re-execute this step when pyproject.toml or poetry.lock changes
 FROM build AS build-venv
@@ -23,5 +22,5 @@ WORKDIR /app
 COPY --from=deb-extractor /dpkg /
 COPY --from=build-venv /venv /venv
 COPY . .
-ENTRYPOINT ["doppler", "run", "--", "/venv/bin/python3"]
-CMD ["-m", "bots"]
+ENTRYPOINT ["/usr/bin/doppler", "run", "--"]
+CMD ["/venv/bin/python3", "-m", "bots"]
