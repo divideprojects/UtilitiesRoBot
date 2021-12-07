@@ -1,29 +1,11 @@
-#
-# Utilities Robot - All in one Utilities Bot of Telegram
-# Copyright (C) 2021 Divide Projects <https://github.com/DivideProjects>
-#
-# This file is part of Utilities Robot.
-#
-# Utilities Robot is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License as published
-# by the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Utilities Robot is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public License
-# along with Utilities Robot.  If not, see <http://www.gnu.org/licenses/>.
-#
 from os import remove
 
 from pdf2image import convert_from_path
 from pyrogram.types import InputMediaPhoto, Message
 
-from bots import DownPath, app
+from bots import app
 from bots.utils.joinCheck import joinCheck
+from bots.vars import Vars
 
 
 @app.command("pdf2img", pm_only=True)
@@ -36,7 +18,7 @@ async def pdf2img(c, m: Message):
         rmsg = await m.reply_text("Converting PDF to image...")
         exact_file = await c.download_media(
             message=m.reply_to_message,
-            file_name=f"{DownPath}/{user_id}/",
+            file_name=f"{Vars.DOWN_PATH}/{user_id}/",
         )
         images = convert_from_path(exact_file)
 
@@ -47,7 +29,7 @@ async def pdf2img(c, m: Message):
         for i in range(len(images)):
             page_no = i + 1  # lists work wierd way
 
-            file_name = f"{DownPath}/{user_id}/page_{page_no}.jpg"
+            file_name = f"{Vars.DOWN_PATH}/{user_id}/page_{page_no}.jpg"
             images[i].save(file_name, "JPEG")
             media_photos.append(
                 {
