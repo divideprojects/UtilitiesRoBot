@@ -424,7 +424,7 @@ aws = ["boto3"]
 
 [[package]]
 name = "proxygrab"
-version = "1.1.3"
+version = "1.2.0"
 description = "Asynchronous Library to scrap proxies for my web scrapping applications and other testing purposes"
 category = "main"
 optional = false
@@ -437,6 +437,7 @@ beautifulsoup4 = "4.10.0"
 cchardet = "2.1.7"
 click = "8.0.3"
 lxml = "4.6.4"
+ujson = ">=4.3.0,<5.0.0"
 
 [[package]]
 name = "pyaes"
@@ -717,7 +718,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "923d92a443a2e80e1e5abe2ecf1f90a9608e203f1593da7cb914871ddbc9c45b"
+content-hash = "e67a14e19fa205d0fafc501bc0fbe61b1eb7e063f1f87e5a64a4aa715100cbe4"
 
 [metadata.files]
 aiodns = [
@@ -1305,8 +1306,8 @@ prettyconf = [
     {file = "prettyconf-2.2.1.tar.gz", hash = "sha256:2478d16bc2596c9863e93dd182ca70b71f636f0e169ab23288906c53147cfdbc"},
 ]
 proxygrab = [
-    {file = "ProxyGrab-1.1.3-py3-none-any.whl", hash = "sha256:19652505c86b18d149645777ac84352f59bbda9802c66a06ecd322814e051136"},
-    {file = "ProxyGrab-1.1.3.tar.gz", hash = "sha256:b5c5658c23abe675d18a74aa9c550f4b7757b7ee06c2d9d0045f2234487b5dbb"},
+    {file = "ProxyGrab-1.2.0-py3-none-any.whl", hash = "sha256:f280b26d978eea193aa1302762b970856e100acfcf3d613b24504d11999b6db4"},
+    {file = "ProxyGrab-1.2.0.tar.gz", hash = "sha256:ecc8f0e1444b50d00c54eace3e92dbd6934e21b585b3504c7e0980df73ae30a7"},
 ]
 pyaes = [
     {file = "pyaes-1.6.1.tar.gz", hash = "sha256:02c1b1405c38d3c370b085fb952dd8bea3fadcee6411ad99f312cc129c536d8f"},
