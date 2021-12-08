@@ -56,13 +56,13 @@ async def getid(c: app, message: Message):
     reply = message.reply_to_message
     if not getattr(reply, "empty", True):
         if reply.link:
-            text_ping += f'\n<a href="{reply.link}"><b>Replied Message ID:</b></a> <code>{reply.message_id}</code>\n'
+            text_ping += f'<a href="{reply.link}"><b>Replied Message ID:</b></a> <code>{reply.message_id}</code>\n'
         else:
             text_ping += (
-                f"\n<b>Replied Message ID:</b> <code>{reply.message_id}</code>\n"
+                f"<b>Replied Message ID:</b> <code>{reply.message_id}</code>\n"
             )
         if message.reply_to_message and message.reply_to_message.forward_from_chat:
-            text_ping += f"\n<b>Forwarded channel ID:</b> <code>{message.reply_to_message.forward_from_chat.id}</code>\n"
+            text_ping += f"<b>Forwarded channel ID:</b> <code>{message.reply_to_message.forward_from_chat.id}</code>\n"
         if reply.from_user:
             if reply.from_user.username:
                 text_ping += f'<a href="https://t.me/{reply.from_user.username}"><b>Replied User ID:</b></a> <code>{reply.from_user.id}</code>\n'
@@ -72,13 +72,13 @@ async def getid(c: app, message: Message):
             text_ping += '<a href="https://t.me/GroupAnonymousBot"><b>Replied User ID:</b></a> <code>1087968824</code>\n'
         if reply.forward_from:
             if reply.forward_from.username:
-                text_ping += f'\n<a href="https://t.me/{reply.forward_from.username}"><b>Forwarded User ID:</b></a> <code>{reply.forward_from.id}</code>\n'
+                text_ping += f'<a href="https://t.me/{reply.forward_from.username}"><b>Forwarded User ID:</b></a> <code>{reply.forward_from.id}</code>\n'
             else:
-                text_ping += f'\n<b><a href="tg://user?id={reply.forward_from.id}">Forwarded User ID:</a></b> <code>{reply.forward_from.id}</code>\n'
+                text_ping += f'<b><a href="tg://user?id={reply.forward_from.id}">Forwarded User ID:</a></b> <code>{reply.forward_from.id}</code>\n'
         if message.reply_to_message and message.reply_to_message.sticker:
-            text_ping += f"\n<b>Sticker ID:</b> <code>{message.reply_to_message.sticker.file_id}</code>\n\n"
+            text_ping += f"<b>Sticker ID:</b> <code>{message.reply_to_message.sticker.file_id}</code>\n"
         if message.reply_to_message and message.reply_to_message.animation:
-            text_ping += f"\n<b>GIF ID:</b> <code>{message.reply_to_message.animation.file_id}</code>\n"
+            text_ping += f"<b>GIF ID:</b> <code>{message.reply_to_message.animation.file_id}</code>\n"
     await message.reply_text(
         text_ping,
         disable_web_page_preview=True,
