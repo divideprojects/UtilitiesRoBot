@@ -52,7 +52,7 @@ async def getid(c: app, m: Message):
         text_ping += f'<a href="{m.link}"><b>Message ID:</b></a> <code>{m.message_id}</code>\n'
     else:
         text_ping += f"<b>Message ID:</b> <code>{m.message_id}</code>\n"
-    if message.from_user:
+    if m.from_user:
         text_ping += f'<b><a href="tg://user?id={m.from_user.id}">Your ID:</a></b> <code>{m.from_user.id}</code>\n'
     elif m.sender_chat:
         text_ping += "<b>Your ID:</b> <code>777000</code>\n"
