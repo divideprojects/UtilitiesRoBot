@@ -38,7 +38,11 @@ async def getid(c: app, m: Message):
             await m.reply_text(f"Error: {e}")
             return
         if name:
-            use = escape(u.first_name or u.title if isinstance(u.first_name or u.title, str) else str(k))
+            use = escape(
+                u.first_name or u.title
+                if isinstance(u.first_name or u.title, str)
+                else str(k)
+            )
         else:
             use = escape(username if isinstance(username, str) else str(k))
         text = f"<b>{use}'s ID:</b> <code>{u.id}</code>\n<b>Chat ID:</b> <code>{m.chat.id}</code>"
@@ -49,7 +53,9 @@ async def getid(c: app, m: Message):
     else:
         text_ping = f"<b>Chat ID:</b> <code>{m.chat.id}</code>\n"
     if m.link:
-        text_ping += f'<a href="{m.link}"><b>Message ID:</b></a> <code>{m.message_id}</code>\n'
+        text_ping += (
+            f'<a href="{m.link}"><b>Message ID:</b></a> <code>{m.message_id}</code>\n'
+        )
     else:
         text_ping += f"<b>Message ID:</b> <code>{m.message_id}</code>\n"
     if m.from_user:
@@ -79,7 +85,9 @@ async def getid(c: app, m: Message):
         if m.reply_to_message and m.reply_to_message.sticker:
             text_ping += f"<b>Sticker ID:</b> <code>{m.reply_to_message.sticker.file_id}</code>\n"
         if m.reply_to_message and m.reply_to_message.animation:
-            text_ping += f"<b>GIF ID:</b> <code>{m.reply_to_message.animation.file_id}</code>\n"
+            text_ping += (
+                f"<b>GIF ID:</b> <code>{m.reply_to_message.animation.file_id}</code>\n"
+            )
     await m.reply_text(
         text_ping,
         disable_web_page_preview=True,
