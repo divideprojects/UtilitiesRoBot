@@ -61,7 +61,12 @@ async def getid(c: app, m: Message):
     if m.from_user:
         text_ping += f'<b><a href="tg://user?id={m.from_user.id}">Your ID:</a></b> <code>{m.from_user.id}</code>\n'
     elif m.sender_chat:
-        text_ping += "<b>Your ID:</b> <code>777000</code>\n"
+        if m.forward_from_chat:
+            text_ping += "<b>Your ID:</b> <code>777000</code>\n"
+        elif m.sender_chat.id != m.chat.id:
+            text_ping += "<b>Your ID:</b> <code>136817688</code>\n"
+        elif m.sender_chat.id == m.chat.id:
+            text_ping += "<b>Your ID:</b> <code>1087968824</code>\n"
     reply = m.reply_to_message
     if not getattr(reply, "empty", True):
         if reply.link:
@@ -76,17 +81,22 @@ async def getid(c: app, m: Message):
             else:
                 text_ping += f'<b><a href="tg://user?id={reply.from_user.id}">Replied User ID:</a></b> <code>{reply.from_user.id}</code>\n'
         elif reply.sender_chat:
-            text_ping += "<b>Replied User ID:</b> <code>777000</code>\n"
+            if reply.forward_from_chat:
+                text_ping += "<b>Replied User ID:</b> <code>777000</code>\n"
+            elif reply.sender_chat.id != m.chat.id:
+                text_ping += "<b>Replied User ID:</b> <code>136817688</code>\n"
+            elif reply.sender_chat.id == m.chat.id:
+                text_ping += "<b>Replied User ID:</b> <code>1087968824</code>\n"
         if reply.forward_from:
             if reply.forward_from.username:
                 text_ping += f'<a href="https://t.me/{reply.forward_from.username}"><b>Forwarded User ID:</b></a> <code>{reply.forward_from.id}</code>\n'
             else:
                 text_ping += f'<b><a href="tg://user?id={reply.forward_from.id}">Forwarded User ID:</a></b> <code>{reply.forward_from.id}</code>\n'
-        if m.reply_to_message and m.reply_to_message.sticker:
-            text_ping += f"<b>Sticker ID:</b> <code>{m.reply_to_message.sticker.file_id}</code>\n"
-        if m.reply_to_message and m.reply_to_message.animation:
+        if reply and reply.sticker:
+            text_ping += f"<b>Sticker ID:</b> <code>{reply.sticker.file_id}</code>\n"
+        if reply and reply.animation:
             text_ping += (
-                f"<b>GIF ID:</b> <code>{m.reply_to_message.animation.file_id}</code>\n"
+                f"<b>GIF ID:</b> <code>{reply.animation.file_id}</code>\n"
             )
     await m.reply_text(
         text_ping,
