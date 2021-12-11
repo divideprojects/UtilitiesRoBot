@@ -62,10 +62,13 @@ async def getid(c: app, m: Message):
         text_ping += f'<b><a href="tg://user?id={m.from_user.id}">Your ID:</a></b> <code>{m.from_user.id}</code>\n'
     elif m.sender_chat:
         if m.forward_from_chat:
+            a = 0
             text_ping += "<b>Your ID:</b> <code>777000</code>\n"
-        if m.sender_chat.id != m.chat.id:
+        else:
+            a = 1
+        if a and m.sender_chat.id != m.chat.id:
             text_ping += "<b>Your ID:</b> <code>136817688</code>\n"
-        if m.sender_chat.id == m.chat.id:
+        elif a and m.sender_chat.id == m.chat.id:
             text_ping += "<b>Your ID:</b> <code>1087968824</code>\n"
     reply = m.reply_to_message
     if not getattr(reply, "empty", True):
@@ -82,10 +85,13 @@ async def getid(c: app, m: Message):
                 text_ping += f'<b><a href="tg://user?id={reply.from_user.id}">Replied User ID:</a></b> <code>{reply.from_user.id}</code>\n'
         elif reply.sender_chat:
             if reply.forward_from_chat:
+                a = 0
                 text_ping += "<b>Replied User ID:</b> <code>777000</code>\n"
-            elif reply.sender_chat.id != m.chat.id:
+            else:
+                a = 1
+            if a and reply.sender_chat.id != reply.chat.id:
                 text_ping += "<b>Replied User ID:</b> <code>136817688</code>\n"
-            elif reply.sender_chat.id == m.chat.id:
+            elif a and m.sender_chat.id == m.chat.id:
                 text_ping += "<b>Replied User ID:</b> <code>1087968824</code>\n"
         if reply.forward_from:
             if reply.forward_from.username:
