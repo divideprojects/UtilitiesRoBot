@@ -63,9 +63,9 @@ async def getid(c: app, m: Message):
     elif m.sender_chat:
         if m.forward_from_chat:
             text_ping += "<b>Your ID:</b> <code>777000</code>\n"
-        elif m.sender_chat.id != m.chat.id:
+        if m.sender_chat.id != m.chat.id:
             text_ping += "<b>Your ID:</b> <code>136817688</code>\n"
-        elif m.sender_chat.id == m.chat.id:
+        if m.sender_chat.id == m.chat.id:
             text_ping += "<b>Your ID:</b> <code>1087968824</code>\n"
     reply = m.reply_to_message
     if not getattr(reply, "empty", True):
