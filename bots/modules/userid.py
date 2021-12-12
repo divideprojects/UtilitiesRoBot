@@ -41,7 +41,7 @@ async def getid(c: app, m: Message):
             use = escape(u.first_name or u.title if isinstance(u.first_name or u.title, str) else str(k))
         else:
             use = escape(username if isinstance(username, str) else str(k))
-        te = f"<b>{use}'s ID:</b> <code>{u.id}</code>\n<b>Chat ID:</b> <code>{message.chat.id}</code>"
+        te = f"<b>{use}'s ID:</b> <code>{u.id}</code>\n<b>Chat ID:</b> <code>{m.chat.id}</code>"
         await m.reply_text(te, parse_mode="html")
         return
     if m.chat.username:
