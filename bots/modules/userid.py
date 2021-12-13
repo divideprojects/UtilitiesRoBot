@@ -57,12 +57,14 @@ async def getid(c: app, m: Message):
     elif m.sender_chat:
         if m.forward_from_chat and m.sender_chat.type == "channel":
             text_ping += "<b>Your ID:</b> <code>777000</code>\n"
+            text_ping += f"<b>Your Channel ID:</b> <code>{m.sender_chat.id}</code>\n"
         elif m.sender_chat.id == m.chat.id and m.sender_chat.type == "supergroup":
             text_ping += "<b>Your ID:</b> <code>1087968824</code>\n"
         elif m.sender_chat.id != m.chat.id and m.sender_chat.type == "channel":
             text_ping += "<b>Your ID:</b> <code>136817688</code>\n"
+            text_ping += f"<b>Your Channel ID:</b> <code>{m.sender_chat.id}</code>\n"
     reply = m.reply_to_message
-    if reply:  # getattr(reply, "empty", True):
+    if reply:
         if reply.link:
             text_ping += f'<a href="{reply.link}"><b>Replied Message ID:</b></a> <code>{reply.message_id}</code>\n'
         else:
@@ -77,10 +79,14 @@ async def getid(c: app, m: Message):
         elif reply.sender_chat:
             if reply.forward_from_chat and reply.sender_chat.type == "channel":
                 text_ping += "<b>Replied User ID:</b> <code>777000</code>\n"
-            elif reply.sender_chat.id == reply.chat.id and reply.sender_chat.type == "supergroup":
+                text_ping += f"<b>Replied Channel ID:</b> <code>{reply.sender_chat.id}</code>\n"
+            elif (reply.sender_chat.id == reply.chat.id
+                  and reply.sender_chat.type == "supergroup"):
                 text_ping += "<b>Replied User ID:</b> <code>1087968824</code>\n"
-            elif reply.sender_chat.id != reply.chat.id and reply.sender_chat.type == "channel":
+            elif (reply.sender_chat.id != reply.chat.id
+                  and reply.sender_chat.type == "channel"):
                 text_ping += "<b>Replied User ID:</b> <code>136817688</code>\n"
+                text_ping += f"<b>Replied Channel ID:</b> <code>{reply.sender_chat.id}</code>\n"
         if reply.forward_from:
             if reply.forward_from.username:
                 text_ping += f'<a href="https://t.me/{reply.forward_from.username}"><b>Forwarded User ID:</b></a> <code>{reply.forward_from.id}</code>\n'
