@@ -1,8 +1,10 @@
 from kantex.html import Code
 from pyrogram.types import Message
 from telethon import TelegramClient
-from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
-                                          SessionPasswordNeededError)
+from telethon.errors.rpcerrorlist import (
+    PhoneCodeInvalidError,
+    SessionPasswordNeededError,
+)
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
