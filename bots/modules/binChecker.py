@@ -9,8 +9,7 @@ from bots.utils.joinCheck import joinCheck
 @joinCheck()
 async def binChecker(_, m: Message):
     msg = await m.reply_text("...")
-    if len(m.text.split()) == 0:
+    if len(m.command) == 0:
         return await msg.edit_text("Please type a bin after the command.")
-
     CCBin = m.text.split(None, 1)[1]
     await msg.edit_text(await getBinInfo(CCBin))
