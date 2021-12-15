@@ -11,5 +11,8 @@ async def binChecker(_, m: Message):
     msg = await m.reply_text("...")
     if len(m.command) == 1:
         return await msg.edit_text("Please type a bin after the command.")
-    CCBin = m.command[1]
+    try:
+        CCBin = m.command[1]
+    except ValueError:
+        return await msg.edit_text("Please give a valid bin!")
     await msg.edit_text(await getBinInfo(CCBin))
