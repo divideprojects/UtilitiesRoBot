@@ -52,7 +52,7 @@ async def github(_, m: Message):
         if resp.status == 404:
             return await rMsg.edit_text(reply_str, disable_web_page_preview=True)
 
-        reply_str += str(Bold("\n\nRepositories:\n"))
+        reply_str += str(Bold("\n\nRepositories:\n\n"))
 
         for i in range(len(result)):
             reply_str += (
