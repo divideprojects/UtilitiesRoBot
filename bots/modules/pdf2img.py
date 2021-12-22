@@ -1,6 +1,7 @@
 from os import remove
 
 from pdf2image import convert_from_path
+from pyrogram.errors import MultiMediaTooLong
 from pyrogram.types import InputMediaPhoto, Message
 
 from bots import app
@@ -37,12 +38,16 @@ async def pdf2img(c, m: Message):
                     "caption": f"Page {page_no}",
                 },
             )
-
-        await c.send_media_group(
-            user_id,
-            [InputMediaPhoto(i["file"], caption=i["caption"]) for i in media_photos],
-        )
-
+        try:
+            await c.send_media_group(
+                user_id,
+                [InputMediaPhoto(i["file"], caption=i["caption"]) for i in media_photos],
+            )
+        except MultiMediaTooLong:
+            remove(exact_file)
+            for i in media_photos:
+                remove(i["file"])
+            return await rmsg.edit_test("It's too big to send :(")
         await rmsg.delete()
         remove(exact_file)
         for i in media_photos:
