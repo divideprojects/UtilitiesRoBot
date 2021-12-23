@@ -21,7 +21,11 @@ async def tinify(c, m: Message):
                 message=m.reply_to_message,
                 file_name=f"{Vars.DOWN_PATH}/{m.from_user.id}/",
             )
-            new_filename = await compress_image(exact_file)
+            try:
+                new_filename = await compress_image(exact_file)
+            except ValueError as e:
+                await rmsg.edit_text(f"Error: {e}")
+                return
             await m.reply_document(
                 new_filename,
                 caption="Compressed image.",
