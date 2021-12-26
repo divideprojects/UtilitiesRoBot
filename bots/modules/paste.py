@@ -109,6 +109,7 @@ async def paste_bin(_, m: Message):
     if sendAsFile:
         with open(fileToSend, "w+") as file:
             file.write(content)
-            await message.reply_document(fileToSend, caption=url)
-            return await statusMsg.delete()
+        await message.reply_document(fileToSend, caption=url)
+        remove(fileToSend)
+        return await statusMsg.delete()
     await statusMsg.edit_text(url, disable_web_page_preview=True)
