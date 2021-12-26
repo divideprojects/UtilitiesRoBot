@@ -15,6 +15,8 @@ async def paste_bin(_, m: Message):
     )
     content = None
     extension = "txt"
+    sendAsFile = False
+    fileToSend = None
     if len(m.command) > 1:
         # TODO: Make a way to get the extension
         if m.command[1].startswith("py"):
