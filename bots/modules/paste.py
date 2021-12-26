@@ -87,7 +87,7 @@ async def paste_bin(_, m: Message):
             try:
                 content = m.reply_to_message.text.markdown
                 sendAsFile = True
-                fileToSend = f"paste_{message.chat.id}_{message_id}"
+                fileToSend = f"paste_{message.chat.id}_{message_id}.txt"
             except BaseException:
                 pass
 
