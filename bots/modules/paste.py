@@ -106,9 +106,9 @@ async def paste_bin(_, m: Message):
     except Exception as e:
         return await statusMsg.edit_text(str(e))
     if sendAsFile:
-        with open(f"paste_{m.chat.id}_{message_id}.txt", "w+") as file:
+        with open(f"paste_{m.chat.id}_{m.message_id}.txt", "w+") as file:
             file.write(content)
-        await m.reply_document(f"paste_{m.chat.id}_{message_id}.txt", caption=url)
-        remove(f"paste_{m.chat.id}_{message_id}.txt")
+        await m.reply_document(f"paste_{m.chat.id}_{m.message_id}.txt", caption=url)
+        remove(f"paste_{m.chat.id}_{m.message_id}.txt")
         return await statusMsg.delete()
     await statusMsg.edit_text(url, disable_web_page_preview=True)
