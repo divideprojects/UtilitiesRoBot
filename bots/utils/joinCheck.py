@@ -4,7 +4,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from bots.vars import Vars
 
 
-def joinCheck():
+def joinCheck(**args):
     def wrapper(func):
         async def decorator(c, m):
             if not Vars.JOIN_CHECK:
