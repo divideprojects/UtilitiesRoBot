@@ -87,7 +87,6 @@ async def paste_bin(_, m: Message):
             try:
                 content = m.reply_to_message.text.markdown
                 sendAsFile = True
-                fileToSend = f"paste_{message.chat.id}_{message_id}.txt"
             except BaseException:
                 pass
 
@@ -107,9 +106,9 @@ async def paste_bin(_, m: Message):
     except Exception as e:
         return await statusMsg.edit_text(str(e))
     if sendAsFile:
-        with open(fileToSend, "w+") as file:
+        with open(f"paste_{message.chat.id}_{message_id}.txt", "w+") as file:
             file.write(content)
-        await message.reply_document(fileToSend, caption=url)
-        remove(fileToSend)
+        await message.reply_document(f"paste_{message.chat.id}_{message_id}.txt", caption=url)
+        remove(f"paste_{message.chat.id}_{message_id}.txt")
         return await statusMsg.delete()
     await statusMsg.edit_text(url, disable_web_page_preview=True)
