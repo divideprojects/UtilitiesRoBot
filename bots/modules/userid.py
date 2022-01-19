@@ -41,7 +41,7 @@ async def getid(c: app, m: Message):
             use = escape(
                 u.first_name or u.title
                 if isinstance(u.first_name or u.title, str)
-                else str(k)
+                else str(k),
             )
         else:
             use = escape(username if isinstance(username, str) else str(k))

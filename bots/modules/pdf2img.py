@@ -41,7 +41,10 @@ async def pdf2img(c, m: Message):
         try:
             await c.send_media_group(
                 user_id,
-                [InputMediaPhoto(i["file"], caption=i["caption"]) for i in media_photos],
+                [
+                    InputMediaPhoto(i["file"], caption=i["caption"])
+                    for i in media_photos
+                ],
             )
         except MultiMediaTooLong:
             remove(exact_file)
