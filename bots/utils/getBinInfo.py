@@ -1,6 +1,6 @@
 from kantex.html import Code, Italic, Section
 
-from .aiohttp import AioHttp
+from bots.utils.aiohttp import AioHttp
 
 
 async def getBinInfo(gbin: str or int):

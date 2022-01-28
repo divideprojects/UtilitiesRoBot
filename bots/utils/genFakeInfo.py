@@ -2,7 +2,7 @@ from datetime import datetime
 
 from kantex.html import Code, Section, SubSection
 
-from .aiohttp import AioHttp
+from bots.utils.aiohttp import AioHttp
 
 
 async def genFakeInfo(chkUrl: str):
