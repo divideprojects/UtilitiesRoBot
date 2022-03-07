@@ -467,7 +467,7 @@ idna = ["idna (>=2.1)"]
 
 [[package]]
 name = "pyclean"
-version = "2.0.0"
+version = "2.1.0"
 description = "Pure Python cross-platform pyclean. Clean up your Python bytecode."
 category = "dev"
 optional = false
@@ -714,7 +714,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "5bab074da8c7905a1769be05009822915904652f783dc214ec0a839de834e7c7"
+content-hash = "c1642afd4a606ba520f8a71d19a66bc7a123d6e9f84f2be3ec933d193281a085"
 
 [metadata.files]
 aiodns = [
@@ -1388,8 +1388,8 @@ pycares = [
     {file = "pycares-4.1.2.tar.gz", hash = "sha256:03490be0e7b51a0c8073f877bec347eff31003f64f57d9518d419d9369452837"},
 ]
 pyclean = [
-    {file = "pyclean-2.0.0-py3-none-any.whl", hash = "sha256:ac9bb87f0fffe12acbc2292150f92ec30ca1935acf2b45e9fa24dc64efe9b379"},
-    {file = "pyclean-2.0.0.tar.gz", hash = "sha256:06e62e5a26f9b0eaebe249a1a74db17daf35c0216688b6fceb8f55f0d6eb7a40"},
+    {file = "pyclean-2.1.0-py3-none-any.whl", hash = "sha256:ba7de34210e0d67a3e19c959ddf0baa3f936c296645e43c825fd0f4bd9481abd"},
+    {file = "pyclean-2.1.0.tar.gz", hash = "sha256:085318a99aa31deafb6d94ed3dd283ec7b833c7f86e54ef09fb381a5d146a926"},
 ]
 pycparser = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
