@@ -242,7 +242,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "gtts"
-version = "2.2.3"
+version = "2.2.4"
 description = "gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate text-to-speech API"
 category = "main"
 optional = false
@@ -714,7 +714,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c1642afd4a606ba520f8a71d19a66bc7a123d6e9f84f2be3ec933d193281a085"
+content-hash = "209a8e0689282f1a6c33341b8825ed92dc923c040be3d5a86e5d2e4ae231fbab"
 
 [metadata.files]
 aiodns = [
@@ -1069,8 +1069,7 @@ frozenlist = [
     {file = "frozenlist-1.2.0.tar.gz", hash = "sha256:68201be60ac56aff972dc18085800b6ee07973c49103a8aba669dee3d71079de"},
 ]
 gtts = [
-    {file = "gTTS-2.2.3-py3-none-any.whl", hash = "sha256:8376d9bde85ac8cda95ea92dcd12bf31a3efe9e810edcb04437a4151cbec30d6"},
-    {file = "gTTS-2.2.3.tar.gz", hash = "sha256:88cfaa112471867009a0450a696e5bc69cf1671fa0fa683fe17d0650023c863c"},
+    {file = "gTTS-2.2.4-py3-none-any.whl", hash = "sha256:60f6a611ea858badcceb328544b28435b663e39898859beeb9adb2a874bc1eca"},
 ]
 identify = [
     {file = "identify-2.4.0-py2.py3-none-any.whl", hash = "sha256:eba31ca80258de6bb51453084bff4a923187cd2193b9c13710f2516ab30732cc"},
