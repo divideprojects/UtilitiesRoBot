@@ -28,8 +28,6 @@ async def tts(_, m: Message):
         await m.reply_audio(save_file_name, caption="Text converted to Audio.")
 
         # Remove the files and msg
-        await rmsg.delete()
         remove(save_file_name)
-        return
-    await m.reply_text("Reply to a text message.")
-    return
+        return await rmsg.delete()
+    return await m.reply_text("Reply to a text message.")

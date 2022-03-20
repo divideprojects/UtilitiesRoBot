@@ -1,6 +1,7 @@
 from io import BytesIO
 
 from proxygrab import get_proxy
+from kantex.html import Bold, Italic
 from pyrogram.types import CallbackQuery, Message
 from tgEasy import array_chunk, ikb
 
@@ -27,7 +28,10 @@ async def getProxy(c, cb: CallbackQuery):
     await cb.message.edit_text(f"Fetching {ptype} Proxies...")
     proxies_source = await get_proxy(ptype)
     proxies_fetched = "\n".join(proxies_source)
-    caption = f"<b><i>Proxies scrapped by:</i></b> @{(await c.get_me()).username}\n\n{Vars.JOIN_CHANNEL}"
+    caption = str(
+        Bold(Italic(f"Proxies scrapped by:")) +
+        f"@{(await c.get_me()).username}\n\n{Vars.JOIN_CHANNEL}"
+    )
     with BytesIO(str.encode(proxies_fetched)) as output:
         output.name = f"{ptype}_{(await c.get_me()).username}.txt"
         await cb.message.reply_document(document=output, caption=caption)

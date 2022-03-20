@@ -1,6 +1,6 @@
 from time import time
 
-from kantex.html import Section
+from kantex.html import Section, Bold
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
@@ -10,7 +10,7 @@ from bots.vars import Vars
 
 @app.command("start", pm_only=True)
 async def start(_, m: Message):
-    await m.reply_text(
+    return await m.reply_text(
         f"""
 Hi there, I am a Utilities Bot by {Vars.JOIN_CHANNEL}
 For my commands type /help
@@ -37,7 +37,7 @@ Support: {Vars.SUPPORT_GROUP}
 
 @app.command("help", pm_only=True)
 async def help_msg(_, m: Message):
-    await m.reply_text(
+    return await m.reply_text(
         str(
             Section(
                 "Available Commands",
@@ -77,5 +77,4 @@ async def ping(_, m: Message):
     start = time()
     replymsg = await m.reply_text("Pinging ...", quote=True)
     delta_ping = time() - start
-    await replymsg.edit_text(f"<b>Pong!</b>\n{delta_ping * 1000:.3f} ms")
-    return
+    return await replymsg.edit_text(str(Bold(f"Pong!") + "\n{delta_ping * 1000: .3f} ms"))
