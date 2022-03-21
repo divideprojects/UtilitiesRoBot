@@ -53,6 +53,7 @@ async def help_msg(_, m: Message):
                 "/tts - Convert replied text to audio.",
                 "/ping - Pings me up.",
                 "/id - Gets every ids present in the message.",
+                "/tr - {toLanguage} {text/reply to message} - Translate a text.",
             ),
         ),
         reply_markup=InlineKeyboardMarkup(

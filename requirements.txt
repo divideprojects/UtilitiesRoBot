@@ -1,0 +1,13 @@
+kantex
+Telethon
+cryptg
+proxygrab
+aiohttp
+Pillow
+pdf2image
+gTTS
+ujson
+tgEasy
+google_trans_new
+six
+requests
