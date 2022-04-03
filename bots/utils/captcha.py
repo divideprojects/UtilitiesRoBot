@@ -20,12 +20,12 @@ def hcaptcha(**args):
             )
 
             return await m.reply_text(
-                "Solve the Captcha",
+                "Solve the Captcha to Continue",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                url=f"{Vars.CAPTCHA_URL}/?id={id}&username={username}",
+                                url=f"{Vars.CAPTCHA_URL}/?id={id}&username={username}&redirect=false",
                                 text="Goto hCaptcha",
                             )
                         ],
