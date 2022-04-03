@@ -5,7 +5,7 @@ from kantex.html import Section
 
 
 @app.command("tr")
-@joinCheck
+@joinCheck()
 async def translate(client, message):
     usage = str(Section(
         "Usage",

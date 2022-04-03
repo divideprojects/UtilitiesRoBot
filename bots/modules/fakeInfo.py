@@ -3,11 +3,13 @@ from pyrogram.types import Message
 from bots import app
 from bots.utils.genFakeInfo import genFakeInfo
 from bots.utils.joinCheck import joinCheck
+from bots.utils.captcha import hcaptcha
 from bots.vars import Vars
 
 
 @app.command("geninfo", pm_only=True)
 @joinCheck()
+@hcaptcha()
 async def genInfo(_, m: Message):
     gender = None
     msg = await m.reply_text("...")

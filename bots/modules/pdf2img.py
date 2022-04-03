@@ -6,11 +6,13 @@ from pyrogram.types import InputMediaPhoto, Message
 
 from bots import app
 from bots.utils.joinCheck import joinCheck
+from bots.utils.captcha import hcaptcha
 from bots.vars import Vars
 
 
 @app.command("pdf2img", pm_only=True)
 @joinCheck()
+@hcaptcha()
 async def pdf2img(c, m: Message):
     if (
         m.reply_to_message and m.reply_to_message.document

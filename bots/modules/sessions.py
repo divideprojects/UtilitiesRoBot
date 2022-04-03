@@ -14,6 +14,7 @@ from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordN
 
 from bots import app
 from bots.utils.joinCheck import joinCheck
+from bots.utils.captcha import hcaptcha
 
 
 async def get_details(m: Message):
@@ -30,7 +31,7 @@ async def get_details(m: Message):
     number = await m.chat.ask("Enter your Phone Number.\nSend /cancel to Cancel.")
     if await is_cancel(number):
         return
-    return apiId, apiHash, number
+    return apiId.text, apiHash.text, number.text
 
 
 async def generate_pyrogram_session(m: Message, api_id: int, api_hash: str, phone_number):
@@ -160,7 +161,8 @@ async def is_cancel(m: Message):
 
 
 @app.command("session")
-@joinCheck
+@joinCheck()
+@hcaptcha()
 async def genSession(client, message):
     return await message.reply_text(
         "Choose a Session to Generate",
