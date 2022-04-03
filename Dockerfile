@@ -14,7 +14,7 @@ RUN cd /tmp \
 FROM build AS build-venv
 # COPY pyproject.toml poetry.lock /
 # RUN /venv/bin/poetry export -f requirements.txt --without-hashes --output requirements.txt
-RUN /venv/bin/pip install --disable-pip-version-check -r /requirements.txt
+RUN /venv/bin/pip install --disable-pip-version-check -r requirements.txt
 
 # Copy the virtualenv into a distroless image
 FROM gcr.io/distroless/python3-debian11
