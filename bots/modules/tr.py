@@ -12,7 +12,7 @@ async def translate(client, message):
         "/tr - <toLanguage (optional) (default: en)> <text/reply to message>",
     ))
     msg = await message.reply_text("....")
-    if message.command.len == 0:
+    if len(message.command) == 0:
         toLanguage = "en"
         if not message.reply_to_message:
             return msg.edit_text(usage)
