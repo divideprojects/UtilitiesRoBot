@@ -1,4 +1,4 @@
-# from PIL import Image
+from PIL import Image
 
 
 async def compress_image(image_path: str):
