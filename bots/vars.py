@@ -1,3 +1,4 @@
+from email.policy import default
 from os import getcwd
 
 from tgEasy.config import config
@@ -13,3 +14,5 @@ class Vars:
     API_ID = config("API_ID", default=1615152)
     API_HASH = config("API_HASH", default="dc9a964e4f31331859dc7d4df007e8d5")
     DOWN_PATH = f"{getcwd()}/bots/download"
+    CAPTCHA_URL = config(
+        "CAPTCHA_URL", default="https://hcaptcha.jayantkageri.in")

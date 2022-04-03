@@ -1,6 +1,7 @@
 import requests
 from cachetools import TTLCache
 from bots import client as app
+from bots.vars import Vars
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -24,7 +25,7 @@ def hcaptcha(**args):
                     [
                         [
                             InlineKeyboardButton(
-                                url=f"https://hcaptcha-api.vercel.app/?id={id}&username={username}",
+                                url=f"{Vars.CAPTCHA_URL}/?id={id}&username={username}",
                                 text="Goto hCaptcha",
                             )
                         ],
@@ -45,7 +46,7 @@ def hcaptcha(**args):
 async def hcaptcha_callback(c: Client, query: Message):
     id = query.data.split("_", maxsplit=1)[1]
     req = requests.get(
-        f"https://hcaptcha-api.vercel.app/api/info?id={id}").json()
+        f"{Vars.CAPTCHA_URL}/api/info?id={id}").json()
     if not req["success"]:
         return await query.answer("Please retry", show_alert=True)
     data = CACHE.pop(id)
