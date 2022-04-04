@@ -225,6 +225,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "google-trans-new"
+version = "1.1.9"
+description = "A free and unlimited python tools for google translate api."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "gtts"
 version = "2.2.4"
 description = "gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate text-to-speech API"
@@ -698,7 +706,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "a0ac070f70bd04ff5f738d0c0b2d9273398c765b56ebf1d1dc4191113997f9f7"
+content-hash = "4bc7298f34d69a859f84e98c08235f7d93d4b5a169f43b91fda76be03f604cc4"
 
 [metadata.files]
 aiodns = [
@@ -1003,6 +1011,10 @@ frozenlist = [
     {file = "frozenlist-1.3.0-cp39-cp39-win32.whl", hash = "sha256:01a73627448b1f2145bddb6e6c2259988bb8aee0fb361776ff8604b99616cd08"},
     {file = "frozenlist-1.3.0-cp39-cp39-win_amd64.whl", hash = "sha256:772965f773757a6026dea111a15e6e2678fbd6216180f82a48a40b27de1ee2ab"},
     {file = "frozenlist-1.3.0.tar.gz", hash = "sha256:ce6f2ba0edb7b0c1d8976565298ad2deba6f8064d2bebb6ffce2ca896eb35b0b"},
+]
+google-trans-new = [
+    {file = "google_trans_new-1.1.9-py3-none-any.whl", hash = "sha256:796c20c73ad5f473f126f3b8cbdcaf3fa96e7eabef18e73aac9e4ccc68bb72ed"},
+    {file = "google_trans_new-1.1.9.tar.gz", hash = "sha256:9f6643420334cc1b94ebd84e03774736e76c0564208efb1bc9c5019b9820e19b"},
 ]
 gtts = [
     {file = "gTTS-2.2.4-py3-none-any.whl", hash = "sha256:60f6a611ea858badcceb328544b28435b663e39898859beeb9adb2a874bc1eca"},
