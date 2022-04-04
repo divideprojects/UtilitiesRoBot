@@ -50,10 +50,10 @@ async def hcaptcha_callback(c: Client, query: Message):
     id = query.data.split("_", maxsplit=1)[1]
     req = requests.get(f"{Vars.CAPTCHA_URL}/api/info?id={id}").json()
     if not req["success"]:
-        return await query.answer("Please retry", show_alert=True)
+        return await query.answer("Please Solve the Captcha", show_alert=True)
     try:
         data = CACHE.pop(id)
+        await data[0].delete()
+        return await data[1](c, data[0])
     except Exception as e:
         await query.answer(str(e), show_alert=True)
-    await data[0].delete()
-    return await data[1](c, data[0])
