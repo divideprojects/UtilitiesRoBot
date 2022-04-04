@@ -1,6 +1,6 @@
 from asyncio import sleep
-from kantex.html import *
 
+from kantex.html import *
 from pyrogram.errors import FloodWait, RPCError
 from pyrogram.types.messages_and_media.message import Message
 
@@ -54,9 +54,7 @@ async def getid(c: app, m: Message):
     else:
         text_ping = f"{Bold('Chat ID: ')} {Code(m.chat.id)}\n"
     if m.link:
-        text_ping += (
-            f'{Link(Bold("Message ID:"), m.link)} {Code(m.message_id)}\n'
-        )
+        text_ping += f'{Link(Bold("Message ID:"), m.link)} {Code(m.message_id)}\n'
     else:
         text_ping += f"{Bold('Message ID:')} {Code(m.message_id)}\n"
     if m.from_user:
@@ -77,7 +75,9 @@ async def getid(c: app, m: Message):
         else:
             text_ping += f"{Bold('Replied Message ID:')} {Code(reply.message_id)}\n"
         if reply.forward_from_chat:
-            text_ping += f"{Bold('Forwarded channel ID:')} {Code(reply.forward_from_chat.id)}\n"
+            text_ping += (
+                f"{Bold('Forwarded channel ID:')} {Code(reply.forward_from_chat.id)}\n"
+            )
         if reply.from_user:
             if reply.from_user.username:
                 text_ping += f'{Link(Bold("Replied User ID:"), f"https://t.me/{reply.from_user.username}")} {Code(reply.from_user.id)}\n'

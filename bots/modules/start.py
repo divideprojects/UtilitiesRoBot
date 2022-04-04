@@ -1,6 +1,6 @@
 from time import time
 
-from kantex.html import Section, Bold
+from kantex.html import Bold, Section
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
@@ -78,4 +78,6 @@ async def ping(_, m: Message):
     start = time()
     replymsg = await m.reply_text("Pinging ...", quote=True)
     delta_ping = time() - start
-    return await replymsg.edit_text(str(Bold(f"Pong!") + "\n{delta_ping * 1000: .3f} ms"))
+    return await replymsg.edit_text(
+        str(Bold(f"Pong!") + "\n{delta_ping * 1000: .3f} ms"),
+    )

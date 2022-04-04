@@ -1,9 +1,9 @@
 from pyrogram.types import Message
 
 from bots import app
+from bots.utils.captcha import hcaptcha
 from bots.utils.getBinInfo import getBinInfo
 from bots.utils.joinCheck import joinCheck
-from bots.utils.captcha import hcaptcha
 
 
 @app.command("bin", pm_only=True)

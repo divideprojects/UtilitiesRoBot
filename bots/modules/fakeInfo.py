@@ -1,9 +1,9 @@
 from pyrogram.types import Message
 
 from bots import app
+from bots.utils.captcha import hcaptcha
 from bots.utils.genFakeInfo import genFakeInfo
 from bots.utils.joinCheck import joinCheck
-from bots.utils.captcha import hcaptcha
 from bots.vars import Vars
 
 

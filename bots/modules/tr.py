@@ -1,16 +1,19 @@
+from kantex.html import Section
+
 from bots import app
 from bots.utils.joinCheck import joinCheck
 from bots.utils.translator import translate
-from kantex.html import Section
 
 
 @app.command("tr")
 @joinCheck()
 async def translate(client, message):
-    usage = str(Section(
-        "Usage",
-        "/tr - <toLanguage (optional) (default: en)> <text/reply to message>",
-    ))
+    usage = str(
+        Section(
+            "Usage",
+            "/tr - <toLanguage (optional) (default: en)> <text/reply to message>",
+        ),
+    )
     msg = await message.reply_text("....")
     if len(message.command) == 0:
         toLanguage = "en"

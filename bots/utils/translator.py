@@ -11,5 +11,5 @@ def translate(text: str, toLanguage: str = "en"):
         Section(
             f"Translated from {language} to {toLanguage}",
             f"{translated}",
-        )
+        ),
     )

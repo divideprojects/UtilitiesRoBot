@@ -1,6 +1,7 @@
 from kantex.html import Code
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
+from pyrogram.client import Client
+from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import (
     PhoneCodeInvalidError,
@@ -9,12 +10,9 @@ from telethon.errors.rpcerrorlist import (
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
-from pyrogram.client import Client
-from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
-
 from bots import app
-from bots.utils.joinCheck import joinCheck
 from bots.utils.captcha import hcaptcha
+from bots.utils.joinCheck import joinCheck
 
 
 async def get_details(m: Message):
@@ -34,7 +32,12 @@ async def get_details(m: Message):
     return apiId.text, apiHash.text, number.text
 
 
-async def generate_pyrogram_session(m: Message, api_id: int, api_hash: str, phone_number):
+async def generate_pyrogram_session(
+    m: Message,
+    api_id: int,
+    api_hash: str,
+    phone_number,
+):
     pclient = Client(":memory:", api_id=api_id, api_hash=api_hash)
     try:
         await pclient.connect()
@@ -87,7 +90,12 @@ Send /cancel to cancel the process.
         return await m._client.send_message(m.chat.id, str(e))
 
 
-async def generate_telethon_session(m: Message, api_id: int, api_hash: str, phone_number):
+async def generate_telethon_session(
+    m: Message,
+    api_id: int,
+    api_hash: str,
+    phone_number,
+):
     tclient = TelegramClient(StringSession(), api_id, api_hash)
     try:
         if not tclient.is_connected():
@@ -166,10 +174,14 @@ async def is_cancel(m: Message):
 async def genSession(client, message):
     return await message.reply_text(
         "Choose a Session to Generate",
-        reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton("Pyrogram", callback_data="pyro"),
-            InlineKeyboardButton("Telethon", callback_data="Telethon"),
-        ]])
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("Pyrogram", callback_data="pyro"),
+                    InlineKeyboardButton("Telethon", callback_data="Telethon"),
+                ],
+            ],
+        ),
     )
 
 
