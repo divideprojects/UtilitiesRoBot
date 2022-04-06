@@ -1,6 +1,5 @@
 from kantex.html import Code, Italic, Section
-
-from bots.utils.aiohttp import AioHttp
+from pypers.url_helpers import AioHttp
 
 
 async def getBinInfo(gbin: str or int):

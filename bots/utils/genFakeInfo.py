@@ -1,8 +1,7 @@
 from datetime import datetime
 
 from kantex.html import Code, Section, SubSection
-
-from bots.utils.aiohttp import AioHttp
+from pypers.url_helpers import AioHttp
 
 
 async def genFakeInfo(chkUrl: str):
