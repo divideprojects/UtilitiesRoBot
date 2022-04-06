@@ -79,5 +79,5 @@ async def ping(_, m: Message):
     replymsg = await m.reply_text("Pinging ...", quote=True)
     delta_ping = time() - start
     return await replymsg.edit_text(
-        str(Bold(f"Pong!") + "\n{delta_ping * 1000: .3f} ms"),
+        Bold(f"Pong!\n{delta_ping * 1000: .3f} ms"),
     )
