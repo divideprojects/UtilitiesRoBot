@@ -15,19 +15,19 @@ async def translate(client, message):
         ),
     )
     msg = await message.reply_text("....")
-    if len(message.command) == 0:
+    if len(message.command) == 1:
         toLanguage = "en"
         if not message.reply_to_message:
             return msg.edit_text(usage)
         text = message.reply_to_message.text.markdown
 
-    if len(message.command) == 1:
+    if len(message.command) == 2:
         toLanguage = message.command[1]
         if not message.reply_to_message:
             return msg.edit(usage)
         text = message.reply_to_message.text.markdown
 
-    if len(message.command) == 2:
+    if len(message.command) == 3:
         toLanguage = message.command[1]
         text = message.command[2]
 
