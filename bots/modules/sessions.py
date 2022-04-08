@@ -187,8 +187,10 @@ async def genSession(client, message):
 
 @app.callback(["pyro", "tele"])
 async def genPyroSession(client, cb):
+    api_id, api_hash, number = await get_details(cb.message)   
+    if isinstance(api_id, Message):
+        return
     if cb.data == "pyro":
-        api_id, api_hash, number = await get_details(cb.message)
         return await generate_pyrogram_session(cb.message, api_id, api_hash, number)
     if cb.data == "tele":
         api_id, api_hash, number = await get_details(cb.message)
