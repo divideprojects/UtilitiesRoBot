@@ -1,30 +1,32 @@
 from kantex.html import Section
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.joinCheck import joinCheck
 from bots.utils.translator import translate
+
+MODULES.update({
+    "translate": {
+        "command": "tr",
+        "info": "To translate the text.",
+        "usage": "/tr <reply/text>",
+    }
+})
 
 
 @app.command("tr")
 @joinCheck()
 async def translate(client, message):
-    usage = str(
-        Section(
-            "Usage",
-            "/tr - <toLanguage (optional) (default: en)> <text/reply to message>",
-        ),
-    )
     msg = await message.reply_text("....")
     if len(message.command) == 1:
         toLanguage = "en"
         if not message.reply_to_message:
-            return msg.edit_text(usage)
+            return msg.edit_text(f"Usage: /{MODULES.get('translate').get('usage')}")
         text = message.reply_to_message.text.markdown
 
     if len(message.command) == 2:
         toLanguage = message.command[1]
         if not message.reply_to_message:
-            return msg.edit(usage)
+            return msg.edit(f"Usage: /{MODULES.get('translate').get('usage')}")
         text = message.reply_to_message.text.markdown
 
     if len(message.command) == 3:

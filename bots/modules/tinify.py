@@ -2,10 +2,18 @@ from os import remove
 
 from pyrogram.types import Message
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.compressImage import compress_image
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
+
+MODULES.update({
+    "tinify": {
+        "command": "tinify",
+        "info": "To compress an image.",
+        "usage": "/tinify <reply to image>",
+    }
+})
 
 
 @app.command("tinify", pm_only=True)
@@ -34,7 +42,7 @@ async def tinify(c, m: Message):
             remove(new_filename)
             remove(exact_file)
         else:
-            await m.reply_text("Reply to a photo or a document.")
+            await m.reply_text(f"Usage: /{MODULES.get('tinify').get('usage')}")
     except AttributeError:
         pass
 

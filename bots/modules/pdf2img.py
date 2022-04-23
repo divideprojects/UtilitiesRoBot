@@ -4,10 +4,18 @@ from pdf2image import convert_from_path
 from pyrogram.errors import MultiMediaTooLong
 from pyrogram.types import InputMediaPhoto, Message
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
+
+MODULES.update({
+    "pdf2img": {
+        "command": "pdf2img",
+        "info": "To convert a PDF to images.",
+        "usage": "/pdf2img <reply to pdf>",
+    }
+})
 
 
 @app.command("pdf2img", pm_only=True)
@@ -58,6 +66,6 @@ async def pdf2img(c, m: Message):
         for i in media_photos:
             remove(i["file"])
     else:
-        await m.reply_text("Reply a pdf document.")
+        await m.reply_text(f"Usage: /{MODULES.get('pdf2img').get('usage')}")
 
     return

@@ -1,9 +1,17 @@
 from pyrogram.types import Message
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.captcha import hcaptcha
 from bots.utils.getBinInfo import getBinInfo
 from bots.utils.joinCheck import joinCheck
+
+MODULES.update({
+    "binChecker": {
+        "command": "bin",
+        "info": "To get the bin info.",
+        "usage": "/bin <bin>",
+    }
+})
 
 
 @app.command("bin", pm_only=True)
@@ -12,7 +20,7 @@ from bots.utils.joinCheck import joinCheck
 async def binChecker(_, m: Message):
     msg = await m.reply_text("...")
     if len(m.command) == 1:
-        return await msg.edit_text("Please type a bin after the command.")
+        return await msg.edit_text(f"Usage: /{MODULES.get('binChecker').get('usage')}")
     try:
         CCBin = int(m.command[1])
     except ValueError:

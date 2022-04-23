@@ -3,8 +3,16 @@ from os import remove
 from kantex.html import Code
 from pyrogram.types import Message
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.joinCheck import joinCheck
+
+MODULES.update({
+    "json": {
+        "command": "json",
+        "info": "To get the json data of the message.",
+        "usage": "/geninfo <optioal: reply>",
+    }
+})
 
 
 @app.command("json", pm_only=False)

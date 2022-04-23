@@ -3,8 +3,16 @@ from os import remove
 from aiohttp import ClientSession
 from pyrogram.types import Message
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.joinCheck import joinCheck
+
+MODULES.update({
+    "paste": {
+        "command": "paste",
+        "info": "To paste a text/file in pastebin.",
+        "usage": "/paste <reply/text>",
+    }
+})
 
 
 @app.command("paste")
@@ -91,7 +99,7 @@ async def paste_bin(_, m: Message):
                 pass
 
     if not content:
-        return await statusMsg.edit_text("Reply to a Text or Document to Paste.")
+        return await statusMsg.edit_text(f"Usage: /{MODULES.get('binChecker').get('usage')}")
     try:
         async with ClientSession() as session:
             async with session.post(

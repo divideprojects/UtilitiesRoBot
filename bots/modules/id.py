@@ -4,7 +4,15 @@ from kantex.html import *
 from pyrogram.errors import FloodWait, RPCError
 from pyrogram.types.messages_and_media.message import Message
 
-from bots import app
+from bots import app, MODULES
+
+MODULES.update({
+    "id": {
+        "command": "id",
+        "info": "To get all of the IDs present in a message.",
+        "usage": "/id <optioal: reply>",
+    }
+})
 
 
 @app.command("id", pm_only=False)
@@ -50,7 +58,7 @@ async def getid(c: app, m: Message):
 {Bold("Chat ID:")} {Code(m.chat.id)}"""
         return await m.reply_text(str(te))
     if m.chat.username:
-        text_ping = f'{Link(Bold("Chat ID:", f"https://t.me/{m.chat.username}"))} {Code(m.chat.id)}\n'
+        text_ping = f'{Link(Bold("Chat ID:"), f"https://t.me/{m.chat.username}")} {Code(m.chat.id)}\n'
     else:
         text_ping = f"{Bold('Chat ID: ')} {Code(m.chat.id)}\n"
     if m.link:

@@ -3,6 +3,8 @@ from tgEasy import tgClient
 
 from bots.vars import Vars
 
+MODULES = {}
+
 client = Client(
     "bots",
     api_id=Vars.API_ID,

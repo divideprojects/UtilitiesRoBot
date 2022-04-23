@@ -1,11 +1,28 @@
+from operator import ge
+from select import kevent
+from sys import modules
 from time import time
+from webbrowser import get
 
 from kantex.html import Bold, Section
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
-from bots import app
+from bots import app, MODULES
 from bots.vars import Vars
+
+MODULES.update({
+    "start": {
+        "command": "start",
+        "info": "To start the bot.",
+        "usage": "/start",
+    },
+    "help": {
+        "command": "help",
+        "info": "To list the available commands.",
+        "usage": "/help",
+    }
+})
 
 
 @app.command("start", pm_only=True)
@@ -41,19 +58,9 @@ async def help_msg(_, m: Message):
         str(
             Section(
                 "Available Commands",
-                "/bin {bin} - To check a Bin is Valid or not.",
-                "/genInfo {gender} - To generate a fake user Details.",
-                "/proxy - To get some available Proxies.",
-                "/paste - To paste file/replied message contents to a pastebin.",
-                "/session - To generate Pyrogram/Telethon String Session.",
-                "/tinify - Compress a replied image.",
-                "/json - Get json data of replied message.",
-                "/github {username} - Get information about github user.",
-                "/pdf2img - Convert replied pdf to images.",
-                "/tts - Convert replied text to audio.",
-                "/ping - Pings me up.",
-                "/id - Gets every ids present in the message.",
-                "/tr - {toLanguage} {text/reply to message} - Translate a text.",
+                str(
+                    f"/{MODULES.get(i)['usage']} - {MODULES.get(i)['info']}" for i in list(MODULES.keys())
+                )
             ),
         ),
         reply_markup=InlineKeyboardMarkup(

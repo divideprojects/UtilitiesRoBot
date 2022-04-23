@@ -2,8 +2,16 @@ from kantex.html import Bold, Code, Link, Section
 from pypers.url_helpers import AioHttp
 from pyrogram.types import Message
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.joinCheck import joinCheck
+
+MODULES.update({
+    "github": {
+        "command": "github",
+        "info": "To get the GitHub user info.",
+        "usage": "/github username",
+    }
+})
 
 
 @app.command("github", pm_only=True)
@@ -12,7 +20,7 @@ async def github(_, m: Message):
     args = m.text.split()
 
     if len(args) == 1:
-        return await m.reply_text("Usage: /github <username>")
+        return await m.reply_text(f"Usage: /{MODULES.get('github').get('usage')}")
 
     elif len(args) == 2:
         rMsg = await m.reply_text("Fetching data...")

@@ -10,9 +10,18 @@ from telethon.errors.rpcerrorlist import (
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
-from bots import app
+from bots import app, MODULES
 from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
+
+
+MODULES.update({
+    "sessions": {
+        "command": "session",
+        "info": "To generate Pyrogram/Telethon String Sessions.",
+        "usage": "/session",
+    }
+})
 
 
 async def get_details(m: Message):
@@ -178,7 +187,7 @@ async def genSession(client, message):
             [
                 [
                     InlineKeyboardButton("Pyrogram", callback_data="pyro"),
-                    InlineKeyboardButton("Telethon", callback_data="Telethon"),
+                    InlineKeyboardButton("Telethon", callback_data="tele"),
                 ],
             ],
         ),
@@ -186,8 +195,8 @@ async def genSession(client, message):
 
 
 @app.callback(["pyro", "tele"])
-async def genPyroSession(client, cb):
-    api_id, api_hash, number = await get_details(cb.message)   
+async def genPyroSession(_, cb):
+    api_id, api_hash, number = await get_details(cb.message)
     if isinstance(api_id, Message):
         return
     if cb.data == "pyro":
