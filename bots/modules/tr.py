@@ -8,7 +8,7 @@ MODULES.update({
     "translate": {
         "command": "tr",
         "info": "To translate the text.",
-        "usage": "/tr <reply/text>",
+        "usage": "/tr <translate to language> <reply/text>",
     }
 })
 
