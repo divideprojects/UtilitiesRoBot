@@ -1,10 +1,6 @@
-from operator import ge
-from select import kevent
-from sys import modules
 from time import time
-from webbrowser import get
 
-from kantex.html import Bold, Section
+from kantex.html import Bold
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
@@ -54,15 +50,12 @@ Support: {Vars.SUPPORT_GROUP}
 
 @app.command("help", pm_only=True)
 async def help_msg(_, m: Message):
+    msg = "Avaialble Commands"
+    for _, value in MODULES.items():
+        msg += f"\n    {value['usage']}- {value['info']}"
+
     return await m.reply_text(
-        str(
-            Section(
-                "Available Commands",
-                str(
-                    f"/{MODULES.get(i)['usage']} - {MODULES.get(i)['info']}" for i in list(MODULES.keys())
-                )
-            ),
-        ),
+        str(msg),
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -80,7 +73,7 @@ async def help_msg(_, m: Message):
     )
 
 
-@app.command("ping", pm_only=False)
+@ app.command("ping", pm_only=False)
 async def ping(_, m: Message):
     start = time()
     replymsg = await m.reply_text("Pinging ...", quote=True)
