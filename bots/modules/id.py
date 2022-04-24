@@ -10,7 +10,7 @@ from bots import app, MODULES
 MODULES.update({
     "id": {
         "info": "To get all of the IDs present in a message.",
-        "usage": "/id [optioal: reply]",
+        "usage": "/id [optional: reply]",
     }
 })
 
