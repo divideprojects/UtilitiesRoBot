@@ -1,0 +1,11 @@
+kantex
+Telethon
+proxygrab
+aiohttp
+pdf2image
+gTTS
+tgEasy
+ujson
+Pillow
+google-trans-new
+pypers
