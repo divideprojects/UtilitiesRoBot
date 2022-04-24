@@ -1,7 +1,8 @@
+import traceback
 import requests
 from cachetools import TTLCache
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 
 from bots import client as app
 from bots.vars import Vars
@@ -21,7 +22,7 @@ def hcaptcha(**args):
             )
 
             return await m.reply_text(
-                "Solve the Captcha to Continue",
+                "Solve the hCaptcha to Continue",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -46,14 +47,15 @@ def hcaptcha(**args):
 
 
 @app.on_callback_query(filters.regex("^hcaptcha"))
-async def hcaptcha_callback(c: Client, query: Message):
+async def hcaptcha_callback(c: Client, query: CallbackQuery):
     id = query.data.split("_", maxsplit=1)[1]
     req = requests.get(f"{Vars.CAPTCHA_URL}/api/info?id={id}").json()
     if not req["success"]:
         return await query.answer("Please Solve the Captcha", show_alert=True)
     try:
         data = CACHE.pop(id)
-        await data[0].delete()
+        await query.message.delete()
         return await data[1](c, data[0])
     except Exception as e:
+        print(traceback.format_exc())
         await query.answer(str(e), show_alert=True)

@@ -99,7 +99,7 @@ async def paste_bin(_, m: Message):
                 pass
 
     if not content:
-        return await statusMsg.edit_text(f"Usage: /{MODULES.get('binChecker').get('usage')}")
+        return await statusMsg.edit_text(f"Usage: {MODULES.get('paste').get('usage')}")
     try:
         async with ClientSession() as session:
             async with session.post(

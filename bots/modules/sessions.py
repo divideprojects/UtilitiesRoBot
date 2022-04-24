@@ -84,6 +84,7 @@ Send /cancel to cancel the process.
         if await is_cancel(password):
             return
         await pclient.check_password(password=password.text)
+        await password.delete()
         session = await pclient.export_session_string()
         await pclient.join_chat("@DivideProjects")
         reply = await m.reply_text(str(Code(session)))
@@ -143,6 +144,7 @@ Send /cancel to cancel the process.
                 if await is_cancel(twoStepPass):
                     return
                 await tclient.sign_in(password=twoStepPass.text)
+                await twoStepPass.delete()
                 pass
             session_string = tclient.session.save()
             try:
@@ -202,5 +204,4 @@ async def genPyroSession(_, cb):
     if cb.data == "pyro":
         return await generate_pyrogram_session(cb.message, api_id, api_hash, number)
     if cb.data == "tele":
-        api_id, api_hash, number = await get_details(cb.message)
         return await generate_telethon_session(cb.message, api_id, api_hash, number)

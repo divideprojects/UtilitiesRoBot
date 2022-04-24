@@ -114,5 +114,5 @@ dmypy.json
 .pyre/
 
 # Session Files
-.session*
+*.session*
 *.session

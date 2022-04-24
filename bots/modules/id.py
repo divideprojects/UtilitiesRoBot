@@ -79,7 +79,7 @@ async def getid(c: app, m: Message):
     reply = m.reply_to_message
     if reply:
         if reply.link:
-            text_ping += f'{Link(Bold("Replied Message ID", reply.link))} {Code(reply.message_id)}\n'
+            text_ping += f'{Link(Bold("Replied Message ID"), reply.link)} {Code(reply.message_id)}\n'
         else:
             text_ping += f"{Bold('Replied Message ID:')} {Code(reply.message_id)}\n"
         if reply.forward_from_chat:
