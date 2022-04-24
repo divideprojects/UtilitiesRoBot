@@ -181,7 +181,7 @@ async def is_cancel(m: Message):
 @app.command("session")
 @joinCheck()
 @hcaptcha()
-async def genSession(client, message):
+async def genSession(_, message):
     return await message.reply_text(
         "Choose a Session to Generate",
         reply_markup=InlineKeyboardMarkup(

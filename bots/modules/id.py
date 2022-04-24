@@ -1,6 +1,7 @@
 from asyncio import sleep
 
 from kantex.html import *
+from pyrogram import Client
 from pyrogram.errors import FloodWait, RPCError
 from pyrogram.types.messages_and_media.message import Message
 
@@ -15,7 +16,7 @@ MODULES.update({
 
 
 @app.command("id", pm_only=False)
-async def getid(c: app, m: Message):
+async def getid(c: Client, m: Message):
     if len(m.command) >= 2:
         k = m.text.split(None, 1)[1]
         try:
