@@ -11,7 +11,6 @@ from bots.vars import Vars
 
 MODULES.update({
     "proxy": {
-        "command": "proxy",
         "info": "To generate available proxies.",
         "usage": "/proxy",
     }

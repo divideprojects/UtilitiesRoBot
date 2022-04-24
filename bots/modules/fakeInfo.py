@@ -8,9 +8,8 @@ from bots.vars import Vars
 
 MODULES.update({
     "fakeInfo": {
-        "command": "geninfo",
         "info": "To generate a fake user Details, If not gender is specified then a random user data.",
-        "usage": "/geninfo <optioal: gender>",
+        "usage": "/geninfo [optioal: gender]",
     }
 })
 

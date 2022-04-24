@@ -9,9 +9,8 @@ from bots.vars import Vars
 
 MODULES.update({
     "tinify": {
-        "command": "tinify",
         "info": "To compress an image.",
-        "usage": "/tinify <reply to image>",
+        "usage": "/tinify [reply to image]",
     }
 })
 

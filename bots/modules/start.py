@@ -9,12 +9,10 @@ from bots.vars import Vars
 
 MODULES.update({
     "start": {
-        "command": "start",
         "info": "To start the bot.",
         "usage": "/start",
     },
     "help": {
-        "command": "help",
         "info": "To list the available commands.",
         "usage": "/help",
     }
@@ -50,9 +48,9 @@ Support: {Vars.SUPPORT_GROUP}
 
 @app.command("help", pm_only=True)
 async def help_msg(_, m: Message):
-    msg = "Avaialble Commands"
-    for _, value in MODULES.items():
-        msg += f"\n    {value['usage']}- {value['info']}"
+    msg = str(Bold("Available Commands"))
+    for i in list(MODULES.keys()):
+        msg += f"\n    {MODULES.get(i).get('usage')}- {MODULES.get(i).get('info')}"
 
     return await m.reply_text(
         str(msg),

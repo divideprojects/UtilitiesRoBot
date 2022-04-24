@@ -7,9 +7,8 @@ from bots.utils.joinCheck import joinCheck
 
 MODULES.update({
     "github": {
-        "command": "github",
         "info": "To get the GitHub user info.",
-        "usage": "/github username",
+        "usage": "/github [username]",
     }
 })
 

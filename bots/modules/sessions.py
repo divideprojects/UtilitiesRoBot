@@ -17,7 +17,6 @@ from bots.utils.joinCheck import joinCheck
 
 MODULES.update({
     "sessions": {
-        "command": "session",
         "info": "To generate Pyrogram/Telethon String Sessions.",
         "usage": "/session",
     }

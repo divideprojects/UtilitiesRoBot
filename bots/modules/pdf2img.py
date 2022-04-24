@@ -11,9 +11,8 @@ from bots.vars import Vars
 
 MODULES.update({
     "pdf2img": {
-        "command": "pdf2img",
         "info": "To convert a PDF to images.",
-        "usage": "/pdf2img <reply to pdf>",
+        "usage": "/pdf2img [reply to pdf]",
     }
 })
 

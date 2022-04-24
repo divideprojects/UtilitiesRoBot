@@ -4,9 +4,8 @@ from bots.utils.translator import translate
 
 MODULES.update({
     "translate": {
-        "command": "tr",
         "info": "To translate the text.",
-        "usage": "/tr <translate to language> <reply/text>",
+        "usage": "/tr [optional: translate to language] [reply/text]",
     }
 })
 

@@ -7,9 +7,8 @@ from bots.utils.joinCheck import joinCheck
 
 MODULES.update({
     "binChecker": {
-        "command": "bin",
         "info": "To get the bin info.",
-        "usage": "/bin <bin>",
+        "usage": "/bin [bin]",
     }
 })
 

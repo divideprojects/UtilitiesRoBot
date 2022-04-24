@@ -8,9 +8,8 @@ from bots.utils.joinCheck import joinCheck
 
 MODULES.update({
     "json": {
-        "command": "json",
         "info": "To get the json data of the message.",
-        "usage": "/geninfo <optioal: reply>",
+        "usage": "/geninfo [optioal: reply]",
     }
 })
 

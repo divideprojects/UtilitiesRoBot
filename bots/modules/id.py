@@ -8,9 +8,8 @@ from bots import app, MODULES
 
 MODULES.update({
     "id": {
-        "command": "id",
         "info": "To get all of the IDs present in a message.",
-        "usage": "/id <optioal: reply>",
+        "usage": "/id [optioal: reply]",
     }
 })
 

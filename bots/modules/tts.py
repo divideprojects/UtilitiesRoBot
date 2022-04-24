@@ -9,9 +9,8 @@ from bots.vars import Vars
 
 MODULES.update({
     "text-to-speech": {
-        "command": "tts",
         "info": "To convert a text to audio.",
-        "usage": "/tts <reply/text>",
+        "usage": "/tts [reply/text]",
     }
 })
 

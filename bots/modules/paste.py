@@ -8,9 +8,8 @@ from bots.utils.joinCheck import joinCheck
 
 MODULES.update({
     "paste": {
-        "command": "paste",
         "info": "To paste a text/file in pastebin.",
-        "usage": "/paste <reply/text>",
+        "usage": "/paste [reply/text]",
     }
 })
 
