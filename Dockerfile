@@ -11,10 +11,9 @@ RUN cd /tmp \
     && for deb in *.deb; do dpkg --extract $deb /dpkg || exit 10; done
 
 # Build virtualenv as separate step: Only re-execute this step when pyproject.toml or poetry.lock changes
-# FROM build AS build-venv
-# COPY pyproject.toml poetry.lock /
-# RUN /venv/bin/poetry export -f requirements.txt --without-hashes --output requirements.txt
-COPY requirements.txt /
+FROM build AS build-venv
+COPY pyproject.toml poetry.lock /
+RUN /venv/bin/poetry export -f requirements.txt --without-hashes --output requirements.txt
 RUN /venv/bin/pip install -r /requirements.txt
 
 # Copy the virtualenv into a distroless image
