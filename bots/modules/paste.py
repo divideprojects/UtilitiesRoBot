@@ -81,6 +81,7 @@ async def paste_bin(_, m: Message):
             file_ = await m.reply_to_message.download(uniqueId)
             with open(file_, "rb") as f:
                 content = f.read().decode("UTF-8")
+                f.close()
             remove(file_)
         elif m.reply_to_message.audio:
             content = m.reply_to_message.caption
@@ -115,6 +116,7 @@ async def paste_bin(_, m: Message):
     if sendAsFile:
         with open(f"paste_{m.chat.id}_{m.id}.txt", "w+") as file:
             file.write(content)
+            file.flush()
         await m.reply_document(f"paste_{m.chat.id}_{m.id}.txt", caption=url)
         remove(f"paste_{m.chat.id}_{m.id}.txt")
         return await statusMsg.delete()
