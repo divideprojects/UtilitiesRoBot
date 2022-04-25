@@ -62,9 +62,9 @@ async def getid(c: Client, m: Message):
     else:
         text_ping = f"{Bold('Chat ID: ')} {Code(m.chat.id)}\n"
     if m.link:
-        text_ping += f'{Link(Bold("Message ID:"), m.link)} {Code(m.message_id)}\n'
+        text_ping += f'{Link(Bold("Message ID:"), m.link)} {Code(m.id)}\n'
     else:
-        text_ping += f"{Bold('Message ID:')} {Code(m.message_id)}\n"
+        text_ping += f"{Bold('Message ID:')} {Code(m.id)}\n"
     if m.from_user:
         text_ping += f'{Bold(Link("Your ID:", "tg://user?id={m.from_user.id}"))} {Code(m.from_user.id)}\n'
     elif m.sender_chat:
@@ -79,9 +79,9 @@ async def getid(c: Client, m: Message):
     reply = m.reply_to_message
     if reply:
         if reply.link:
-            text_ping += f'{Link(Bold("Replied Message ID"), reply.link)} {Code(reply.message_id)}\n'
+            text_ping += f'{Link(Bold("Replied Message ID"), reply.link)} {Code(reply.id)}\n'
         else:
-            text_ping += f"{Bold('Replied Message ID:')} {Code(reply.message_id)}\n"
+            text_ping += f"{Bold('Replied Message ID:')} {Code(reply.id)}\n"
         if reply.forward_from_chat:
             text_ping += (
                 f"{Bold('Forwarded channel ID:')} {Code(reply.forward_from_chat.id)}\n"

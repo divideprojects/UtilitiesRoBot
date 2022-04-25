@@ -77,7 +77,7 @@ async def paste_bin(_, m: Message):
                 return await statusMsg.edit_text(
                     "Max file size that can be pasted is 400KB.",
                 )
-            uniqueId = f"paste_{str(m.chat.id).replace('-', '')}_{m.message_id}"
+            uniqueId = f"paste_{str(m.chat.id).replace('-', '')}_{m.id}"
             file_ = await m.reply_to_message.download(uniqueId)
             with open(file_, "rb") as f:
                 content = f.read().decode("UTF-8")
@@ -113,9 +113,9 @@ async def paste_bin(_, m: Message):
     except Exception as e:
         return await statusMsg.edit_text(str(e))
     if sendAsFile:
-        with open(f"paste_{m.chat.id}_{m.message_id}.txt", "w+") as file:
+        with open(f"paste_{m.chat.id}_{m.id}.txt", "w+") as file:
             file.write(content)
-        await m.reply_document(f"paste_{m.chat.id}_{m.message_id}.txt", caption=url)
-        remove(f"paste_{m.chat.id}_{m.message_id}.txt")
+        await m.reply_document(f"paste_{m.chat.id}_{m.id}.txt", caption=url)
+        remove(f"paste_{m.chat.id}_{m.id}.txt")
         return await statusMsg.delete()
     await statusMsg.edit_text(url, disable_web_page_preview=True)

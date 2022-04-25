@@ -20,7 +20,7 @@ async def json(_, m: Message):
     msg = m if not m.reply_to_message else m.reply_to_message
     if len(str(msg)) < 4095:
         return await m.reply_text(str(Code(str(msg))))
-    fName = f"json_{m.from_user.id}_{m.message_id}.json"
+    fName = f"json_{m.from_user.id}_{m.id}.json"
     with open(fName, "w+") as file:
         file.write(str(msg))
     await m.reply_document(fName)

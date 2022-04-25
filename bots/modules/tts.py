@@ -25,7 +25,7 @@ async def tts(_, m: Message):
     else:
         return await m.reply_text(f"Usage: {MODULES.get('text-to-speech').get('usage')}")
 
-    save_file_name = f"{Vars.DOWN_PATH}/tts_{m.from_user.id}_{m.message_id}.mp3"
+    save_file_name = f"{Vars.DOWN_PATH}/tts_{m.from_user.id}_{m.id}.mp3"
     rmsg = await m.reply_text("Converting Text to Speech...")
     text_to_convert = m.reply_to_message.text
     if "|" in text_to_convert:
