@@ -5,16 +5,18 @@ from proxygrab import get_proxy
 from pyrogram.types import CallbackQuery, Message
 from tgEasy import array_chunk, ikb
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
-MODULES.update({
-    "proxy": {
-        "info": "To generate available proxies.",
-        "usage": "/proxy",
+MODULES.update(
+    {
+        "proxy": {
+            "info": "To generate available proxies.",
+            "usage": "/proxy",
+        }
     }
-})
+)
 
 proxytypes = ("HTTP", "HTTPS", "Socks4", "Socks5")
 

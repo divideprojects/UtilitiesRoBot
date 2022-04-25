@@ -2,15 +2,17 @@ from kantex.html import Bold, Code, Link, Section
 from pypers.url_helpers import AioHttp
 from pyrogram.types import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
 
-MODULES.update({
-    "github": {
-        "info": "To get the GitHub user info.",
-        "usage": "/github [username]",
+MODULES.update(
+    {
+        "github": {
+            "info": "To get the GitHub user info.",
+            "usage": "/github [username]",
+        }
     }
-})
+)
 
 
 @app.command("github", pm_only=True)

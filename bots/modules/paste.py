@@ -3,15 +3,17 @@ from os import remove
 from aiohttp import ClientSession
 from pyrogram.types import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
 
-MODULES.update({
-    "paste": {
-        "info": "To paste a text/file in pastebin.",
-        "usage": "/paste [reply/text]",
+MODULES.update(
+    {
+        "paste": {
+            "info": "To paste a text/file in pastebin.",
+            "usage": "/paste [reply/text]",
+        }
     }
-})
+)
 
 
 @app.command("paste")

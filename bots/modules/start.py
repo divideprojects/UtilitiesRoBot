@@ -4,19 +4,21 @@ from kantex.html import Bold
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types.messages_and_media.message import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.vars import Vars
 
-MODULES.update({
-    "start": {
-        "info": "To start the bot.",
-        "usage": "/start",
-    },
-    "help": {
-        "info": "To list the available commands.",
-        "usage": "/help",
+MODULES.update(
+    {
+        "start": {
+            "info": "To start the bot.",
+            "usage": "/start",
+        },
+        "help": {
+            "info": "To list the available commands.",
+            "usage": "/help",
+        },
     }
-})
+)
 
 
 @app.command("start", pm_only=True)
@@ -71,7 +73,7 @@ async def help_msg(_, m: Message):
     )
 
 
-@ app.command("ping", pm_only=False)
+@app.command("ping", pm_only=False)
 async def ping(_, m: Message):
     start = time()
     replymsg = await m.reply_text("Pinging ...", quote=True)

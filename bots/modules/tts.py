@@ -3,16 +3,18 @@ from os import remove
 from gtts import gTTS
 from pyrogram.types import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
-MODULES.update({
-    "text-to-speech": {
-        "info": "To convert a text to audio.",
-        "usage": "/tts [reply/text]",
+MODULES.update(
+    {
+        "text-to-speech": {
+            "info": "To convert a text to audio.",
+            "usage": "/tts [reply/text]",
+        }
     }
-})
+)
 
 
 @app.command("tts", pm_only=True)
@@ -23,7 +25,9 @@ async def tts(_, m: Message):
     elif len(m.command) > 1:
         text_to_convert = m.text.split(" ", 1)[1]
     else:
-        return await m.reply_text(f"Usage: {MODULES.get('text-to-speech').get('usage')}")
+        return await m.reply_text(
+            f"Usage: {MODULES.get('text-to-speech').get('usage')}"
+        )
 
     save_file_name = f"{Vars.DOWN_PATH}/tts_{m.from_user.id}_{m.id}.mp3"
     rmsg = await m.reply_text("Converting Text to Speech...")

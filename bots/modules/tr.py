@@ -1,13 +1,15 @@
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
 from bots.utils.translator import translate
 
-MODULES.update({
-    "translate": {
-        "info": "To translate the text.",
-        "usage": "/tr [optional: translate to language] [reply/text]",
+MODULES.update(
+    {
+        "translate": {
+            "info": "To translate the text.",
+            "usage": "/tr [optional: translate to language] [reply/text]",
+        }
     }
-})
+)
 
 
 @app.command("tr")
@@ -17,7 +19,9 @@ async def translate(_, message):
     if len(message.command) == 1:
         toLanguage = "en"
         if not message.reply_to_message:
-            return await msg.edit_text(f"Usage: /{MODULES.get('translate').get('usage')}")
+            return await msg.edit_text(
+                f"Usage: /{MODULES.get('translate').get('usage')}"
+            )
         text = message.reply_to_message.text.markdown
 
     if len(message.command) == 2:

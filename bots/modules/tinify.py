@@ -2,17 +2,19 @@ from os import remove
 
 from pyrogram.types import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.compressImage import compress_image
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
-MODULES.update({
-    "tinify": {
-        "info": "To compress an image.",
-        "usage": "/tinify [reply to image]",
+MODULES.update(
+    {
+        "tinify": {
+            "info": "To compress an image.",
+            "usage": "/tinify [reply to image]",
+        }
     }
-})
+)
 
 
 @app.command("tinify", pm_only=True)

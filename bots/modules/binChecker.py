@@ -1,16 +1,18 @@
 from pyrogram.types import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.captcha import hcaptcha
 from bots.utils.getBinInfo import getBinInfo
 from bots.utils.joinCheck import joinCheck
 
-MODULES.update({
-    "binChecker": {
-        "info": "To get the bin info.",
-        "usage": "/bin [bin]",
+MODULES.update(
+    {
+        "binChecker": {
+            "info": "To get the bin info.",
+            "usage": "/bin [bin]",
+        }
     }
-})
+)
 
 
 @app.command("bin", pm_only=True)

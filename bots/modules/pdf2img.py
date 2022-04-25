@@ -4,17 +4,19 @@ from pdf2image import convert_from_path
 from pyrogram.errors import MultiMediaTooLong
 from pyrogram.types import InputMediaPhoto, Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
-MODULES.update({
-    "pdf2img": {
-        "info": "To convert a PDF to images.",
-        "usage": "/pdf2img [reply to pdf]",
+MODULES.update(
+    {
+        "pdf2img": {
+            "info": "To convert a PDF to images.",
+            "usage": "/pdf2img [reply to pdf]",
+        }
     }
-})
+)
 
 
 @app.command("pdf2img", pm_only=True)

@@ -1,26 +1,26 @@
 from kantex.html import Code
 from pyrogram.client import Client
-from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
+from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
+                             SessionPasswordNeeded)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from telethon import TelegramClient
-from telethon.errors.rpcerrorlist import (
-    PhoneCodeInvalidError,
-    SessionPasswordNeededError,
-)
+from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
+                                          SessionPasswordNeededError)
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 
-
-MODULES.update({
-    "sessions": {
-        "info": "To generate Pyrogram/Telethon String Sessions.",
-        "usage": "/session",
+MODULES.update(
+    {
+        "sessions": {
+            "info": "To generate Pyrogram/Telethon String Sessions.",
+            "usage": "/session",
+        }
     }
-})
+)
 
 
 async def get_details(m: Message):

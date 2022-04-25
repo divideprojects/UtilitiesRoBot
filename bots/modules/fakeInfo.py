@@ -1,17 +1,19 @@
 from pyrogram.types import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 from bots.utils.captcha import hcaptcha
 from bots.utils.genFakeInfo import genFakeInfo
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
-MODULES.update({
-    "fakeInfo": {
-        "info": "To generate a fake user Details, If not gender is specified then a random user data.",
-        "usage": "/geninfo [optional: gender]",
+MODULES.update(
+    {
+        "fakeInfo": {
+            "info": "To generate a fake user Details, If not gender is specified then a random user data.",
+            "usage": "/geninfo [optional: gender]",
+        }
     }
-})
+)
 
 
 @app.command("geninfo", pm_only=True)

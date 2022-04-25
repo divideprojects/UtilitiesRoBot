@@ -5,14 +5,16 @@ from pyrogram import Client
 from pyrogram.errors import FloodWait, RPCError
 from pyrogram.types.messages_and_media.message import Message
 
-from bots import app, MODULES
+from bots import MODULES, app
 
-MODULES.update({
-    "id": {
-        "info": "To get all of the IDs present in a message.",
-        "usage": "/id [optional: reply]",
+MODULES.update(
+    {
+        "id": {
+            "info": "To get all of the IDs present in a message.",
+            "usage": "/id [optional: reply]",
+        }
     }
-})
+)
 
 
 @app.command("id", pm_only=False)
@@ -79,7 +81,9 @@ async def getid(c: Client, m: Message):
     reply = m.reply_to_message
     if reply:
         if reply.link:
-            text_ping += f'{Link(Bold("Replied Message ID"), reply.link)} {Code(reply.id)}\n'
+            text_ping += (
+                f'{Link(Bold("Replied Message ID"), reply.link)} {Code(reply.id)}\n'
+            )
         else:
             text_ping += f"{Bold('Replied Message ID:')} {Code(reply.id)}\n"
         if reply.forward_from_chat:
