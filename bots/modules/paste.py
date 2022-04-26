@@ -83,7 +83,6 @@ async def paste_bin(_, m: Message):
             file_ = await m.reply_to_message.download(uniqueId)
             with open(file_, "rb") as f:
                 content = f.read().decode("UTF-8")
-                f.close()
             remove(file_)
         elif m.reply_to_message.audio:
             content = m.reply_to_message.caption
