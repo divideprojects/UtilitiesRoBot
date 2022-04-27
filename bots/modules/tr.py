@@ -1,7 +1,8 @@
+from pyrogram.types import Message
+
 from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
 from bots.utils.translator import translate
-from pyrogram.types import Message
 
 MODULES.update(
     {

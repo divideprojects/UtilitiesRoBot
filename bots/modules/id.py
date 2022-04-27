@@ -73,9 +73,15 @@ async def getid(c: Client, m: Message):
         if m.forward_from_chat and m.sender_chat.type == enums.ChatType.CHANNEL:
             text_ping += f"{Bold('Your ID:')} {Code(777000)}\n"
             text_ping += f"{Bold('Your Channel ID:')} {Code(m.sender_chat.id)}\n"
-        elif m.sender_chat.id == m.chat.id and m.sender_chat.type == enums.ChatType.SUPERGROUP:
+        elif (
+            m.sender_chat.id == m.chat.id
+            and m.sender_chat.type == enums.ChatType.SUPERGROUP
+        ):
             text_ping += f"{Bold('Your ID:')} {Code(1087968824)}\n"
-        elif m.sender_chat.id != m.chat.id and m.sender_chat.type == enums.ChatType.CHANNEL:
+        elif (
+            m.sender_chat.id != m.chat.id
+            and m.sender_chat.type == enums.ChatType.CHANNEL
+        ):
             text_ping += f"{Bold('Your ID:')} {Code(136817688)}\n"
             text_ping += f"{Bold('Your Channel ID:')} {Code(m.sender_chat.id)}\n"
     reply = m.reply_to_message
@@ -96,7 +102,10 @@ async def getid(c: Client, m: Message):
             else:
                 text_ping += f'{Bold(Link("Replied User ID:", f"tg://user?id={reply.from_user.id}"))} {Code(reply.from_user.id)}\n'
         elif reply.sender_chat:
-            if reply.forward_from_chat and reply.sender_chat.type == enums.ChatType.CHANNEL:
+            if (
+                reply.forward_from_chat
+                and reply.sender_chat.type == enums.ChatType.CHANNEL
+            ):
                 text_ping += f"{Bold('Replied User ID:')} {Code(777000)}\n"
                 text_ping += (
                     f"{Bold('Replied Channel ID:')} {Code(reply.sender_chat.id)}\n"

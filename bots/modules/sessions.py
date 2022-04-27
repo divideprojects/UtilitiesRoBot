@@ -2,7 +2,8 @@ from kantex.html import Code
 from pyrogram.client import Client
 from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
                              SessionPasswordNeeded)
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
                                           SessionPasswordNeededError)
