@@ -22,5 +22,5 @@ WORKDIR /app
 COPY --from=deb-extractor /dpkg /
 COPY --from=build-venv /venv /venv
 COPY . .
-ENTRYPOINT ["doppler", "run", "--"]
+# ENTRYPOINT ["doppler", "run", "--"]
 CMD ["/venv/bin/python3", "-m", "bots"]
