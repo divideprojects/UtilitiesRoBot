@@ -1,6 +1,7 @@
 from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
 from bots.utils.translator import translate
+from pyrogram.types import Message
 
 MODULES.update(
     {
@@ -14,7 +15,7 @@ MODULES.update(
 
 @app.command("tr")
 @joinCheck()
-async def translate(_, message):
+async def translate(_, message: Message):
     msg = await message.reply_text("....")
     if len(message.command) == 1:
         toLanguage = "en"

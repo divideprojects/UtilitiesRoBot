@@ -2,7 +2,7 @@ from kantex.html import Code
 from pyrogram.client import Client
 from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
                              SessionPasswordNeeded)
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from telethon import TelegramClient
 from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
                                           SessionPasswordNeededError)
@@ -196,7 +196,7 @@ async def genSession(_, message):
 
 
 @app.callback(["pyro", "tele"])
-async def genPyroSession(_, cb):
+async def genPyroSession(_, cb: CallbackQuery):
     api_id, api_hash, number = await get_details(cb.message)
     if isinstance(api_id, Message):
         return

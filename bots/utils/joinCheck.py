@@ -1,13 +1,13 @@
 from pyrogram import enums
 from pyrogram.errors import UserNotParticipant
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from bots.vars import Vars
 
 
 def joinCheck(**args):
     def wrapper(func):
-        async def decorator(c, m):
+        async def decorator(c, m: Message):
             if not Vars.JOIN_CHECK:
                 return await func(c, m)
             if m.sender_chat:
