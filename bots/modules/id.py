@@ -68,7 +68,7 @@ async def getid(c: Client, m: Message):
     else:
         text_ping += f"{Bold('Message ID:')} {Code(m.id)}\n"
     if m.from_user:
-        text_ping += f'{Bold(Link("Your ID:", "tg://user?id={m.from_user.id}"))} {Code(m.from_user.id)}\n'
+        text_ping += f'{Bold(Link("Your ID:", f"tg://user?id={m.from_user.id}"))} {Code(m.from_user.id)}\n'
     elif m.sender_chat:
         if m.forward_from_chat and m.sender_chat.type == "channel":
             text_ping += f"{Bold('Your ID:')} {Code(777000)}\n"
