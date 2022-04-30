@@ -10,7 +10,7 @@ MODULES.update(
     {
         "json": {
             "info": "To get the json data of the message.",
-            "usage": "/geninfo [optional: reply]",
+            "usage": "/json [optional: reply]",
         }
     }
 )

@@ -21,7 +21,7 @@ MODULES.update(
 async def binChecker(_, m: Message):
     msg = await m.reply_text("...")
     if len(m.command) == 1:
-        return await msg.edit_text(f"Usage: /{MODULES.get('binChecker').get('usage')}")
+        return await msg.edit_text(f"Usage: {MODULES.get('binChecker').get('usage')}")
     try:
         CCBin = int(m.command[1])
     except ValueError:

@@ -21,7 +21,7 @@ async def github(_, m: Message):
     args = m.text.split()
 
     if len(args) == 1:
-        return await m.reply_text(f"Usage: /{MODULES.get('github').get('usage')}")
+        return await m.reply_text(f"Usage: {MODULES.get('github').get('usage')}")
 
     elif len(args) == 2:
         rMsg = await m.reply_text("Fetching data...")

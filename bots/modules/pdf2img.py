@@ -67,6 +67,6 @@ async def pdf2img(c, m: Message):
         for i in media_photos:
             remove(i["file"])
     else:
-        await m.reply_text(f"Usage: /{MODULES.get('pdf2img').get('usage')}")
+        await m.reply_text(f"Usage: {MODULES.get('pdf2img').get('usage')}")
 
     return

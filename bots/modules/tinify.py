@@ -43,7 +43,7 @@ async def tinify(c, m: Message):
             remove(new_filename)
             remove(exact_file)
         else:
-            await m.reply_text(f"Usage: /{MODULES.get('tinify').get('usage')}")
+            await m.reply_text(f"Usage: {MODULES.get('tinify').get('usage')}")
     except AttributeError:
         pass
 

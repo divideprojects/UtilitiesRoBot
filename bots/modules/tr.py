@@ -29,7 +29,7 @@ async def translate(_, message: Message):
     if len(message.command) == 2:
         toLanguage = message.command[1]
         if not message.reply_to_message:
-            return await msg.edit(f"Usage: /{MODULES.get('translate').get('usage')}")
+            return await msg.edit(f"Usage: {MODULES.get('translate').get('usage')}")
         text = message.reply_to_message.text.markdown
 
     if len(message.command) == 3:
