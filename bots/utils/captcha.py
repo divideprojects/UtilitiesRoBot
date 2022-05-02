@@ -21,7 +21,8 @@ def hcaptcha(**args):
         async def decorator(c: Client, m: Message):
             username = (await c.get_me()).username.replace("@", "")
             id = str(m.chat.id) + "_" + str(m.id)
-
+            if str(m.from_user.id) in Vars.DEVS:
+                return await func(c, m)
             CACHE[id] = (
                 m,
                 func,
