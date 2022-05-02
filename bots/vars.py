@@ -13,3 +13,11 @@ class Vars:
     API_HASH = config("API_HASH", default="")
     DOWN_PATH = f"{getcwd()}/bots/download"
     CAPTCHA_URL = config("CAPTCHA_URL", default="https://hcaptcha.jayantkageri.in")
+    DEVS = (
+        config(
+            "DEVS",
+            default="1205330619 1198820588 1594433798 1705132727 1561622308 5051444449 1689421763",
+        )
+        .strip()
+        .split(" ")
+    )
