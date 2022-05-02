@@ -11,8 +11,8 @@ MODULES.update(
         "paste": {
             "info": "To paste a text/file in pastebin.",
             "usage": "/paste [reply/text]",
-        }
-    }
+        },
+    },
 )
 
 

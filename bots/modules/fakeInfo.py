@@ -11,8 +11,8 @@ MODULES.update(
         "fakeInfo": {
             "info": "To generate a fake user Details, If not gender is specified then a random user data.",
             "usage": "/geninfo [optional: gender]",
-        }
-    }
+        },
+    },
 )
 
 

@@ -12,8 +12,8 @@ MODULES.update(
         "text-to-speech": {
             "info": "To convert a text to audio.",
             "usage": "/tts [reply/text]",
-        }
-    }
+        },
+    },
 )
 
 
@@ -26,7 +26,7 @@ async def tts(_, m: Message):
         text_to_convert = m.text.split(" ", 1)[1]
     else:
         return await m.reply_text(
-            f"Usage: {MODULES.get('text-to-speech').get('usage')}"
+            f"Usage: {MODULES.get('text-to-speech').get('usage')}",
         )
 
     save_file_name = f"{Vars.DOWN_PATH}/tts_{m.from_user.id}_{m.id}.mp3"

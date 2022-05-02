@@ -12,8 +12,8 @@ MODULES.update(
         "id": {
             "info": "To get all of the IDs present in a message.",
             "usage": "/id [optional: reply]",
-        }
-    }
+        },
+    },
 )
 
 

@@ -14,8 +14,8 @@ MODULES.update(
         "proxy": {
             "info": "To generate available proxies.",
             "usage": "/proxy",
-        }
-    }
+        },
+    },
 )
 
 proxytypes = ("HTTP", "HTTPS", "Socks4", "Socks5")

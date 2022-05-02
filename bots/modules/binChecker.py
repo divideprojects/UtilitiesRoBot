@@ -10,8 +10,8 @@ MODULES.update(
         "binChecker": {
             "info": "To get the bin info.",
             "usage": "/bin [bin]",
-        }
-    }
+        },
+    },
 )
 
 

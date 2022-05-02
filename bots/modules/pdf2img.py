@@ -14,8 +14,8 @@ MODULES.update(
         "pdf2img": {
             "info": "To convert a PDF to images.",
             "usage": "/pdf2img [reply to pdf]",
-        }
-    }
+        },
+    },
 )
 
 

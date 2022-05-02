@@ -17,7 +17,7 @@ MODULES.update(
             "info": "To list the available commands.",
             "usage": "/help",
         },
-    }
+    },
 )
 
 

@@ -10,8 +10,8 @@ MODULES.update(
         "github": {
             "info": "To get the GitHub user info.",
             "usage": "/github [username]",
-        }
-    }
+        },
+    },
 )
 
 

@@ -12,8 +12,8 @@ MODULES.update(
         "tinify": {
             "info": "To compress an image.",
             "usage": "/tinify [reply to image]",
-        }
-    }
+        },
+    },
 )
 
 
