@@ -1,17 +1,12 @@
 from kantex.html import Code
 from pyrogram.client import Client
-from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-)
+from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
+                             SessionPasswordNeeded)
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 from telethon import TelegramClient
-from telethon.errors.rpcerrorlist import (
-    PhoneCodeInvalidError,
-    SessionPasswordNeededError,
-)
+from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
+                                          SessionPasswordNeededError)
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
