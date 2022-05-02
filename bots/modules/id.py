@@ -30,11 +30,11 @@ async def getid(c: Client, m: Message):
         try:
             if m.entities:
                 for u in m.entities:
-                    offset = int(u["offset"])
-                    lenn = int(int(u["length"]) + offset)
-                if str(u["type"]) == "mention":
+                    offset = int(u.offset)
+                    lenn = int(int(u.length) + offset)
+                if str(u.type) == "mention":
                     userr = m.text[offset:lenn]
-                elif str(u["type"]) == "text_mention":
+                elif str(u.type) == "text_mention":
                     userr = int(u.user.id)
                 else:
                     userr = k
@@ -54,7 +54,7 @@ async def getid(c: Client, m: Message):
                 else str(k),
             )
         else:
-            use = Code(username if isinstance(username, str) else str(k))
+            use = username if isinstance(username, str) else str(k)
         te = f"""
 {Bold(f"{use}'s ID:")} {Code(u.id)}
 {Bold("Chat ID:")} {Code(m.chat.id)}"""
