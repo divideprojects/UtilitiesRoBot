@@ -32,9 +32,9 @@ async def getid(c: Client, m: Message):
                 for u in m.entities:
                     offset = int(u.offset)
                     lenn = int(int(u.length) + offset)
-                if str(u.type) == "mention":
+                if u.type == enums.MessageEntityType.MENTION:
                     userr = m.text[offset:lenn]
-                elif str(u.type) == "text_mention":
+                elif u.type == enums.MessageEntityType.TEXT_MENTION:
                     userr = int(u.user.id)
                 else:
                     userr = k
