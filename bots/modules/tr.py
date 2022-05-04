@@ -22,7 +22,7 @@ async def translate(_, message: Message):
         toLanguage = "en"
         if not message.reply_to_message:
             return await msg.edit_text(
-                f"Usage: /{MODULES.get('translate').get('usage')}",
+                f"Usage: {MODULES.get('translate').get('usage')}",
             )
         text = message.reply_to_message.text.markdown
 
