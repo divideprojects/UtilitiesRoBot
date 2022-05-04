@@ -1,4 +1,3 @@
-from email.policy import default
 from os import getcwd
 
 from tgEasy.config import config

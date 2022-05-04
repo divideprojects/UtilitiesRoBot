@@ -31,7 +31,6 @@ async def tts(_, m: Message):
 
     save_file_name = f"{Vars.DOWN_PATH}/tts_{m.from_user.id}_{m.id}.mp3"
     rmsg = await m.reply_text("Converting Text to Speech...")
-    text_to_convert = m.reply_to_message.text
     if "|" in text_to_convert:
         text_split = text_to_convert.split("|")
         text = text_split[0].strip()
@@ -40,8 +39,8 @@ async def tts(_, m: Message):
         text = text_to_convert
         lang = "en"
 
-    tts = gTTS(text=text, lang=lang)
-    tts.save(save_file_name)
+    stts = gTTS(text=text, lang=lang)
+    stts.save(save_file_name)
     await m.reply_audio(save_file_name, caption="Text converted to Audio.")
 
     # Remove the files and msg

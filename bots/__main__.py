@@ -1,4 +1,4 @@
-from bots import MODULES, app
+from bots import app
 
 if __name__ == "__main__":
     app.run()
