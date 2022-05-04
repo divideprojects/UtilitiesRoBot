@@ -32,17 +32,17 @@ async def getid(c: Client, m: Message):
                 for u in m.entities:
                     offset = int(u.offset)
                     lenn = int(int(u.length) + offset)
-                if u.type == enums.MessageEntityType.MENTION:
-                    userr = m.text[offset:lenn]
-                elif u.type == enums.MessageEntityType.TEXT_MENTION:
-                    userr = int(u.user.id)
-                else:
-                    userr = k
+                    if str(u.type) == enums.MessageEntityType.MENTION:
+                        userr = m.text[offset:lenn]
+                    elif str(u.type) == enums.MessageEntityType.TEXT_MENTION:
+                        userr = int(u.user.id)
+                    else:
+                        userr = username
             else:
-                userr = username
+                userr = k
             u = await c.get_chat(userr)
         except FloodWait as s:
-            await sleep(s.x)
+            await sleep(s.value)
             u = await c.get_chat(userr)
         except RPCError as e:
             await m.reply_text(f"Error: {e}")
