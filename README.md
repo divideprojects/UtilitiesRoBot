@@ -11,6 +11,6 @@ Utilities Bot of @DivideProjects
 * `JOIN_CHANNEL`: **optional** `str` - Username of the Channel. (including @)
 * `JOIN_CHECK`: **optional** `bool` - If `True`, User can only use the bot if he joined the `JOIN_CHANNEL`
 * `DOWN_PATH`: **optional** `str` - Path to download temporary files.
-* `CAPTCHA_URL` = **optional** `str` - URL of the captcha service developed by @jayantkageri.
+* `CAPTCHA_URL`: **optional** `str` - URL of the captcha service developed by @jayantkageri.
 
 > Made with [tgEasy](https://github.com/jayantkageri/tgEasy)
