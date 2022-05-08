@@ -1,11 +1,15 @@
 import traceback
 from time import perf_counter
 
-from requests import get
 from cachetools import TTLCache
 from pyrogram import Client, filters
-from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
-                            InlineKeyboardMarkup, Message)
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
+from requests import get
 
 from bots import client as app
 from bots.vars import Vars

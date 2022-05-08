@@ -1,17 +1,23 @@
 from kantex.html import Code
 from pyrogram.client import Client
-from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
-                             SessionPasswordNeeded)
-from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
-                            InlineKeyboardMarkup, Message)
+from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
 from telethon import TelegramClient
-from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
-                                          SessionPasswordNeededError)
+from telethon.errors.rpcerrorlist import (
+    PhoneCodeInvalidError,
+    SessionPasswordNeededError,
+)
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
 from bots import MODULES, app
-from bots.utils.captcha import hcaptcha
+
+# from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 
 MODULES.update(
@@ -181,7 +187,7 @@ async def is_cancel(m: Message):
 
 @app.command("session")
 @joinCheck()
-@hcaptcha()
+# @hcaptcha()
 async def genSession(_, message):
     return await message.reply_text(
         "Choose a Session to Generate",

@@ -5,7 +5,8 @@ from pyrogram.errors import MultiMediaTooLong
 from pyrogram.types import InputMediaPhoto, Message
 
 from bots import MODULES, app
-from bots.utils.captcha import hcaptcha
+
+# from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
@@ -21,7 +22,7 @@ MODULES.update(
 
 @app.command("pdf2img", pm_only=True)
 @joinCheck()
-@hcaptcha()
+# @hcaptcha()
 async def pdf2img(c, m: Message):
     if (
         m.reply_to_message and m.reply_to_message.document
