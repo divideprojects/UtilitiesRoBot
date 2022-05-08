@@ -1,3 +1,4 @@
+from html import escape
 from os import remove
 
 from kantex.html import Code
@@ -19,11 +20,14 @@ MODULES.update(
 @app.command("json", pm_only=False)
 @joinCheck()
 async def json(_, m: Message):
-    msg = m if not m.reply_to_message else m.reply_to_message
-    if len(str(msg)) < 4095:
-        return await m.reply_text(str(Code(str(msg))))
-    fName = f"json_{m.from_user.id}_{m.id}.json"
-    with open(fName, "w+") as file:
-        file.write(str(msg))
-    await m.reply_document(fName)
-    remove(fName)
+    ms = m.reply_to_message if m.reply_to_message else m
+    if len(str(ms)) > 4020:
+        filen = f"json_{m.chat.id}_{m.id}.json"
+        with open(filen, "w+") as _file:
+            _file.write(str(ms).strip())
+            _file.flush()
+        await m.reply_document(filen)
+        remove(filen)
+    else:
+        await m.reply_text(f"<code>{escape(str(ms))}</code>")
+    return
