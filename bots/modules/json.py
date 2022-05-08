@@ -29,5 +29,5 @@ async def json(_, m: Message):
         await m.reply_document(filen)
         remove(filen)
     else:
-        await m.reply_text(f"<code>{escape(str(ms))}</code>")
+        await m.reply_text(Code(escape(str(ms))))
     return
