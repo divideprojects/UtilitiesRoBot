@@ -5,6 +5,7 @@ from pyrogram.types import Message
 from bots import MODULES, app
 from bots.utils.compressImage import compress_image
 from bots.utils.joinCheck import joinCheck
+from bots.utils.captcha import hcaptcha
 from bots.vars import Vars
 
 MODULES.update(
@@ -19,6 +20,7 @@ MODULES.update(
 
 @app.command("tinify", pm_only=True)
 @joinCheck()
+@hcaptcha()
 async def tinify(c, m: Message):
     try:
         if m.reply_to_message.photo or (

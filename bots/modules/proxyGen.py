@@ -7,6 +7,7 @@ from tgEasy import array_chunk, ikb
 
 from bots import MODULES, app
 from bots.utils.joinCheck import joinCheck
+from bots.utils.captcha import hcaptcha
 from bots.vars import Vars
 
 MODULES.update(
@@ -23,6 +24,7 @@ proxytypes = ("HTTP", "HTTPS", "Socks4", "Socks5")
 
 @app.command("proxy", pm_only=True)
 @joinCheck()
+@hcaptcha()
 async def getProxy(_, m: Message):
     msg = await m.reply_text("...", quote=True)
     await msg.edit_text(

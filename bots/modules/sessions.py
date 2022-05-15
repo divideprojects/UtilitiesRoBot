@@ -17,7 +17,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 
 from bots import MODULES, app
 
-# from bots.utils.captcha import hcaptcha
+from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 
 MODULES.update(
@@ -187,7 +187,7 @@ async def is_cancel(m: Message):
 
 @app.command("session")
 @joinCheck()
-# @hcaptcha()
+@hcaptcha()
 async def genSession(_, message):
     return await message.reply_text(
         "Choose a Session to Generate",
@@ -208,6 +208,8 @@ async def genPyroSession(_, cb: CallbackQuery):
     if isinstance(api_id, Message):
         return
     if cb.data == "pyro":
+        await cb.message.edit_text("Generating Pyrogram Session...")
         return await generate_pyrogram_session(cb.message, api_id, api_hash, number)
     if cb.data == "tele":
+        await cb.message.edit_text("Generating Telethon Session...")
         return await generate_telethon_session(cb.message, api_id, api_hash, number)
