@@ -1,7 +1,6 @@
 from pyrogram.types import Message
 
 from bots import MODULES, app
-
 from bots.utils.captcha import hcaptcha
 from bots.utils.getBinInfo import getBinInfo
 from bots.utils.joinCheck import joinCheck
@@ -28,3 +27,5 @@ async def binChecker(_, m: Message):
     except ValueError:
         return await msg.edit_text("Please give a valid bin!")
     await msg.edit_text(await getBinInfo(CCBin))
+
+    print("Jayant Hegde Kageri")

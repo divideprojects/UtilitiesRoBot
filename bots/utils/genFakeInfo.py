@@ -6,7 +6,7 @@ from pypers.url_helpers import AioHttp
 
 async def genFakeInfo(chkUrl: str):
     rData, resp = await AioHttp.get_json(chkUrl)
-    if not resp.status == 200:
+    if resp.status != 200:
         return "API Unreachable", None
 
     user = rData["results"][0]

@@ -5,7 +5,6 @@ from pyrogram.errors import MultiMediaTooLong
 from pyrogram.types import InputMediaPhoto, Message
 
 from bots import MODULES, app
-
 from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars

@@ -6,8 +6,8 @@ from pyrogram.types import CallbackQuery, Message
 from tgEasy import array_chunk, ikb
 
 from bots import MODULES, app
-from bots.utils.joinCheck import joinCheck
 from bots.utils.captcha import hcaptcha
+from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
 MODULES.update(
@@ -40,9 +40,12 @@ async def getProxy(c, cb: CallbackQuery):
     proxies_source = await get_proxy(ptype)
     proxies_fetched = "\n".join(proxies_source)
     caption = str(
-        Bold(Italic(f"Proxies scrapped by:"))
-        + f"@{(await c.get_me()).username}\n\n{Vars.JOIN_CHANNEL}",
+        (
+            Bold(Italic("Proxies scrapped by:"))
+            + f"@{(await c.get_me()).username}\n\n{Vars.JOIN_CHANNEL}"
+        )
     )
+
     with BytesIO(str.encode(proxies_fetched)) as output:
         output.name = f"{ptype}_{(await c.get_me()).username}.txt"
         await cb.message.reply_document(document=output, caption=caption)
@@ -51,6 +54,5 @@ async def getProxy(c, cb: CallbackQuery):
 
 
 async def gen_proxy_kb():
-    cmds = [i for i in proxytypes]
-    kb = [(cmd, f"getProxy.{cmd}") for cmd in cmds]
+    kb = [(cmd, f"getProxy.{cmd}") for cmd in list(proxytypes)]
     return array_chunk(kb, 2)

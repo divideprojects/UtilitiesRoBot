@@ -96,13 +96,14 @@ async def shell(_, m: Message):
 
 async def aexec(code, client, message):
     exec(
-        f"async def __aexec(client, message): "
-        + "".join(f"\n {l}" for l in code.split("\n"))
+        (
+            "async def __aexec(client, message): "
+            + "".join(f"\n {l}" for l in code.split("\n"))
+        )
     )
+
     return await locals()["__aexec"](client, message)
 
 
 async def authorised(m: Message):
-    if not str(m.from_user.id) in Vars.DEVS:
-        return False
-    return True
+    return str(m.from_user.id) in Vars.DEVS

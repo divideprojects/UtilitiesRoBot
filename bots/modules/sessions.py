@@ -1,22 +1,18 @@
+import contextlib
+
 from kantex.html import Code
 from pyrogram.client import Client
-from pyrogram.errors import PhoneCodeExpired, PhoneCodeInvalid, SessionPasswordNeeded
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-)
+from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
+                             SessionPasswordNeeded)
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 from telethon import TelegramClient
-from telethon.errors.rpcerrorlist import (
-    PhoneCodeInvalidError,
-    SessionPasswordNeededError,
-)
+from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
+                                          SessionPasswordNeededError)
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
 from bots import MODULES, app
-
 from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 
@@ -95,8 +91,9 @@ Send /cancel to cancel the process.
         await pclient.join_chat("@DivideProjects")
         reply = await m.reply_text(str(Code(session)))
         await reply.reply_text(
-            f"Your Pyrogram String Session, Same can be found in your Saved Messages.",
+            "Your Pyrogram String Session, Same can be found in your Saved Messages."
         )
+
         sent = await pclient.send_message("me", str(Code(session)))
         await sent.reply_text(
             f"Your Pyrogram String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await m._client.get_me()).username}",
@@ -151,19 +148,17 @@ Send /cancel to cancel the process.
                     return
                 await tclient.sign_in(password=twoStepPass.text)
                 await twoStepPass.delete()
-                pass
             session_string = tclient.session.save()
-            try:
+            with contextlib.suppress(BaseException):
                 await m._client(JoinChannelRequest("@DivideProjects"))
-            except BaseException:
-                pass
             reply = await m._client.send_message(
                 m.chat.id,
                 str(Code(session_string)),
             )
             await reply.reply_text(
-                f"Your Telethon String Session, Same can be found in your Saved Messages.",
+                "Your Telethon String Session, Same can be found in your Saved Messages."
             )
+
             sent = await tclient.send_message(
                 "me",
                 str(Code(session_string)),

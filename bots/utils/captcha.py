@@ -3,12 +3,8 @@ from time import perf_counter
 
 from cachetools import TTLCache
 from pyrogram import Client, filters
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-)
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 from requests import get
 
 from bots import client as app
@@ -20,8 +16,9 @@ CACHE = TTLCache(maxsize=250, ttl=30, timer=perf_counter)
 def hcaptcha(**args):
     def wrapper(func):
         async def decorator(c: Client, m: Message):
+            # sourcery skip: avoid-builtin-shadow
             username = (await c.get_me()).username.replace("@", "")
-            id = str(m.chat.id) + "_" + str(m.id)
+            id = f"{str(m.chat.id)}_{str(m.id)}"
             if str(m.from_user.id) in Vars.DEVS:
                 return await func(c, m)
             CACHE[id] = (
@@ -56,6 +53,7 @@ def hcaptcha(**args):
 
 @app.on_callback_query(filters.regex("^hcaptcha"))
 async def hcaptcha_callback(c: Client, query: CallbackQuery):
+    # sourcery skip: avoid-builtin-shadow
     id = query.data.split("_", maxsplit=1)[1]
     req = get(f"{Vars.CAPTCHA_URL}/api/info?id={id}").json()
     if not req["success"]:

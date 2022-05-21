@@ -1,3 +1,4 @@
+import contextlib
 from os import remove
 
 from aiohttp import ClientSession
@@ -18,7 +19,7 @@ MODULES.update(
 
 @app.command("paste")
 @joinCheck()
-async def paste_bin(_, m: Message):
+async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
     statusMsg = await m.reply_text(
         "Pasting to Spacebin, Please wait for a while...",
     )
@@ -93,12 +94,9 @@ async def paste_bin(_, m: Message):
         elif m.reply_to_message.voice:
             content = m.reply_to_message.caption
         else:
-            try:
+            with contextlib.suppress(BaseException):
                 content = m.reply_to_message.text.markdown
                 sendAsFile = True
-            except BaseException:
-                pass
-
     if not content:
         return await statusMsg.edit_text(f"Usage: {MODULES.get('paste').get('usage')}")
     try:
