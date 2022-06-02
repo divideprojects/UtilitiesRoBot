@@ -1,7 +1,6 @@
 from pyrogram.types import Message
 
 from bots import MODULES, app
-from bots.utils.captcha import hcaptcha
 from bots.utils.genFakeInfo import genFakeInfo
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
@@ -18,7 +17,6 @@ MODULES.update(
 
 @app.command("geninfo", pm_only=True)
 @joinCheck()
-@hcaptcha()
 async def genInfo(_, m: Message):
     gender = None
     msg = await m.reply_text("...")
@@ -38,7 +36,7 @@ async def genInfo(_, m: Message):
         return await msg.edit_text("API Unreachable at the Moment, Try again Later")
     if not (infoText or userPic):
         return await msg.edit_text(
-            f"error generating fake data{': gender ' if gender else ''} \nReport this at {Vars.SUPPORT_GROUP}"
+            f"error generating fake data{': gender ' if gender else ''} \nReport this at {Vars.SUPPORT_GROUP}",
         )
 
     await m.reply_document(userPic, caption=infoText)

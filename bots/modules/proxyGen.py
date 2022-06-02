@@ -6,7 +6,6 @@ from pyrogram.types import CallbackQuery, Message
 from tgEasy import array_chunk, ikb
 
 from bots import MODULES, app
-from bots.utils.captcha import hcaptcha
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
 
@@ -24,7 +23,6 @@ proxytypes = ("HTTP", "HTTPS", "Socks4", "Socks5")
 
 @app.command("proxy", pm_only=True)
 @joinCheck()
-@hcaptcha()
 async def getProxy(_, m: Message):
     msg = await m.reply_text("...", quote=True)
     await msg.edit_text(
@@ -43,7 +41,7 @@ async def getProxy(c, cb: CallbackQuery):
         (
             Bold(Italic("Proxies scrapped by:"))
             + f"@{(await c.get_me()).username}\n\n{Vars.JOIN_CHANNEL}"
-        )
+        ),
     )
 
     with BytesIO(str.encode(proxies_fetched)) as output:

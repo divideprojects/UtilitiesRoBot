@@ -4,7 +4,6 @@ from os import remove
 from pyrogram.types import Message
 
 from bots import MODULES, app
-from bots.utils.captcha import hcaptcha
 from bots.utils.compressImage import compress_image
 from bots.utils.joinCheck import joinCheck
 from bots.vars import Vars
@@ -21,7 +20,6 @@ MODULES.update(
 
 @app.command("tinify", pm_only=True)
 @joinCheck()
-@hcaptcha()
 async def tinify(c, m: Message):
     with contextlib.suppress(AttributeError):
         if m.reply_to_message.photo or (

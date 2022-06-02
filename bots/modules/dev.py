@@ -56,7 +56,9 @@ async def eval(client, message: Message):
         with open(f"eval_{message.id}.txt", "w+", encoding="utf8") as out_file:
             out_file.write(str(final_output))
         await msg.reply_document(
-            document=f"eval_{message.id}txt", caption=cmd, disable_notification=True
+            document=f"eval_{message.id}txt",
+            caption=cmd,
+            disable_notification=True,
         )
         os.remove(f"eval_{message.id}.txt")
         await msg.delete()
@@ -86,7 +88,9 @@ async def shell(_, m: Message):
         with open(f"exec_{m.id}.txt", "w+", encoding="utf8") as out_file:
             out_file.write(str(output))
         await msg.reply_document(
-            document=f"exec_{m.id}.txt", caption=cmd, disable_notification=True
+            document=f"exec_{m.id}.txt",
+            caption=cmd,
+            disable_notification=True,
         )
         os.remove(f"exec_{m.id}.txt")
         await msg.delete()
@@ -99,7 +103,7 @@ async def aexec(code, client, message):
         (
             "async def __aexec(client, message): "
             + "".join(f"\n {l}" for l in code.split("\n"))
-        )
+        ),
     )
 
     return await locals()["__aexec"](client, message)
