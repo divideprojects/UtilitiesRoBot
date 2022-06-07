@@ -34,4 +34,4 @@ Utilities Robot by [@DivideProjects](https://telegram.me/DivideProjects)
 
 * [tgEasy](https://github.com/jayantkageri/tgEasy), Copyright (C) Jayant Hegde Kageri (<https://jayantkageri.in/>)
 
-  * Licensed under the terms and conditions of [GNU Lesser General Public License v3 or later (LGPLv3+).](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+  * Licensed under the terms and conditions of [GNU Lesser General Public License v3 or later (LGPL-3.0-or-later).](https://www.gnu.org/licenses/lgpl-3.0.en.html)
