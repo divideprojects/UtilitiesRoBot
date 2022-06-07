@@ -25,13 +25,3 @@ Utilities Robot by [@DivideProjects](https://telegram.me/DivideProjects)
 * `JOIN_CHANNEL`: **optional** `str` - Username of the Channel. (including @)
 * `JOIN_CHECK`: **optional** `bool` - If `True`, User can only use the bot if he joined the `JOIN_CHANNEL`
 * `DOWN_PATH`: **optional** `str` - Path to download temporary files.
-
-## Copyright
-
-* Utilities Robot, Copyright (C) Divide Projects (<https://divideprojects.com/>)
-
-  * Licensed under the terms and conditions of [GNU Affero General Public License v3 or later (AGPL-3.0-or-later)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-
-* [tgEasy](https://github.com/jayantkageri/tgEasy), Copyright (C) Jayant Hegde Kageri (<https://jayantkageri.in/>)
-
-  * Licensed under the terms and conditions of [GNU Lesser General Public License v3 or later (LGPL-3.0-or-later).](https://www.gnu.org/licenses/lgpl-3.0.en.html)

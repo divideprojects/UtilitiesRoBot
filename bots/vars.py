@@ -22,8 +22,7 @@ from tgEasy.config import config
 
 
 class Vars:
-    SUPPORT_GROUP = config(
-        "SUPPORT_GROUP", default="@DivideProjectsDiscussion")
+    SUPPORT_GROUP = config("SUPPORT_GROUP", default="@DivideProjectsDiscussion")
     JOIN_CHANNEL = config("JOIN_CHANNEL", default="@DivideProjects")
     JOIN_CHECK = bool(config("JOIN_CHECK", default=False))
     BOT_TOKEN = config("BOT_TOKEN", default="")
