@@ -45,7 +45,5 @@ async def json(_, m: Message):
             _file.write(str(ms).strip())
             _file.flush()
         await m.reply_document(filen)
-        remove(filen)
-    else:
-        await m.reply_text(Code(escape(str(ms))))
-    return
+        return remove(filen)
+    return await m.reply_text(Code(escape(str(ms))))

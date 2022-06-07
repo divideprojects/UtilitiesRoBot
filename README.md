@@ -1,7 +1,7 @@
 # [@UtilitiesRobot](https://www.telegram.me/UtilitiesRobot)
 
 Utilities Robot by [@DivideProjects](https://telegram.me/DivideProjects)
-> Made with [tgEasy](https://github.com/jayantkageri/tgEasy)
+> Built with [tgEasy](https://github.com/jayantkageri/tgEasy)
 
 ## Available Plugins
 

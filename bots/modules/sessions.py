@@ -46,18 +46,25 @@ MODULES.update(
 async def get_details(m: Message):
     apiId = await m.chat.ask("Enter your API_ID.\nSend /cancel to Cancel.")
     if await is_cancel(apiId):
-        return
+        return apiId, None, None
     if not apiId.text.isdigit():
-        return await m.reply_text(
-            "Invalid API_ID \nSend /session to Restart the Process",
+        return (
+            await m.reply_text(
+                "Invalid API_ID \nSend /session to Restart the Process",
+            ),
+            None,
+            None,
         )
+
     apiHash = await m.chat.ask("Enter your API_HASH.\nSend /cancel to Cancel.")
     if await is_cancel(apiHash):
-        return
+        return apiHash, None, None
+
     number = await m.chat.ask("Enter your Phone Number.\nSend /cancel to Cancel.")
     if await is_cancel(number):
-        return
-    return apiId.text, apiHash.text, number.text
+        return number, None, None
+
+    return int(apiId.text), apiHash.text, number.text
 
 
 async def generate_pyrogram_session(
@@ -102,10 +109,14 @@ Send /cancel to cancel the process.
             )
         if await is_cancel(password):
             return
+
         await pclient.check_password(password=password.text)
         await password.delete()
         session = await pclient.export_session_string()
-        await pclient.join_chat("@DivideProjects")
+
+        with contextlib.suppress(Exception):
+            await pclient.join_chat("@DivideProjects")
+
         reply = await m.reply_text(str(Code(session)))
         await reply.reply_text(
             "Your Pyrogram String Session, Same can be found in your Saved Messages.",
@@ -115,6 +126,7 @@ Send /cancel to cancel the process.
         await sent.reply_text(
             f"Your Pyrogram String Session.\nNOTE: STRING SESSIONS ARE CONFIDENTIAL, IT MUST AND SHOULN'T BE SHARED WITH ANYONE.\n@{(await m._client.get_me()).username}",
         )
+
         await pclient.disconnect()
     except Exception as e:
         return await m._client.send_message(m.chat.id, str(e))
@@ -166,8 +178,10 @@ Send /cancel to cancel the process.
                 await tclient.sign_in(password=twoStepPass.text)
                 await twoStepPass.delete()
             session_string = tclient.session.save()
+
             with contextlib.suppress(BaseException):
                 await m._client(JoinChannelRequest("@DivideProjects"))
+
             reply = await m._client.send_message(
                 m.chat.id,
                 str(Code(session_string)),

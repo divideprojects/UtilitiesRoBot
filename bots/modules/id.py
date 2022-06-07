@@ -102,8 +102,7 @@ async def getid(c: Client, m: Message):
         ):
             text_ping += f"{Bold('Your ID:')} {Code(136817688)}\n"
             text_ping += f"{Bold('Your Channel ID:')} {Code(m.sender_chat.id)}\n"
-    reply = m.reply_to_message
-    if reply:
+    if reply := m.reply_to_message:
         if reply.link:
             text_ping += (
                 f'{Link(Bold("Replied Message ID:"), reply.link)} {Code(reply.id)}\n'
