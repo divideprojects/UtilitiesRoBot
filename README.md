@@ -29,7 +29,7 @@ Utilities Robot by [@DivideProjects](https://telegram.me/DivideProjects)
 
 ## Copyright
 
-* Utilities Robot, Copyright (C) 2022 Divide Projects (<https://divideprojects.com/>)
+* Utilities Robot, Copyright (C) Divide Projects (<https://divideprojects.com/>)
 
   * Licensed under the terms and conditions of [GNU Affero General Public License v3 or later (AGPL-3.0-or-later)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
