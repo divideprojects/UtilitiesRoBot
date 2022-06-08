@@ -70,9 +70,14 @@ async def getid(c: Client, m: Message):
     if m.from_user:
         text_ping += f'{Bold(Link("Your ID:", f"tg://user?id={m.from_user.id}"))} {Code(m.from_user.id)}\n'
     elif m.sender_chat:
-        if m.forward_from_chat and m.sender_chat.type == enums.ChatType.CHANNEL:
+        if (
+            m.forward_from_chat
+            and m.sender_chat.type == enums.ChatType.CHANNEL
+        ):
             text_ping += f"{Bold('Your ID:')} {Code(777000)}\n"
-            text_ping += f"{Bold('Your Channel ID:')} {Code(m.sender_chat.id)}\n"
+            text_ping += (
+                f"{Bold('Your Channel ID:')} {Code(m.sender_chat.id)}\n"
+            )
         elif (
             m.sender_chat.id == m.chat.id
             and m.sender_chat.type == enums.ChatType.SUPERGROUP
@@ -83,18 +88,16 @@ async def getid(c: Client, m: Message):
             and m.sender_chat.type == enums.ChatType.CHANNEL
         ):
             text_ping += f"{Bold('Your ID:')} {Code(136817688)}\n"
-            text_ping += f"{Bold('Your Channel ID:')} {Code(m.sender_chat.id)}\n"
+            text_ping += (
+                f"{Bold('Your Channel ID:')} {Code(m.sender_chat.id)}\n"
+            )
     if reply := m.reply_to_message:
         if reply.link:
-            text_ping += (
-                f'{Link(Bold("Replied Message ID:"), reply.link)} {Code(reply.id)}\n'
-            )
+            text_ping += f'{Link(Bold("Replied Message ID:"), reply.link)} {Code(reply.id)}\n'
         else:
             text_ping += f"{Bold('Replied Message ID:')} {Code(reply.id)}\n"
         if reply.forward_from_chat:
-            text_ping += (
-                f"{Bold('Forwarded channel ID:')} {Code(reply.forward_from_chat.id)}\n"
-            )
+            text_ping += f"{Bold('Forwarded channel ID:')} {Code(reply.forward_from_chat.id)}\n"
         if reply.from_user:
             if reply.from_user.username:
                 text_ping += f'{Link(Bold("Replied User ID:"), f"https://t.me/{reply.from_user.username}")} {Code(reply.from_user.id)}\n'
@@ -106,9 +109,7 @@ async def getid(c: Client, m: Message):
                 and reply.sender_chat.type == enums.ChatType.CHANNEL
             ):
                 text_ping += f"{Bold('Replied User ID:')} {Code(777000)}\n"
-                text_ping += (
-                    f"{Bold('Replied Channel ID:')} {Code(reply.sender_chat.id)}\n"
-                )
+                text_ping += f"{Bold('Replied Channel ID:')} {Code(reply.sender_chat.id)}\n"
             elif (
                 reply.sender_chat.id == reply.chat.id
                 and reply.sender_chat.type == enums.ChatType.SUPERGROUP
@@ -119,16 +120,16 @@ async def getid(c: Client, m: Message):
                 and reply.sender_chat.type == enums.ChatType.CHANNEL
             ):
                 text_ping += f"{Bold('Replied User ID:')} {Code(136817688)}\n"
-                text_ping += (
-                    f"{Bold('Replied Channel ID:')} {Code(reply.sender_chat.id)}\n"
-                )
+                text_ping += f"{Bold('Replied Channel ID:')} {Code(reply.sender_chat.id)}\n"
         if reply.forward_from:
             if reply.forward_from.username:
                 text_ping += f'{Link(Bold("Forwarded User ID:"), f"https://t.me/{reply.forward_from.username}")} {Code(reply.forward_from.id)}\n'
             else:
                 text_ping += f'{Link(Bold("Forwarded User ID: "), f"tg://user?id={reply.forward_from.id})")} {Code(reply.forward_from.id)}\n'
         if reply.sticker:
-            text_ping += f"{Bold('Sticker ID:')} {Code(reply.sticker.file_id)}\n"
+            text_ping += (
+                f"{Bold('Sticker ID:')} {Code(reply.sticker.file_id)}\n"
+            )
         if reply.animation:
             text_ping += f"{Bold('GIF ID:')} {Code(reply.animation.file_id)}\n"
     return await m.reply_text(str(text_ping), disable_web_page_preview=True)

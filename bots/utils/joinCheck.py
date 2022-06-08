@@ -13,7 +13,9 @@ def joinCheck(**args):
             if m.sender_chat:
                 return
             try:
-                get = await c.get_chat_member(Vars.JOIN_CHANNEL, m.from_user.id)
+                get = await c.get_chat_member(
+                    Vars.JOIN_CHANNEL, m.from_user.id
+                )
             except UserNotParticipant:
                 return await m.reply_text(
                     f"You need to Join {Vars.JOIN_CHANNEL} to use me.",

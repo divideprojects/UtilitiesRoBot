@@ -8,7 +8,9 @@ if __name__ == "__main__":
 
     async def main():
         await app.__client__.start()
-        print(f"@{(await app.__client__.get_me()).username}", "has been started.")
+        print(
+            f"@{(await app.__client__.get_me()).username}", "has been started."
+        )
         await idle()
 
     asyncio.run(main())

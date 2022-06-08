@@ -33,7 +33,9 @@ async def genInfo(_, m: Message):
     await msg.edit_text(text)
     infoText, userPic = await genFakeInfo(chkUrl)
     if infoText == "API Unreachable":
-        return await msg.edit_text("API Unreachable at the Moment, Try again Later")
+        return await msg.edit_text(
+            "API Unreachable at the Moment, Try again Later"
+        )
     if not (infoText or userPic):
         return await msg.edit_text(
             f"error generating fake data{': gender ' if gender else ''} \nReport this at {Vars.SUPPORT_GROUP}",

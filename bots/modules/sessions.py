@@ -2,13 +2,22 @@ import contextlib
 
 from kantex.html import Code
 from pyrogram.client import Client
-from pyrogram.errors import (PhoneCodeExpired, PhoneCodeInvalid,
-                             SessionPasswordNeeded)
-from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
-                            InlineKeyboardMarkup, Message)
+from pyrogram.errors import (
+    PhoneCodeExpired,
+    PhoneCodeInvalid,
+    SessionPasswordNeeded,
+)
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
 from telethon import TelegramClient
-from telethon.errors.rpcerrorlist import (PhoneCodeInvalidError,
-                                          SessionPasswordNeededError)
+from telethon.errors.rpcerrorlist import (
+    PhoneCodeInvalidError,
+    SessionPasswordNeededError,
+)
 from telethon.sessions import StringSession
 from telethon.tl.functions.channels import JoinChannelRequest
 
@@ -42,7 +51,9 @@ async def get_details(m: Message):
     if await is_cancel(apiHash):
         return apiHash, None, None
 
-    number = await m.chat.ask("Enter your Phone Number.\nSend /cancel to Cancel.")
+    number = await m.chat.ask(
+        "Enter your Phone Number.\nSend /cancel to Cancel."
+    )
     if await is_cancel(number):
         return number, None, None
 
@@ -84,7 +95,9 @@ Send /cancel to cancel the process.
                 phone_code=received_code,
             )
         except (PhoneCodeExpired, PhoneCodeInvalid):
-            return await m.reply_text("Invalid OTP.\nSend /session to ReStart.")
+            return await m.reply_text(
+                "Invalid OTP.\nSend /session to ReStart."
+            )
         except SessionPasswordNeeded:
             password = await m.chat.ask(
                 "Enter your Password.\nSend /cancel to Cancel.",
@@ -146,7 +159,9 @@ Send /cancel to cancel the process.
             received_code = otp.text.strip()
             received_code = "".join(received_code.split(" "))
             try:
-                await tclient.sign_in(phone_number, code=received_code, password=None)
+                await tclient.sign_in(
+                    phone_number, code=received_code, password=None
+                )
             except PhoneCodeInvalidError:
                 return await m.reply_text(
                     "Invalid OTP.\nSend /session to ReStart.",
@@ -216,7 +231,11 @@ async def genPyroSession(_, cb: CallbackQuery):
         return
     if cb.data == "pyro":
         await cb.message.edit_text("Generating Pyrogram Session...")
-        return await generate_pyrogram_session(cb.message, api_id, api_hash, number)
+        return await generate_pyrogram_session(
+            cb.message, api_id, api_hash, number
+        )
     if cb.data == "tele":
         await cb.message.edit_text("Generating Telethon Session...")
-        return await generate_telethon_session(cb.message, api_id, api_hash, number)
+        return await generate_telethon_session(
+            cb.message, api_id, api_hash, number
+        )
