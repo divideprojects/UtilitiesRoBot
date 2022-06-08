@@ -2,7 +2,6 @@ from time import time
 
 from kantex.html import Bold
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from pyrogram.types.messages_and_media.message import Message
 
 from bots import MODULES, app
 from bots.vars import Vars
