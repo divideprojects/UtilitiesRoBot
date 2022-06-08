@@ -18,7 +18,7 @@ MODULES.update(
 )
 
 
-@app.command("pdf2img", pm_only=True)
+@app.command("pdf2img")
 @joinCheck()
 async def pdf2img(c, m: Message):
     if (

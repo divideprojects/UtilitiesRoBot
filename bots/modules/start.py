@@ -38,7 +38,7 @@ keyboard = (
 )
 
 
-@app.command("start", pm_only=True)
+@app.command("start")
 async def start(_, m: Message):
     return await m.reply_text(
         f"""
@@ -52,7 +52,7 @@ Support: {Vars.SUPPORT_GROUP}
     )
 
 
-@app.command("help", pm_only=True)
+@app.command("help")
 async def help_msg(_, m: Message):
     statusMessage = await m.reply_text("...")
 
@@ -63,7 +63,7 @@ async def help_msg(_, m: Message):
     return await statusMessage.edit_text(str(msg), reply_markup=keyboard)
 
 
-@app.command("ping", pm_only=False)
+@app.command("ping")
 async def ping(_, m: Message):
     start = time()
     replymsg = await m.reply_text("Pinging ...", quote=True)

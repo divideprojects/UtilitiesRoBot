@@ -21,7 +21,7 @@ MODULES.update(
 proxytypes = ("HTTP", "HTTPS", "Socks4", "Socks5")
 
 
-@app.command("proxy", pm_only=True)
+@app.command("proxy")
 @joinCheck()
 async def getProxy(_, m: Message):
     msg = await m.reply_text("...", quote=True)

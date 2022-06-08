@@ -17,7 +17,7 @@ MODULES.update(
 )
 
 
-@app.command("tts", pm_only=True)
+@app.command("tts")
 @joinCheck()
 async def tts(_, m: Message):
     if m.reply_to_message and m.reply_to_message.text:

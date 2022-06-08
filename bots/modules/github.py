@@ -15,7 +15,7 @@ MODULES.update(
 )
 
 
-@app.command("github", pm_only=True)
+@app.command("github")
 @joinCheck()
 async def github(_, m: Message):
     args = m.text.split()

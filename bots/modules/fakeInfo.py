@@ -15,7 +15,7 @@ MODULES.update(
 )
 
 
-@app.command("geninfo", pm_only=True)
+@app.command("geninfo")
 @joinCheck()
 async def genInfo(_, m: Message):
     gender = None

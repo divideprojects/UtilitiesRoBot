@@ -18,7 +18,7 @@ MODULES.update(
 )
 
 
-@app.command("tinify", pm_only=True)
+@app.command("tinify")
 @joinCheck()
 async def tinify(c, m: Message):
     with contextlib.suppress(AttributeError):

@@ -14,7 +14,7 @@ MODULES.update(
 )
 
 
-@app.command("bin", pm_only=True)
+@app.command("bin")
 @joinCheck()
 async def binChecker(_, m: Message):
     msg = await m.reply_text("...")
