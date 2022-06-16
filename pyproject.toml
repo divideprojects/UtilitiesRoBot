@@ -21,7 +21,7 @@ pypers = "^1.2.1"
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
 pyclean = "^2.2.0"
-pylint = "^2.14.1"
+pylint = "^2.14.2"
 isort = "^5.10.1"
 pre-commit = "^2.19.0"
 
