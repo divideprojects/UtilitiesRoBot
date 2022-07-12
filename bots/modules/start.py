@@ -39,7 +39,7 @@ keyboard = (
 
 @app.command("start")
 async def start(_, m: Message):
-    return await m.reply_text(
+    await m.reply_text(
         f"""
 Hi there, I am a Utilities Bot by {Vars.JOIN_CHANNEL}
 For my commands type /help
@@ -59,7 +59,7 @@ async def help_msg(_, m: Message):
     for i in list(MODULES.keys()):
         msg += f"\n    {MODULES.get(i).get('usage')}- {MODULES.get(i).get('info')}"
 
-    return await statusMessage.edit_text(str(msg), reply_markup=keyboard)
+    await statusMessage.edit_text(str(msg), reply_markup=keyboard)
 
 
 @app.command("ping")
@@ -67,6 +67,6 @@ async def ping(_, m: Message):
     start = time()
     replymsg = await m.reply_text("Pinging ...", quote=True)
     delta_ping = time() - start
-    return await replymsg.edit_text(
+    await replymsg.edit_text(
         Bold(f"Pong!\n{delta_ping * 1000: .3f} ms"),
     )
