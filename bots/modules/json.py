@@ -25,7 +25,7 @@ async def json(_, m: Message):
         filen = f"json_{m.chat.id}_{m.id}.json"
         with open(filen, "w+") as _file:
             _file.write(str(ms).strip())
-            _file.flush()
         await m.reply_document(filen)
-        return remove(filen)
-    return await m.reply_text(Code(escape(str(ms))))
+        remove(filen)
+        return
+    await m.reply_text(Code(escape(str(ms))))
