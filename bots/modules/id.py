@@ -58,7 +58,8 @@ async def getid(c: Client, m: Message):
         te = f"""
 {Bold(f"{use}'s ID:")} {Code(u.id)}
 {Bold("Chat ID:")} {Code(m.chat.id)}"""
-        return await m.reply_text(str(te))
+        await m.reply_text(te)
+        return
     if m.chat.username:
         text_ping = f'{Link(Bold("Chat ID:"), f"https://t.me/{m.chat.username}")} {Code(m.chat.id)}\n'
     else:
@@ -132,4 +133,4 @@ async def getid(c: Client, m: Message):
             )
         if reply.animation:
             text_ping += f"{Bold('GIF ID:')} {Code(reply.animation.file_id)}\n"
-    return await m.reply_text(str(text_ping), disable_web_page_preview=True)
+    await m.reply_text(str(text_ping), disable_web_page_preview=True)
