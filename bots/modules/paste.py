@@ -76,7 +76,6 @@ async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
         uniqueId = f"paste_{m.chat.id}_{m.id}.txt"
         with open(uniqueId, "w+") as file:
             file.write(content)
-            file.flush()
         await m.reply_document(uniqueId, caption=url)
         remove(uniqueId)
         return await statusMsg.delete()

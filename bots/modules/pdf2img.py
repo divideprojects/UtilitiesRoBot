@@ -59,7 +59,8 @@ async def pdf2img(c, m: Message):
             remove(exact_file)
             for i in media_photos:
                 remove(i["file"])
-            return await rmsg.edit_text("It's too big to send :(")
+            await rmsg.edit_text("It's too big to send :(")
+            return
         await rmsg.delete()
         remove(exact_file)
         for i in media_photos:

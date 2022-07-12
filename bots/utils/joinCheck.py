@@ -1,3 +1,5 @@
+from gc import collect
+
 from pyrogram import enums
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -8,10 +10,11 @@ from bots.vars import Vars
 def joinCheck(**args):
     def wrapper(func):
         async def decorator(c, m: Message):
+            collect()
             if not Vars.JOIN_CHECK:
                 return await func(c, m)
             if m.sender_chat:
-                return
+                return 0
             try:
                 get = await c.get_chat_member(
                     Vars.JOIN_CHANNEL, m.from_user.id
