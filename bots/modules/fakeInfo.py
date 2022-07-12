@@ -20,9 +20,8 @@ MODULES.update(
 async def genInfo(_, m: Message):
     gender = None
     msg = await m.reply_text("...")
-    chkUrl = "https://randomuser.me/api/1.3/"
     if len(m.command) == 2:
-        if m.command[1] in ("male", "female"):
+        if m.command[1].lower() in ("male", "female"):
             gender = m.command[1]
             chkUrl += f"?gender={gender}"
             text = f"Generating a Fake {m.command[1]} user data."
@@ -31,6 +30,7 @@ async def genInfo(_, m: Message):
     else:
         text = "Generating a Fake user data."
     await msg.edit_text(text)
+    chkUrl = "https://randomuser.me/api/1.3/"
     infoText, userPic = await genFakeInfo(chkUrl)
     if infoText == "API Unreachable":
         return await msg.edit_text(
