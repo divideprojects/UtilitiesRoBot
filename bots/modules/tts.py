@@ -25,9 +25,10 @@ async def tts(_, m: Message):
     elif len(m.command) > 1:
         text_to_convert = m.text.split(" ", 1)[1]
     else:
-        return await m.reply_text(
+        await m.reply_text(
             f"Usage: {MODULES.get('text-to-speech').get('usage')}",
         )
+        return
 
     save_file_name = f"{Vars.DOWN_PATH}/tts_{m.from_user.id}_{m.id}.mp3"
     rmsg = await m.reply_text("Converting Text to Speech...")
@@ -45,4 +46,4 @@ async def tts(_, m: Message):
 
     # Remove the files and msg
     remove(save_file_name)
-    return await rmsg.delete()
+    await rmsg.delete()
