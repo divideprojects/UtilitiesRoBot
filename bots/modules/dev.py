@@ -19,7 +19,8 @@ async def eval(client, message: Message):
 
     msg = await message.reply_text("...")
     if len(message.command) == 1:
-        return await msg.edit_text(f"Usage: {Code('/eval [python code]')}")
+        await msg.edit_text(f"Usage: {Code('/eval [python code]')}")
+        return
 
     cmd = message.text.split(" ", maxsplit=1)[1]
 
