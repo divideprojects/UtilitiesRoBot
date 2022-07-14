@@ -21,3 +21,5 @@ class Vars:
         .strip()
         .split(" ")
     )
+    RMVBG_API_KEY = config(
+        "RMVBG_API_KEY", default="gvJj41pqvzk2DXFJuTriLJFw gXs1ND17zC9yAWixeoXVq5va gjgujBeCxf5xZ6fKuwnNHx6Z uanfq1YZQG5YYRK3k3KpJ3Pf ovs4EWPn7GXCokc6feRkiVR7 qxFU4o96resMGaHBT7r53sAN").strip().split(" ")

@@ -14,4 +14,4 @@ if __name__ == "__main__":
         )
         await idle()
 
-    asyncio.run(main())
+    app.__client__.run(main())
