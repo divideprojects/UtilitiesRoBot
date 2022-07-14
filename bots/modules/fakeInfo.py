@@ -21,11 +21,10 @@ async def genInfo(_, m: Message):
     gender = None
     msg = await m.reply_text("...")
     text = "Generating a Fake user data ..."
-    if len(m.command) == 2:
-        if m.command[1].lower() in ("male", "female"):
-            gender = m.command[1]
-            chkUrl += f"?gender={gender}"
-            text = f"Generating a Fake {m.command[1]} user data ..."
+    if len(m.command) == 2 and m.command[1].lower() in ("male", "female"):
+        gender = m.command[1]
+        chkUrl += f"?gender={gender}"
+        text = f"Generating a Fake {m.command[1]} user data ..."
     await msg.edit_text(text)
     chkUrl = "https://randomuser.me/api/1.3/"
     infoText, userPic = await genFakeInfo(chkUrl)
