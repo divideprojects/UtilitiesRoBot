@@ -11,7 +11,7 @@ from bots import app
 from bots.vars import Vars
 
 
-@app.command("eval")
+@app.command(["eval", "e"])
 async def eval(client, message: Message):
     # Thanks to @SpEcHiDe/TerminalBot
     if not (await authorised(message)):
@@ -66,7 +66,7 @@ async def eval(client, message: Message):
         await msg.edit(final_output)
 
 
-@app.command("exec")
+@app.command(["exec", "sh"])
 async def shell(_, m: Message):
     if not (await authorised(m)):
         return
