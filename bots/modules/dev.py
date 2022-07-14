@@ -63,7 +63,7 @@ async def eval(client, message: Message):
         os.remove(f"eval_{message.id}.txt")
         await msg.delete()
     else:
-        await msg.edit(final_output)
+        await msg.edit_text(final_output)
 
 
 @app.command(["exec", "sh"])
