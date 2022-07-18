@@ -1,37 +1,28 @@
-from kantex.html import *
-from pyrogram import Client, enums
-from pyrogram.errors import FloodWait, RPCError
-from pyrogram.types.messages_and_media.message import Message
-
-from bots import MODULES, app
-
 from asyncio.exceptions import TimeoutError as te
 from contextlib import suppress
 
 from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure, InvalidURI, OperationFailure
-from pyrogram import Client
 from pyrogram.enums import ParseMode
 from pyrogram.errors import RPCError
-
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-)
-
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 from redis import Redis
 from redis.exceptions import ConnectionError as RConnectionError
 from sqlalchemy import create_engine
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import scoped_session, sessionmaker, close_all_sessions
+from sqlalchemy.orm import close_all_sessions, scoped_session, sessionmaker
 
-MODULES.update({"dbUrlMaker": {
-    "info": "Make an URI for a database.",
-    "usage": "/dbUrl",
-}})
+from bots import MODULES, app
+
+MODULES.update(
+    {
+        "dbUrlMaker": {
+            "info": "Make an URI for a database.",
+            "usage": "/dbUrl",
+        }
+    }
+)
 
 
 @app.command("dburl")
@@ -151,7 +142,9 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 return
             if not isdef["mid"]:
                 return
-            send = await q.message.reply_text("Creating and verifying the URL safely!")
+            send = await q.message.reply_text(
+                "Creating and verifying the URL safely!"
+            )
             furl = f"redis://{isdef['text'] if isde else 'default'}:{passw['text']}@{endp['text']}"
             try:
                 ur = Redis.from_url(furl)
@@ -279,7 +272,9 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 return
             if not udb["mid"]:
                 return
-            send = await q.message.reply_text("Creating and verifying the url safely!")
+            send = await q.message.reply_text(
+                "Creating and verifying the url safely!"
+            )
             furl = f"postgresql://{udb['text']}:{passw['text']}@{hostt['text']}:{portt['text']}/{dbb['text']}"
             try:
                 engine = create_engine(furl)
@@ -346,7 +341,9 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
             if not endp["mid"]:
                 return
 
-            send = await q.message.reply_text("Creating and Verifying the URL Safely!")
+            send = await q.message.reply_text(
+                "Creating and Verifying the URL Safely!"
+            )
             furl = endp["text"].replace("<password>", passw["text"])
 
             try:
@@ -357,4 +354,6 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 await send.edit_text(f"Error: {p}")
                 return
 
-        await send.edit_text(f"Success: <code>{furl}</code>", parse_mode=ParseMode.HTML)
+        await send.edit_text(
+            f"Success: <code>{furl}</code>", parse_mode=ParseMode.HTML
+        )
