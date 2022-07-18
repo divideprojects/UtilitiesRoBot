@@ -1,13 +1,13 @@
 import contextlib
 from os import remove
 
+from kantex.html import Code
 from pyrogram import Client
 from pyrogram.types import Message
-from kantex.html import Code
 
 from bots import MODULES, app
-from bots.utils.rmvBg import rmvBg
 from bots.utils.joinCheck import joinCheck
+from bots.utils.rmvBg import rmvBg
 from bots.vars import Vars
 
 MODULES.update(
@@ -49,5 +49,7 @@ async def rmvbg(c: Client, m: Message):
             remove(new_filename)
             remove(exact_file)
         else:
-            await m.reply_text(f"Usage: {MODULES.get('removebg').get('usage')}")
+            await m.reply_text(
+                f"Usage: {MODULES.get('removebg').get('usage')}"
+            )
     return

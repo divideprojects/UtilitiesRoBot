@@ -19,6 +19,7 @@ MODULES.update(
     },
 )
 
+
 @app.command("start")
 async def start(_, m: Message):
     await m.reply_text(
@@ -54,20 +55,23 @@ async def help_msg(_, m: Message):
     for i in list(MODULES.keys()):
         msg += f"\n    {MODULES.get(i).get('usage')}- {MODULES.get(i).get('info')}"
 
-    await statusMessage.edit_text(str(msg), reply_markup=InlineKeyboardMarkup(
-        [
+    await statusMessage.edit_text(
+        str(msg),
+        reply_markup=InlineKeyboardMarkup(
             [
-                InlineKeyboardButton(
-                    "Channel",
-                    url=f"https://telegram.me/{Vars.JOIN_CHANNEL.replace('@', '')}",
-                ),
-                InlineKeyboardButton(
-                    "Group",
-                    url=f"https://telegram.me/{Vars.SUPPORT_GROUP.replace('@', '')}",
-                ),
+                [
+                    InlineKeyboardButton(
+                        "Channel",
+                        url=f"https://telegram.me/{Vars.JOIN_CHANNEL.replace('@', '')}",
+                    ),
+                    InlineKeyboardButton(
+                        "Group",
+                        url=f"https://telegram.me/{Vars.SUPPORT_GROUP.replace('@', '')}",
+                    ),
+                ],
             ],
-        ],
-    ))
+        ),
+    )
 
 
 @app.command("ping")

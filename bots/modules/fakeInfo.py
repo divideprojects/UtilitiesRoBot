@@ -29,9 +29,7 @@ async def genInfo(_, m: Message):
     chkUrl = "https://randomuser.me/api/1.3/"
     infoText, userPic = await genFakeInfo(chkUrl)
     if infoText == "API Unreachable":
-        await msg.edit_text(
-            "API Unreachable at the Moment, Try again Later"
-        )
+        await msg.edit_text("API Unreachable at the Moment, Try again Later")
         return
     if not (infoText or userPic):
         await msg.edit_text(

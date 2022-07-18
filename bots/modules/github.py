@@ -21,9 +21,7 @@ async def github(_, m: Message):
     args = m.text.split()
 
     if len(args) == 1:
-        await m.reply_text(
-            f"Usage: {MODULES.get('github').get('usage')}"
-        )
+        await m.reply_text(f"Usage: {MODULES.get('github').get('usage')}")
         return
     if len(args) == 2:
         rMsg = await m.reply_text("Fetching data...")
@@ -55,17 +53,13 @@ async def github(_, m: Message):
         )
 
         if not result.get("repos_url", None):
-            await rMsg.edit_text(
-                reply_str, disable_web_page_preview=True
-            )
+            await rMsg.edit_text(reply_str, disable_web_page_preview=True)
             return
         result, resp = await AioHttp.get_json(result.get("repos_url", None))
 
         # if no repos found
         if resp.status == 404:
-            await rMsg.edit_text(
-                reply_str, disable_web_page_preview=True
-            )
+            await rMsg.edit_text(reply_str, disable_web_page_preview=True)
             return
         reply_str += str(Bold("\n\nRepositories:\n\n"))
 

@@ -1,7 +1,9 @@
 import random
-from removebg import RemoveBg
-from bots.vars import Vars
 import uuid
+
+from removebg import RemoveBg
+
+from bots.vars import Vars
 
 
 async def rmvBg(imgPath):
