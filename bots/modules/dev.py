@@ -92,8 +92,8 @@ async def shell(_, m: Message):
     output = f"{Bold('COMMAND')}: {Code(cmd)}\n\n{Bold('OUTPUT')}: {Code((await process.communicate())[0].decode('utf-8'))}"
 
     if len(output) > 4096:
-        with open(f"exec_{m.id}.txt", "w+", encoding="utf8") as out_file:
-            out_file.write(str(output))
+        with open(f"exec_{m.id}.txt", "w+") as out_file:
+            out_file.write(output)
         await msg.reply_document(
             document=f"exec_{m.id}.txt",
             caption=cmd,
@@ -102,7 +102,10 @@ async def shell(_, m: Message):
         os.remove(f"exec_{m.id}.txt")
         await msg.delete()
     else:
-        await msg.edit(output)
+        try:
+            await msg.edit_text(final_output, parse_mode=ParseMode.HTML)
+        except EntityBoundsInvalid:
+            await msg.edit_text(final_output, parse_mode=ParseMode.DISABLED)
 
 
 async def aexec(code, client, message):
