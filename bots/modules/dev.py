@@ -3,9 +3,12 @@ import io
 import os
 import sys
 import traceback
+from html import escape
 
 from kantex.html import Bold, Code
+from pyrogram.enums import ParseMode
 from pyrogram.types import Message
+from pyrogram.errors import EntityBoundsInvalid
 
 from bots import app
 from bots.vars import Vars
@@ -50,11 +53,11 @@ async def eval(client, message: Message):
     else:
         evaluation = "Success"
 
-    final_output = f"{Bold('EVAL')}: {Code(cmd)}\n\n{Bold('OUTPUT')}:\n{Code(evaluation.strip())} \n"
+    final_output = f"<b>EVAL:</b> <code>{cmd}</code>\n\n<b>OUTPUT:</b>\n<pre>{escape(evaluation.strip())}</pre>\n"
 
-    if len(final_output) > 4096:
-        with open(f"eval_{message.id}.txt", "w+", encoding="utf8") as out_file:
-            out_file.write(str(final_output))
+    if len(final_output) > 4095:
+        with open(f"eval_{message.id}.txt", "w+") as out_file:
+            out_file.write(final_output)
         await msg.reply_document(
             document=f"eval_{message.id}txt",
             caption=cmd,
@@ -63,7 +66,11 @@ async def eval(client, message: Message):
         os.remove(f"eval_{message.id}.txt")
         await msg.delete()
     else:
-        await msg.edit_text(final_output)
+        try:
+            await msg.edit_text(final_output, parse_mode=ParseMode.HTML)
+        except EntityBoundsInvalid:
+            await msg.edit_text(final_output, parse_mode=ParseMode.DISABLED)
+        
 
 
 @app.command(["exec", "sh"])
