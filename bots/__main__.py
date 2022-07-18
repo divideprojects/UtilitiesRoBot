@@ -14,4 +14,4 @@ if __name__ == "__main__":
         )
         await idle()
 
-    app.__client__.run(main())
+    app.__client__.loop.run_until_complete(main())
