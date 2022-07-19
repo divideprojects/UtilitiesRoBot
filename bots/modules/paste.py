@@ -24,7 +24,7 @@ async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
         "Pasting to Spacebin, Please wait for a while...",
     )
     content = None
-    sendAsFile = False
+    sendAsFile = 0
     fileToSend = None
 
     if m.reply_to_message:
@@ -42,15 +42,15 @@ async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
 
         elif m.reply_to_message.caption or m.reply_to_message.text:
             content = (
-                m.reply_to_message.caption.markdown
-                or m.reply_to_message.text.markdown
+                m.reply_to_message.caption
+                or m.reply_to_message.text
             )
-            sendAsFile = True
+            sendAsFile = 1
 
         else:
             with contextlib.suppress(BaseException):
-                content = m.reply_to_message.text.markdown
-                sendAsFile = True
+                content = m.reply_to_message.text
+                sendAsFile = 1
 
     if not content:
         return await statusMsg.edit_text(
