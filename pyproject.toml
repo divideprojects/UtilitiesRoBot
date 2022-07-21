@@ -20,7 +20,7 @@ pypers = "^1.2.2"
 removebg = "^0.04"
 SQLAlchemy = "^1.4.39"
 redis = "^4.3.4"
-pymongo = "^4.1.1"
+pymongo = "^4.2.0"
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
