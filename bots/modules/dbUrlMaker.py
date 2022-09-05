@@ -6,8 +6,12 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure, InvalidURI, OperationFailure
 from pyrogram.enums import ParseMode
 from pyrogram.errors import RPCError
-from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
-                            InlineKeyboardMarkup, Message)
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
 from redis import Redis
 from redis.exceptions import ConnectionError as RConnectionError
 from sqlalchemy import create_engine
@@ -22,8 +26,8 @@ MODULES.update(
         "dbUrlMaker": {
             "info": "Make an URI for a database.",
             "usage": "/dburl",
-        }
-    }
+        },
+    },
 )
 
 
@@ -120,7 +124,8 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 while 1:
                     if not isdefr.text:
                         await isdefr.reply_text(
-                            "No user received!\nDefault will be used!", )
+                            "No user received!\nDefault will be used!",
+                        )
                         isde = 1
                         isdef["text"], isdef["mid"] = "", isdefr.id
                         break
@@ -138,8 +143,7 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 return
             if not isdef["mid"]:
                 return
-            send = await q.message.reply_text(
-                "Creating and verifying the url safely!")
+            send = await q.message.reply_text("Creating and verifying the url safely!")
             furl = f"redis://{isdef['text'] if isde else 'default'}:{passw['text']}@{endp['text']}"
             try:
                 ur = Redis.from_url(furl)
@@ -204,7 +208,9 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 )
                 while 1:
                     if not isdefr.text:
-                        await isdefr.reply_text("Got no port!", )
+                        await isdefr.reply_text(
+                            "Got no port!",
+                        )
                         portt["text"], portt["mid"] = "", 0
                         break
                     if isdefr.text.lower().startswith("/cancel"):
@@ -227,7 +233,9 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 )
                 while 1:
                     if not isdefr.text:
-                        await isdefr.reply_text("Got no name.", )
+                        await isdefr.reply_text(
+                            "Got no name.",
+                        )
                         dbb["text"], dbb["mid"] = "", 0
                         break
                     if isdefr.text.lower().startswith("/cancel"):
@@ -250,7 +258,9 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 )
                 while 1:
                     if not isdefr.text:
-                        await isdefr.reply_text("Got no name.", )
+                        await isdefr.reply_text(
+                            "Got no name.",
+                        )
                         udb["text"], udb["mid"] = "", 0
                         break
                     if isdefr.text.lower().startswith("/cancel"):
@@ -264,8 +274,7 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 return
             if not udb["mid"]:
                 return
-            send = await q.message.reply_text(
-                "Creating and verifying the url safely!")
+            send = await q.message.reply_text("Creating and verifying the url safely!")
             furl = f"postgresql://{udb['text']}:{passw['text']}@{hostt['text']}:{portt['text']}/{dbb['text']}"
             try:
                 engine = create_engine(furl)
@@ -329,8 +338,7 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
                 return
             if not endp["mid"]:
                 return
-            send = await q.message.reply_text(
-                "Creating and verifying the url safely!")
+            send = await q.message.reply_text("Creating and verifying the url safely!")
             furl = endp["text"].replace("<password>", passw["text"])
             try:
                 ur = MongoClient(furl)
@@ -339,7 +347,6 @@ async def callbacka(c: app.__client__, q: CallbackQuery):
             except (OperationFailure, InvalidURI, ConnectionFailure) as p:
                 await send.edit_text(f"Error: {p}")
                 return
-        await send.edit_text(f"Success: <code>{furl}</code>",
-                             parse_mode=ParseMode.HTML)
+        await send.edit_text(f"Success: <code>{furl}</code>", parse_mode=ParseMode.HTML)
     collect()
     return

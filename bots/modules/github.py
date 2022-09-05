@@ -64,7 +64,9 @@ async def github(_, m: Message):
         reply_str += str(Bold("\n\nRepositories:\n\n"))
 
         for i in range(len(result)):
-            reply_str += f"{Link(result[i].get('name', None),result[i].get('html_url', None))}\n"
+            reply_str += (
+                f"{Link(result[i].get('name', None),result[i].get('html_url', None))}\n"
+            )
 
         await rMsg.edit_text(reply_str, disable_web_page_preview=True)
         return

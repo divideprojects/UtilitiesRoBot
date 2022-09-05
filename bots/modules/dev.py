@@ -7,8 +7,8 @@ from html import escape
 
 from kantex.html import Bold, Code
 from pyrogram.enums import ParseMode
-from pyrogram.types import Message
 from pyrogram.errors import EntityBoundsInvalid
+from pyrogram.types import Message
 
 from bots import app
 from bots.vars import Vars
@@ -70,7 +70,6 @@ async def eval(client, message: Message):
             await msg.edit_text(final_output, parse_mode=ParseMode.HTML)
         except EntityBoundsInvalid:
             await msg.edit_text(final_output, parse_mode=ParseMode.DISABLED)
-        
 
 
 @app.command(["exec", "sh"])

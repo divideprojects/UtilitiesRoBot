@@ -41,10 +41,7 @@ async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
             remove(file_)
 
         elif m.reply_to_message.caption or m.reply_to_message.text:
-            content = (
-                m.reply_to_message.caption
-                or m.reply_to_message.text
-            )
+            content = m.reply_to_message.caption or m.reply_to_message.text
             sendAsFile = 1
 
         else:
@@ -53,9 +50,7 @@ async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
                 sendAsFile = 1
 
     if not content:
-        return await statusMsg.edit_text(
-            f"Usage: {MODULES.get('paste').get('usage')}"
-        )
+        return await statusMsg.edit_text(f"Usage: {MODULES.get('paste').get('usage')}")
 
     try:
         async with ClientSession() as session:
