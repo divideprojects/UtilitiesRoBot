@@ -877,8 +877,8 @@ pymysql = ["pymysql", "pymysql (<1)"]
 sqlcipher = ["sqlcipher3_binary"]
 
 [[package]]
-name = "Telethon"
-version = "1.25.2"
+name = "telethon"
+version = "1.25.4"
 description = "Full-featured Telegram client library for Python 3"
 category = "main"
 optional = false
@@ -1008,7 +1008,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "50de329cdf633853b742a9ddbb1b898672eeb614c4a2041280aac97f030e6e84"
+content-hash = "1343236ec9204fb548ffedfd79d8e8ea9206d197c04542ea5c301ab0eda91f44"
 
 [metadata.files]
 aiodns = [
@@ -1998,9 +1998,9 @@ sqlalchemy = [
     {file = "SQLAlchemy-1.4.42-cp39-cp39-win_amd64.whl", hash = "sha256:5f966b64c852592469a7eb759615bbd351571340b8b344f1d3fa2478b5a4c934"},
     {file = "SQLAlchemy-1.4.42.tar.gz", hash = "sha256:177e41914c476ed1e1b77fd05966ea88c094053e17a85303c4ce007f88eff363"},
 ]
-Telethon = [
-    {file = "Telethon-1.25.2-py3-none-any.whl", hash = "sha256:9806fe57c2452be1ffc468fe0924e7c8ba3f6bd43504a6c094cbd259fbcad091"},
-    {file = "Telethon-1.25.2.tar.gz", hash = "sha256:a63da7a456727ffb0cac6b385563e57c4863d2b64fff58f9fa28ce188142b238"},
+telethon = [
+    {file = "Telethon-1.25.4-py3-none-any.whl", hash = "sha256:a085348801bd62db79ad75c9a67c5c8312507b113f0228b92e2dd4397edc7c1d"},
+    {file = "Telethon-1.25.4.tar.gz", hash = "sha256:8df802aad2d11f7198f1d5b1d84c7498ef19c28e160041dcb8aaf0814f91115b"},
 ]
 tgcrypto = [
     {file = "TgCrypto-1.2.3-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:266cfc47dde87e23421b2ee50cbb066ec4b8c294553f79742e3d694af5c0d118"},
