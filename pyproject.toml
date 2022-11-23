@@ -19,7 +19,7 @@ google-trans-new = "^1.1.9"
 pypers = "^1.2.7"
 removebg = "^0.04"
 SQLAlchemy = "^1.4.44"
-redis = "^4.3.4"
+redis = "^4.3.5"
 pymongo = "^4.3.3"
 
 [tool.poetry.dev-dependencies]
