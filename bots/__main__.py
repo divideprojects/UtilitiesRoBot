@@ -12,7 +12,7 @@ if __name__ == "__main__":
             print(f"{i} has been loaded.")
         print(
             f"\n@{(await app.__client__.get_me()).username}",
-            "has been started.",
+            "has been started...",
         )
         await idle()
 
