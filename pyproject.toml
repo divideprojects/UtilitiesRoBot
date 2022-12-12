@@ -18,7 +18,7 @@ Pillow = "^9.3.0"
 google-trans-new = "^1.1.9"
 pypers = "^1.2.7"
 removebg = "^0.04"
-SQLAlchemy = "^1.4.44"
+SQLAlchemy = "^1.4.45"
 redis = "^4.4.0"
 pymongo = "^4.3.3"
 
