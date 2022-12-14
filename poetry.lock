@@ -375,7 +375,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "isort"
-version = "5.11.1"
+version = "5.11.2"
 description = "A Python utility / library to sort Python imports."
 category = "dev"
 optional = false
@@ -972,7 +972,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "882f8dde51a10702aa348e248616b09a5b4b07377de74b4aab4c1dad2dd142a2"
+content-hash = "e26c2866c1a67ad43b2790e2a3ab4b5cfb04de595f15363f2aa251469e220513"
 
 [metadata.files]
 aiodns = [
@@ -1394,8 +1394,8 @@ idna = [
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
 isort = [
-    {file = "isort-5.11.1-py3-none-any.whl", hash = "sha256:bf02c95f1fe615ebbe13a619cfed1619ddfe8941274c9e3de3143adca406cb02"},
-    {file = "isort-5.11.1.tar.gz", hash = "sha256:7c5bd998504826b6f1e6f2f98b533976b066baba29b8bae83fdeefd0b89c6b70"},
+    {file = "isort-5.11.2-py3-none-any.whl", hash = "sha256:e486966fba83f25b8045f8dd7455b0a0d1e4de481e1d7ce4669902d9fb85e622"},
+    {file = "isort-5.11.2.tar.gz", hash = "sha256:dd8bbc5c0990f2a095d754e50360915f73b4c26fc82733eb5bfc6b48396af4d2"},
 ]
 kantex = [
     {file = "kantex-0.2.0-py3-none-any.whl", hash = "sha256:af26c41577d621311386fbb422dba847e92e9f0ed701f402b2d6184e7f409b98"},
