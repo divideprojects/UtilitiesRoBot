@@ -1,4 +1,4 @@
-FROM ghcr.io/divideprojects/docker-python-base:latest AS build
+FROM ghcr.io/divkix/docker-python-base:latest AS build
 ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /app
 RUN apt-get update && apt-get install -y apt-utils build-essential libpq-dev python3-dev \
