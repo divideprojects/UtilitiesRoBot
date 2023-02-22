@@ -1,5 +1,5 @@
 # Utilities Robot - All in one Utilities Bot of Telegram
-# Copyright (C) 2022 Divide Projects <https://github.com/DivideProjects>
+# Copyright (C) 2022 Divide Projects <https://github.com/divkix>
 
 # This file is part of Utilities Robot.
 
