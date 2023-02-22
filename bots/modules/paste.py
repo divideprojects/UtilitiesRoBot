@@ -28,7 +28,6 @@ async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
     fileToSend = None
 
     if m.reply_to_message:
-
         if m.reply_to_message.document:
             if m.reply_to_message.document.file_size > 400000:
                 return await statusMsg.edit_text(
