@@ -1,7 +1,7 @@
 FROM ghcr.io/divkix/docker-python-base:latest AS build
 ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /app
-RUN apt-get update && apt-get install -y apt-utils build-essential libpq-dev python3-dev \
+RUN apt update \
     && apt-get clean \
     && apt-get autoremove --purge --yes \
     && rm -rf /var/lib/apt/lists/* /root/* /tmp/* /var/cache/apt/archives/*.deb

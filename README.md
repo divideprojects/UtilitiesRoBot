@@ -1,6 +1,6 @@
-# [@UtilitiesRobot](https://www.telegram.me/UtilitiesRobot)
+# [@UtilitiesRobot](https://UtilitiesRobot.telegram.me)
 
-Utilities Robot by [@DivideProjects](https://telegram.me/DivideProjects)
+Utilities Robot by [@Divkix](https://divkix.me)
 
 ## Available Plugins
 
