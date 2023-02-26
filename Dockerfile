@@ -1,4 +1,5 @@
-FROM ghcr.io/divkix/docker-python-base:latest AS build
+# using py310 image because cchardet does not work with py311
+FROM ghcr.io/divkix/docker-python-base:py310 AS build
 ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /app
 RUN apt update \
