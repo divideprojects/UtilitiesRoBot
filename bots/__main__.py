@@ -1,5 +1,3 @@
-import asyncio
-
 from pyrogram import idle
 
 from bots import MODULES, app

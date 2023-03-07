@@ -135,7 +135,7 @@ async def generate_telethon_session(
         return await m._client.send_message(m.chat.id, f"Error: {e}")
     while 1:
         try:
-            code = await tclient.send_code_request(phone_number)
+            await tclient.send_code_request(phone_number)
             otp = await m.chat.ask(
                 f"""
 You will receive a OTP in from Telegram.

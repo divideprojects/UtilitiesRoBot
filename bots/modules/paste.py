@@ -25,7 +25,6 @@ async def paste_bin(_, m: Message):  # sourcery skip: low-code-quality
     )
     content = None
     sendAsFile = 0
-    fileToSend = None
 
     if m.reply_to_message:
         if m.reply_to_message.document:

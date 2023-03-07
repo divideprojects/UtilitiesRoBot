@@ -1,6 +1,6 @@
 from asyncio import sleep
 
-from kantex.html import *
+from kantex.html import Bold, Code, Link
 from pyrogram import Client, enums
 from pyrogram.errors import FloodWait, RPCError
 from pyrogram.types.messages_and_media.message import Message
