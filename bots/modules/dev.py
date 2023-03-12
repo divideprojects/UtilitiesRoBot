@@ -102,9 +102,9 @@ async def shell(_, m: Message):
         await msg.delete()
     else:
         try:
-            await msg.edit_text(final_output, parse_mode=ParseMode.HTML)
+            await msg.edit_text(output, parse_mode=ParseMode.HTML)
         except EntityBoundsInvalid:
-            await msg.edit_text(final_output, parse_mode=ParseMode.DISABLED)
+            await msg.edit_text(output, parse_mode=ParseMode.DISABLED)
 
 
 async def aexec(code, client, message):
