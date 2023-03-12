@@ -5,7 +5,7 @@ description = ""
 authors = ["Divkix <divkix@divkix.me>", "Jayant Hegde Kageri <jayantkageri@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">= 3.10, < 3.11"
 kantex = "^0.2.0"
 Telethon = "^1.27.0"
 proxygrab = "^1.2.9"
