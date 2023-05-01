@@ -789,14 +789,14 @@ test = ["objgraph", "psutil"]
 
 [[package]]
 name = "gtts"
-version = "2.3.1"
+version = "2.3.2"
 description = "gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate text-to-speech API"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "gTTS-2.3.1-py3-none-any.whl", hash = "sha256:7123ba91d415340f3264266adc195ff69f89b07f97ddafcfe48c9dad66f005c8"},
-    {file = "gTTS-2.3.1.tar.gz", hash = "sha256:fad26bccf0408aa8373ca8323f10731dc5b0c59eb5a0617591efe47ff30d4fcb"},
+    {file = "gTTS-2.3.2-py3-none-any.whl", hash = "sha256:9132e409603f34d5023458e3e10ce2f5df55498d7a2ee781c9adbe616fbd4152"},
+    {file = "gTTS-2.3.2.tar.gz", hash = "sha256:5314f7dedb4230889ff4773edd37e101408497e166982027b8d9582a4585eb4f"},
 ]
 
 [package.dependencies]
@@ -2388,4 +2388,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">= 3.10, < 3.11"
-content-hash = "4be79550ee768e333ec3406410f728a0da498a2ad3ceda7fad2e1f0d38ae125b"
+content-hash = "13e8f0bf9256041b63b1c56dc3caf8acc4f9ec992789ff3afb05ed97e7e12ec9"
