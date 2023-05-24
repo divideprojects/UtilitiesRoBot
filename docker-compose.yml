@@ -1,0 +1,8 @@
+version: '3'
+services:
+  utilities-robot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    image: https://ghcr.io/divkix/utilities-robot:latest
