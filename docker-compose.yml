@@ -14,4 +14,5 @@ services:
       - API_HASH
       - DOWN_PATH
       - DEVS
-      - RMVBG_API_KEY=
+      - RMVBG_API_KEY
+      - LOGS
