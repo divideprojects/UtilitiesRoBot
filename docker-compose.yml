@@ -5,3 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    environment:
+      - SUPPORT_GROUP
+      - JOIN_CHANNEL
+      - JOIN_CHECK
+      - BOT_TOKEN
+      - API_ID
+      - API_HASH
+      - DOWN_PATH
+      - DEVS
+      - RMVBG_API_KEY=
