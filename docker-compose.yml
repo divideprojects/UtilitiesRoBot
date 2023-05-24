@@ -5,4 +5,4 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    image: https://ghcr.io/divkix/utilities-robot:latest
+    image: ghcr.io/divkix/utilities-robot:latest
