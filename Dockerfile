@@ -5,7 +5,7 @@ COPY . .
 RUN poetry install --no-dev --no-interaction --no-ansi \
     && rm -rf /root/.cache/pip /root/.cache/pypoetry
 ENTRYPOINT ["poetry", "run"]
-CMD ["pyhton", "-m", "bots"]
+CMD ["python", "-m", "bots"]
 
 LABEL org.opencontainers.image.authors="Divanshu Chauhan <me@divkix.me>"
 LABEL org.opencontainers.image.url="https://divkix.me"
