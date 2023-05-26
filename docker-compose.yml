@@ -1,9 +1,7 @@
 version: '3'
 services:
   utilities-robot:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/divkix/utilitiesrobot:latest
     container_name: utilities-robot
     restart: always
     environment:
