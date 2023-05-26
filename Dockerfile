@@ -7,7 +7,7 @@ RUN poetry install --no-dev --no-interaction --no-ansi \
 ENTRYPOINT ["poetry", "run"]
 CMD ["python", "-m", "bots"]
 
-LABEL org.opencontainers.image.authors="Divanshu Chauhan <me@divkix.me>"
+LABEL org.opencontainers.image.authors="Divanshu Chauhan <divkix@divkix.me>"
 LABEL org.opencontainers.image.url="https://divkix.me"
 LABEL org.opencontainers.image.source="https://github.com/Divkix/UtilitiesRoBot"
 LABEL org.opencontainers.image.title="Utilities Robot"
