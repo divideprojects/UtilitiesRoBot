@@ -2,6 +2,12 @@
 FROM ghcr.io/divkix/docker-python-base:py310 AS build
 WORKDIR /app
 COPY . .
+RUN apt-get update \
+    && apt-get install --no-install-suggests --no-install-recommends --yes \
+    poppler-utils \
+    && apt-get clean \
+    && apt-get autoremove --purge --yes \
+    && rm -rf /var/lib/apt/lists/* /root/* /tmp/* /var/cache/apt/archives/*.deb /tmp
 RUN poetry install --no-dev --no-interaction --no-ansi \
     && rm -rf /root/.cache/pip /root/.cache/pypoetry
 ENTRYPOINT ["poetry", "run"]
