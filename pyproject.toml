@@ -7,7 +7,7 @@ authors = ["Divkix <divkix@divkix.me>", "Jayant Hegde Kageri <jayantkageri@gmail
 [tool.poetry.dependencies]
 python = ">= 3.10, < 3.11"
 kantex = "^0.2.0"
-Telethon = "^1.33.0"
+Telethon = "^1.33.1"
 proxygrab = "^1.2.9"
 aiohttp = "^3.9.1"
 pdf2image = "^1.16.3"
