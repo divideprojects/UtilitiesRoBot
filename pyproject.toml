@@ -26,7 +26,7 @@ pymongo = "^4.6.1"
 black = "^23.11.0"
 pyclean = "^2.7.6"
 pylint = "^2.17.7"
-isort = "^5.13.0"
+isort = "^5.13.1"
 pre-commit = "^3.6.0"
 
 [build-system]
